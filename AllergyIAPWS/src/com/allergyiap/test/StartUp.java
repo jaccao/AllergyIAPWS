@@ -27,7 +27,7 @@ public class StartUp {
 				else {
 					Connection connection = ds.getConnection();
 					Statement stm = connection.createStatement();
-					stm.executeUpdate("insert into example (code, name) values('123','456')");
+					//stm.executeUpdate("insert into example (code, name) values('123','456')");
 
 					String sql_customer = "" + "CREATE TABLE IF NOT EXISTS customer ( "
 							+ "  idcustomer SERIAL  NOT NULL , " + "  user_name TEXT  DEFAULT '' NOT NULL , "
