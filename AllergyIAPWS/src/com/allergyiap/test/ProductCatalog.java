@@ -9,6 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import database.ProductCatalogTable;
+import java.util.List;
+
+
 
 
 /**
@@ -31,7 +37,20 @@ public class ProductCatalog extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-    	response.getOutputStream().println("<html><h1>" + "HELLO CATALOG" + "</h1></html>");
+    	
+    	try{
+    		PrintWriter out = response.getWriter(); 
+    		out.write("HELLO CATALOG\n");
+    		List<ProductCatalogTable> rs = ProductCatalogTable.getAllProductCatalogs();
+    		out.write("<b>" + rs.get(0).getProductName()+"</b>");
+    		out.write("<b>" + rs.get(1).getProductName()+"</b>");
+    		out.write("<b>" + rs.get(2).getProductName()+"</b>");
+
+    		List<ProductCatalogTable> p = ProductCatalogTable.getProductCatalogById(1);
+    		out.write("<b>" + p.get(0).getProductDescription()+"</b>");
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
     }
 
 	/**
