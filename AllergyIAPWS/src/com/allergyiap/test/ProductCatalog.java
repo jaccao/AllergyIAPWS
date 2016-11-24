@@ -1,3 +1,4 @@
+package com.allergyiap.test;
 
 
 import java.io.IOException;
