@@ -7,7 +7,7 @@
 <title>Login</title>
 </head>
 <body>
-<form action="LoginServlet">
+<form action="login">
 
 			Username:  		
 			<input type="text" name="user_name"/><br>		

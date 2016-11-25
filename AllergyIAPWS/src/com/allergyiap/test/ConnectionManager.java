@@ -1,7 +1,7 @@
 package com.allergyiap.test;
 
 import java.sql.*;
-import java.util.*;
+
 
 
 public class ConnectionManager {
@@ -21,7 +21,7 @@ public class ConnectionManager {
          
          try
          {            	
-            con = DriverManager.getConnection(url,"username","password"); 
+            con = DriverManager.getConnection(url,"user_name","user_password"); 
              								
          // assuming your SQL Server's	username is "username"               
          // and password is "password"

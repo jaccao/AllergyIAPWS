@@ -1,7 +1,5 @@
 package com.allergyiap.test;
 
-import java.text.*;
-import java.util.*;
 import java.sql.*;
 
 public class User {
