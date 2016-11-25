@@ -33,5 +33,7 @@
 	}
 	out.println(strStatus);
 %>
+
+<a href="ProductCatalog">Show Products</a>	
 </body>
 </html>

@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
-<display-name>AllergyIAPWeb</display-name> 
-<servlet>
-		<display-name>ProductCatalog</display-name>
-        <servlet-name>ProductCatalog</servlet-name>
-        <jsp-file>/catalog.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ProductCatalog</servlet-name>
-        <url-pattern>/ProductCatalog</url-pattern>
-        <url-pattern>/catalog</url-pattern>        
-    </servlet-mapping>
-</web-app> 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>AllergyIAPWeb</display-name>
+</web-app>

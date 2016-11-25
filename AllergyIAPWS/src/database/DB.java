@@ -30,6 +30,7 @@ public class DB {
 		}
 	}
 	
+	/*For select statements*/
 	public ResultSet execute(String query){
 		Statement statement;
 		ResultSet rs = null;
@@ -42,5 +43,14 @@ public class DB {
 		return rs;
 	}
 	
-	
+	/*For insert, update and delete statements*/
+	public void executeUpdate(String query){
+		Statement statement;
+		try {
+			statement = conn.createStatement();
+			statement.executeUpdate(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -98,7 +98,7 @@ public class StartUp {
 
 					sql_script = "" + "INSERT INTO allergy VALUES (12, 'Cupressaceae', NULL, 'CUPR');";
 					stm.executeUpdate(sql_script);
-
+					
 					stm.close();
 					connection.close();
 				}
