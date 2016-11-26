@@ -44,7 +44,6 @@ public class TestIndex extends HttpServlet {
 				else {
 					Connection connection = ds.getConnection();
 					Statement stm = connection.createStatement();
-					//stm.executeUpdate("insert into example (code, name) values('123','456')");
 					connection.close();
 					stm.close();
 				}
