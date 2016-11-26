@@ -1,4 +1,4 @@
-package com.allergyiap.test;
+package com.allergy.start;
 
 import java.sql.Connection;
 import java.sql.Statement;
