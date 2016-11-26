@@ -11,31 +11,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Hello world
-	<%
-	String strStatus = "testando";
-	<jsp:forward page="login.jsp"></jsp:forward>
-	try {
-		InitialContext cxt = new InitialContext();
-		if (cxt != null) {
-			DataSource ds = (DataSource) cxt.lookup("java:/PostgresXADS");
-			if (ds == null)
-				strStatus = "Error while obtaining the dataSource";
-			else {
-				Connection connection = ds.getConnection();
-				Statement stm = connection.createStatement();
-				//stm.executeUpdate("insert into example (code, name) values('123','456')");
-				connection.close();
-				stm.close();
-			}
-			
-		}
-	} catch (Exception e) {
-		strStatus = e.getMessage();
-	}
-	out.println(strStatus);
-%>
-
-<a href="ProductCatalog">Show Products</a>	
+<jsp:forward page="LoginPage.jsp"></jsp:forward>	
 </body>
 </html>
