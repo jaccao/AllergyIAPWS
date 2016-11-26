@@ -14,6 +14,7 @@
 	Hello world
 	<%
 	String strStatus = "testando";
+	<jsp:forward page="login.jsp"></jsp:forward>
 	try {
 		InitialContext cxt = new InitialContext();
 		if (cxt != null) {
@@ -27,6 +28,7 @@
 				connection.close();
 				stm.close();
 			}
+			
 		}
 	} catch (Exception e) {
 		strStatus = e.getMessage();
