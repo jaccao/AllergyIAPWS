@@ -97,6 +97,7 @@ public class XarxaImportServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			response.getWriter().append("[");
 			List<HashMap<String, Object>> lmAllergyLevel = SystemSql.executeQuery(
 					"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE AND CURRENT_DATE <= date_end");
 			if (lmAllergyLevel.isEmpty()) {
@@ -105,12 +106,16 @@ public class XarxaImportServlet extends HttpServlet {
 						"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE AND CURRENT_DATE <= date_end");
 			}
 			for (HashMap<String, Object> oAllergyLevel : lmAllergyLevel) {
-				response.getWriter().append(oAllergyLevel.get("date_start").toString());
-				response.sendRedirect("ProductCatalog");
+				response.getWriter().append("{");
+				response.getWriter().append("date_start:").append("'").append(oAllergyLevel.get("date_start").toString()).append("',");
+				response.getWriter().append("date_end:").append("'").append(oAllergyLevel.get("date_end").toString()).append("',");
+				response.getWriter().append("current_level:").append("'").append(oAllergyLevel.get("current_level").toString()).append("',");
+				response.getWriter().append("station:").append("'").append(oAllergyLevel.get("station").toString()).append("',");
+				response.getWriter().append("},");
 			}
+			response.getWriter().append("]");
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("ProductCatalog");
 		}
 	}
 

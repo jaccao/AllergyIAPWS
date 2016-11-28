@@ -27,8 +27,12 @@ public class RequestLoggingFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-
 		HttpServletRequest req = (HttpServletRequest) request;
+		String uri = req.getRequestURI();
+		if (uri.endsWith("XarxaImportServlet")) {
+			chain.doFilter(request, response);
+			return;
+		}
 
 		Enumeration<String> params = req.getParameterNames();
 		while (params.hasMoreElements()) {
@@ -44,19 +48,16 @@ public class RequestLoggingFilter implements Filter {
 						.log(req.getRemoteAddr() + "::Cookie::{" + cookie.getName() + "," + cookie.getValue() + "}");
 			}
 		}
-		String uri = req.getRequestURI();
 		this.context.log("Requested Resource::" + uri);
 
 		HttpSession session = req.getSession(false);
 		boolean customer = false;
 		if (session != null && session.getAttribute("User") != null) {
-				customer = true; 
+			customer = true;
 		}
 
 		this.context.log(String.valueOf(customer));
-		
-		if (
-				(session == null && !(uri.endsWith("jsp") || uri.endsWith("LoginServlet")))
+		if ((session == null && !(uri.endsWith("jsp") || uri.endsWith("LoginServlet")))
 				|| (!customer && !uri.endsWith("LoginServlet"))) {
 			this.context.log("Unauthorized access request");
 			((HttpServletResponse) response).sendRedirect("LoginServlet");
