@@ -1,4 +1,4 @@
-package database;
+package com.allergyiap.db;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -32,6 +32,7 @@ public class DB {
 	
 	/*For select statements*/
 	public ResultSet execute(String query){
+		System.out.println(query);
 		Statement statement;
 		ResultSet rs = null;
 		try {
@@ -45,6 +46,9 @@ public class DB {
 	
 	/*For insert, update and delete statements*/
 	public void executeUpdate(String query){
+		
+		System.out.println(query);
+		
 		Statement statement;
 		try {
 			statement = conn.createStatement();

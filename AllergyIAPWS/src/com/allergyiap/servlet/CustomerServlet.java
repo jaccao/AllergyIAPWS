@@ -1,19 +1,17 @@
-package com.allergyiap.test;
+package com.allergyiap.servlet;
 
 import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import database.CustomerTable;
-import database.ProductCatalogTable;
+import com.allergy.service.CustomerService;
+import com.allergyiap.beans.Customer;
 
 /**
  * Servlet implementation class CustomerServlet
@@ -21,19 +19,20 @@ import database.ProductCatalogTable;
 @WebServlet(description = "Manage the customer segment", urlPatterns = { "/Customers" })
 public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CustomerServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public CustomerServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String action = (String) request.getParameter("action");
@@ -57,9 +56,10 @@ public class CustomerServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
@@ -69,62 +69,57 @@ public class CustomerServlet extends HttpServlet {
 				saveCustomer(request, response);
 			} else if (action.equals("edit")) {
 				saveCustomer(request, response);
-			} 
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	private void listCustomers(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 
-		int id = 1;
-
-		List<CustomerTable> customers = CustomerTable.getAllCustomers();
+		List<Customer> customers = CustomerService.getAll();
 
 		request.setAttribute("customers", customers);
 		try {
-			RequestDispatcher rd = request.getRequestDispatcher("customersList.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/customersList.jsp");
 			rd.forward(request, response);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	private void saveCustomer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		int id = 0;
-		if (request.getParameter("id") != null){
+		if (request.getParameter("id") != null) {
 			id = Integer.parseInt(request.getParameter("id"));
 		}
-		String userName = request.getParameter("userName");
-		String userPass = request.getParameter("userPassword");
-		String companyName = request.getParameter("companyName");
+		String userName = request.getParameter("nUserName");
+		String userPass = request.getParameter("nUserPassword");
+		String companyName = request.getParameter("nCompanyName");
 
-		CustomerTable c = null;
+		Customer c = new Customer(id, userName, userPass, companyName);
 
 		if (id != 0) {
-			c = new CustomerTable(id, userName, userPass, companyName);
-			c.updateCustomer();
+			CustomerService.update(c);
 		} else {
-			c = new CustomerTable(userName, userPass, companyName);
-			c.insertNewCustomer();
+			CustomerService.insert(c);
 		}
 
 		response.sendRedirect("Customers");
 	}
-	
+
 	private void editCustomer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		CustomerTable customer = CustomerTable.getCustomerById(id);
+		Customer customer = CustomerService.get(id);
 
 		request.setAttribute("c", customer);
 
-		RequestDispatcher rd = request.getRequestDispatcher("edit-customer.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/edit-customer.jsp");
 		rd.forward(request, response);
 
 	}
@@ -132,17 +127,15 @@ public class CustomerServlet extends HttpServlet {
 	private void newCustomer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("new-customer.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/pages/new-customer.jsp").forward(request, response);
 
 	}
-	
+
 	private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		CustomerTable customer = CustomerTable.getCustomerById(id);
-
-		customer.deleteCustomer();
+		CustomerService.delete(id);
 
 		response.sendRedirect("Customers");
 	}

@@ -1,4 +1,4 @@
-package com.allergyiap.test;
+package com.allergyiap.servlet;
 
 import java.io.IOException;
 import java.sql.Connection;

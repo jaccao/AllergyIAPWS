@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+/*body.login {
+	background-color: #90CAF9;
+}*/
+
+body {
+	background-color: rgba(0,0,0,0.01);
+}
+
+#main .container-fluid {
+	margin-top: 60px;
+}

@@ -1,12 +1,11 @@
-package database;
+package com.allergyiap.beans;
 
-public class AllergyLevelTable implements java.io.Serializable 
+public class AllergyLevel implements java.io.Serializable 
 {
 	private static final long serialVersionUID = 1L;
-	private static final String tableName = "allergy_level";
 
 	private long id;
-	private long allergyIdAllergy;
+	private long allergyId;
 	private float currentLevel;
 	private String station;
 	private String dateStart;
@@ -14,9 +13,9 @@ public class AllergyLevelTable implements java.io.Serializable
 	private String forecastLevel;
 	
 	
-	public AllergyLevelTable(long id, long allergyIdAllergy, float currentLevel, String station, String dateStart, String dateEnd, String forecastLevel ){
+	public AllergyLevel(long id, long allergyIdAllergy, float currentLevel, String station, String dateStart, String dateEnd, String forecastLevel ){
 		this.id = id;
-		this.allergyIdAllergy = allergyIdAllergy;
+		this.allergyId = allergyIdAllergy;
 		this.currentLevel = currentLevel;
 		this.station = station;
 		this.dateStart = dateStart;
@@ -28,7 +27,7 @@ public class AllergyLevelTable implements java.io.Serializable
 		return this.id;
 	}
 	public long getAlleryID(){
-		return this.allergyIdAllergy;
+		return this.allergyId;
 	}
 	
 	public float getCurrentLevel(){
@@ -61,7 +60,7 @@ public class AllergyLevelTable implements java.io.Serializable
 	}
 	
 	public void setAlleryID(long allergyIdAllergy){
-		this.allergyIdAllergy = allergyIdAllergy;
+		this.allergyId = allergyIdAllergy;
 	}
 	
 	public void setCurrentLevel(float currentLevel){
