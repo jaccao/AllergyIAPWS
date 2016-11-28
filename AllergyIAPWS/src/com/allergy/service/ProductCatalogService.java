@@ -3,34 +3,52 @@ package com.allergy.service;
 import java.util.List;
 
 import com.allergyiap.beans.ProductCatalog;
+import com.allergyiap.dao.AllergyDao;
+import com.allergyiap.dao.CustomerDao;
 import com.allergyiap.dao.ProductCatalogDao;
 
 public class ProductCatalogService {
 
-	private static ProductCatalogDao dao = new ProductCatalogDao();
+	private static ProductCatalogDao productDao = new ProductCatalogDao();
+	private static AllergyDao allergyDao = new AllergyDao();
+	private static CustomerDao customerDao = new CustomerDao();
 
 	public static void insert(ProductCatalog bean) {
-		dao.insert(bean);
+		productDao.insert(bean);
 	}
 
 	public static void update(ProductCatalog bean) {
-		dao.update(bean);
+		productDao.update(bean);
 	}
 
 	public static void delete(int id) {
-		dao.delete(id);
+		productDao.delete(id);
 	}
 
 	public static ProductCatalog get(long id) {
-		return dao.get(id);
+		return productDao.get(id);
 	}
 
 	public static List<ProductCatalog> getAllByCustomer(long id) {
-		return dao.getByCustomer(id);
+		List<ProductCatalog> list = productDao.getByCustomer(id);
+
+		for (ProductCatalog productCatalog : list) {
+			productCatalog.setAllergy(allergyDao.get(productCatalog.getAllergyId()));
+			productCatalog.setCustomer(customerDao.get(productCatalog.getCustomerId()));
+		}
+
+		return list;
 	}
-	
+
 	public static List<ProductCatalog> getAll() {
-		return dao.getAll();
+		List<ProductCatalog> list = productDao.getAll();
+
+		for (ProductCatalog productCatalog : list) {
+			productCatalog.setAllergy(allergyDao.get(productCatalog.getAllergyId()));
+			productCatalog.setCustomer(customerDao.get(productCatalog.getCustomerId()));
+		}
+
+		return list;
 	}
 
 }

@@ -18,20 +18,24 @@
 			            <div class="panel-heading text-left">New Product</div>
 			            <div class="panel-body">
 			
-			                <form id="form-centers" action="ProductCatalog?action=new" method="POST" role="form" >
+			                <form id="form-centers" action="ProductCatalog?action=new" method="POST" role="form">
 			                    
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+					                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
 					                    </div>
 					
 									</div>		
 									<div class="col-md-6">
 					                    <!-- Allergy -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="allergy" name="allergy" placeholder="Allergy">
+					                    	<select class="form-control" id="allergy" name="allergy">
+					                    	<c:forEach items="${alergies}" var="allergy">
+					                    		<option value="${allergy.id}">${allergy.allergyName}</option>
+					                    	</c:forEach>
+					                    	</select>
 					                    </div>
 				
 									</div>	  
@@ -40,6 +44,10 @@
 					                    <div class="form-group btn-xs">
 					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description"></textarea>
 					                    </div>
+									</div>
+									
+									<div class="col-md-6">
+										Image Upload:<input type="file" name="fileName">
 									</div>
 								</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">

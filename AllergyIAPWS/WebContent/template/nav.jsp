@@ -26,6 +26,9 @@
 	<li class=""><a href="Customers"> 
 		<span class="fa fa-users"></span> Customers
 	</a></li>
+	<li class=""><a href="XarxaImportServlet"> 
+		<span class="fa fa-cloud-download"></span> Import Allergies
+	</a></li>
 	<%} %>
 </ul>
 

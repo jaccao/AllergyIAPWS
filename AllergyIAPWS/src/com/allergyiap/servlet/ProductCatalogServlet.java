@@ -1,6 +1,8 @@
 package com.allergyiap.servlet;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+import com.allergy.service.AllergyService;
 import com.allergy.service.ProductCatalogService;
 import com.allergyiap.beans.Customer;
 import com.allergyiap.beans.ProductCatalog;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -54,6 +59,7 @@ public class ProductCatalogServlet extends HttpServlet {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			response.sendRedirect("ProductCatalog");
 		}
 
 	}
@@ -75,6 +81,7 @@ public class ProductCatalogServlet extends HttpServlet {
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			response.sendRedirect("ProductCatalog");
 		}
 
 	}
@@ -91,25 +98,32 @@ public class ProductCatalogServlet extends HttpServlet {
 	private void saveProduct(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id = 0;
-		if (request.getParameter("id") != null) {
-			id = Integer.parseInt(request.getParameter("id"));
-		}
-
 		HttpSession session = request.getSession(false);
 		Customer customer = (Customer) session.getAttribute("User");
 
+		int id = 0;
 		String name = request.getParameter("name");
+		
 		long allergy = new Long(request.getParameter("allergy"));
 		// long customer = new Long(request.getParameter("customer"));
 		String description = request.getParameter("description");
 
-		ProductCatalog p = new ProductCatalog(id, allergy, customer.getId(), name, description);
+		if (request.getParameter("id") != null) { // Edti Product
+			id = Integer.parseInt(request.getParameter("id"));
 
-		if (id != 0) {
+			ProductCatalog p = ProductCatalogService.get(id);
+			p.setProductName(name);
+			p.setProductDescription(description);
+			p.setAllergyId(allergy);
 			ProductCatalogService.update(p);
-		} else {
+			
+		} else { // New Product
+
+			ProductCatalog p = new ProductCatalog(allergy, customer.getId(), name, description);
 			ProductCatalogService.insert(p);
+			 
+			//TODO Implement Upload Images
+			//saveImage(request, id);
 		}
 
 		response.sendRedirect("ProductCatalog");
@@ -145,6 +159,7 @@ public class ProductCatalogServlet extends HttpServlet {
 		ProductCatalog product = ProductCatalogService.get(id);
 
 		request.setAttribute("p", product);
+		request.setAttribute("alergies", AllergyService.getAll());
 
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/edit-catalog.jsp");
 		rd.forward(request, response);
@@ -154,8 +169,68 @@ public class ProductCatalogServlet extends HttpServlet {
 	private void newProduct(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		request.setAttribute("alergies", AllergyService.getAll());
 		request.getRequestDispatcher("WEB-INF/pages/new-catalog.jsp").forward(request, response);
 
+	}
+
+	private void saveImage(HttpServletRequest request, int id) {
+
+		System.out.println("saveImage");
+		
+		InputStream inputStream = null;
+		FileOutputStream outputStream = null;
+
+		try {
+			for (Part part : request.getParts()) {
+				inputStream = request.getPart(part.getName()).getInputStream();
+				int i = inputStream.available();
+				byte[] b = new byte[i];
+				inputStream.read(b);
+
+				System.out.println("Length : " + b.length);
+
+				// Finding the fileName //
+				String fileName = "";
+				String partHeader = part.getHeader("content-disposition");
+
+				System.out.println("Part Header = " + partHeader);
+				System.out.println("part.getHeader(content-disposition) = " + part.getHeader("content-disposition"));
+
+				for (String temp : part.getHeader("content-disposition").split(";")) {
+					if (temp.trim().startsWith("filename")) {
+						fileName = temp.substring(temp.indexOf('=') + 1).trim().replace("\"", "");
+					}
+				}
+
+				String uploadDir = System.getProperty("jboss.server.base.dir") + "/upload";
+				System.out.println("File will be Uploaded at: " + uploadDir + "/" + fileName);
+				outputStream = new FileOutputStream(uploadDir + "/" + fileName);
+				outputStream.write(b);
+				inputStream.close();
+
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		} finally {
+			if (inputStream != null) {
+				try {
+					inputStream.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (outputStream != null) {
+				try {
+					outputStream.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 }

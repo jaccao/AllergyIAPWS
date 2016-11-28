@@ -10,7 +10,7 @@
 		</header>
 		<div id="main" class="row">
 			<div class="container-fluid">
-				Home Page
+				<c:redirect url="/ProductCatalog"/>  
 			</div>
 		</div>
 		<footer class="row"> <%@include file='/template/footer.jsp'%>

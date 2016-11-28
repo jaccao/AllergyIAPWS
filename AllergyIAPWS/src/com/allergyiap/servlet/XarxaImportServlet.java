@@ -1,4 +1,4 @@
-package com.allergy.comm;
+package com.allergyiap.servlet;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -19,17 +19,20 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import com.allergy.comm.SystemHttp;
+import com.allergy.comm.SystemSql;
+
 /**
- * Servlet implementation class XarxaImport
+ * Servlet implementation class XarxaImportServlet
  */
-@WebServlet("/XarxaImport")
-public class XarxaImport extends HttpServlet {
+@WebServlet("/XarxaImportServlet")
+public class XarxaImportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public XarxaImport() {
+	public XarxaImportServlet() {
 		super();
 	}
 
@@ -103,9 +106,11 @@ public class XarxaImport extends HttpServlet {
 			}
 			for (HashMap<String, Object> oAllergyLevel : lmAllergyLevel) {
 				response.getWriter().append(oAllergyLevel.get("date_start").toString());
+				response.sendRedirect("ProductCatalog");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			response.sendRedirect("ProductCatalog");
 		}
 	}
 
