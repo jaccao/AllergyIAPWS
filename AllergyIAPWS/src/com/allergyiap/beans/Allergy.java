@@ -9,6 +9,9 @@ public class Allergy implements java.io.Serializable {
 	private String allergyDescription;
 	private String allergyCode;
 
+	public Allergy() {
+	}
+
 	public Allergy(long id, String allergyName, String allergyDescription, String allergyCode) {
 		this.id = id;
 		this.allergyName = allergyName;

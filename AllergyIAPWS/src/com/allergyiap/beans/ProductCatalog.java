@@ -9,6 +9,9 @@ public class ProductCatalog implements java.io.Serializable {
 	private String productName;
 	private String productDescription;
 
+	private Allergy allergy;
+	private Customer customer;
+
 	public ProductCatalog(long id, long allergyIdAllergy, long customerIdCustomer, String productName,
 			String productDesctiption) {
 		this.id = id;
@@ -16,19 +19,17 @@ public class ProductCatalog implements java.io.Serializable {
 		this.customerId = customerIdCustomer;
 		this.productName = productName;
 		this.productDescription = productDesctiption;
+		this.allergy = new Allergy();
 	}
 
 	public ProductCatalog(long allergyIdAllergy, long customerIdCustomer, String productName,
 			String productDesctiption) {
 
-		this.allergyId = allergyIdAllergy;
-		this.customerId = customerIdCustomer;
-		this.productName = productName;
-		this.productDescription = productDesctiption;
+		this(0, allergyIdAllergy, customerIdCustomer, productName, productDesctiption);
 	}
 
 	public ProductCatalog() {
-
+		this(0, 0, 0, "", "");
 	}
 
 	public long getId() {
@@ -72,6 +73,34 @@ public class ProductCatalog implements java.io.Serializable {
 	}
 
 	public void getProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
+	
+	public Allergy getAllergy() {
+		return allergy;
+	}
+
+	public void setAllergy(Allergy allergy) {
+		this.allergy = allergy;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public void setAllergyId(long allergyId) {
+		this.allergyId = allergyId;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
 }

@@ -23,21 +23,21 @@
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="nUserName" name="nUserName" placeholder="User Name">
+					                        <input type="text" class="form-control" id="nUserName" name="nUserName" placeholder="User Name" required>
 					                    </div>
 					
 									</div>		
 									<div class="col-md-6">
 					                    <!-- Password -->
 					                    <div class="form-group btn-xs">
-					                        <input type="password" class="form-control" id="nUserPassword" name="nUserPassword" placeholder="Password">
+					                        <input type="password" class="form-control" id="nUserPassword" name="nUserPassword" placeholder="Password" required>
 					                    </div>
 				
 									</div>	  
 									<div class="col-md-6">                  
 										<!-- Company Name -->
 					                    <div class="form-group btn-xs">
-					                    	<input type="text" class="form-control" id="nCompanyName" name="nCompanyName" placeholder="Company Name">
+					                    	<input type="text" class="form-control" id="nCompanyName" name="nCompanyName" placeholder="Company Name" required>
 					                    </div>
 									</div>
 								</div>
