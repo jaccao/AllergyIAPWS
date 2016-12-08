@@ -26,14 +26,14 @@ public class UserDao extends Dao<User>{
 		query.append(" (");
 		query.append(NAME + ", ");
 		query.append(SECONDNAME + ", ");
-		query.append(MAIL + " ");
+		query.append(MAIL + ", ");
 		query.append(PASSWORD + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
 		query.append(bean.getUserName() + ", ");
 		query.append(bean.getUserSecondName() + ", ");
-		query.append(bean.getUserMail() + " ");
+		query.append(bean.getUserMail() + ", ");
 		query.append(bean.getUserPassword() + " ");
 		query.append(") ");
 		db.executeUpdate(query.toString());
