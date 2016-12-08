@@ -105,13 +105,25 @@ public class XarxaImportServlet extends HttpServlet {
 				lmAllergyLevel = SystemSql.executeQuery(
 						"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE AND CURRENT_DATE <= date_end");
 			}
+			boolean isFirst = true;
 			for (HashMap<String, Object> oAllergyLevel : lmAllergyLevel) {
+				if (!isFirst) {
+					response.getWriter().append(",");
+				} else {
+					isFirst = false;
+				}
 				response.getWriter().append("{");
-				response.getWriter().append("date_start:").append("'").append(oAllergyLevel.get("date_start").toString()).append("',");
-				response.getWriter().append("date_end:").append("'").append(oAllergyLevel.get("date_end").toString()).append("',");
-				response.getWriter().append("current_level:").append("'").append(oAllergyLevel.get("current_level").toString()).append("',");
-				response.getWriter().append("station:").append("'").append(oAllergyLevel.get("station").toString()).append("',");
-				response.getWriter().append("},");
+				boolean isFirstProp=true;
+				for (String k : oAllergyLevel.keySet()) {
+					if (!isFirstProp) {
+						response.getWriter().append(",");
+					} else {
+						isFirstProp = false;
+					}
+					response.getWriter().append("\""+k + "\":").append("\"").append(oAllergyLevel.get(k).toString())
+							.append("\"");
+				}
+				response.getWriter().append("}");
 			}
 			response.getWriter().append("]");
 		} catch (Exception e) {
