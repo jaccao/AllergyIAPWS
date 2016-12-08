@@ -18,7 +18,6 @@ import com.allergy.service.ProductCatalogService;
 import com.allergyiap.beans.Customer;
 import com.allergyiap.beans.ProductCatalog;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**

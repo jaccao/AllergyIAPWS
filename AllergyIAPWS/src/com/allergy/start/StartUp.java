@@ -30,9 +30,12 @@ public class StartUp {
 					//stm.executeUpdate("insert into example (code, name) values('123','456')");
 
 					String sql_customer = "" + "CREATE TABLE IF NOT EXISTS customer ( "
-							+ "  idcustomer SERIAL  NOT NULL , " + "  user_name TEXT  DEFAULT '' NOT NULL , "
+							+ "  idcustomer SERIAL  NOT NULL , " 
+							+ "  user_name TEXT  DEFAULT '' NOT NULL , "
 							+ "  user_password TEXT  DEFAULT '' NOT NULL , "
-							+ "  company_name TEXT  DEFAULT '' NOT NULL   , " + "PRIMARY KEY(idcustomer));";
+							+ "  company_name TEXT  DEFAULT '' NOT NULL   , " 
+							+ "  pharmacy_location TEXT DEFAULT '' NOT NULL, "
+							+ "PRIMARY KEY(idcustomer));";
 
 					String sql_allergy = "" + "CREATE TABLE IF NOT EXISTS allergy ( "
 							+ "  idallergy SERIAL  NOT NULL , " + "  allergy_name TEXT    , "
@@ -55,7 +58,16 @@ public class StartUp {
 							+ "      ON DELETE CASCADE " + "      ON UPDATE RESTRICT, "
 							+ "  FOREIGN KEY(allergy_idallergy) " + "    REFERENCES allergy(idallergy) "
 							+ "      ON DELETE RESTRICT " + "      ON UPDATE RESTRICT);";
-
+					
+					String sql_user_table = "" + "CREATE TABLE IF NOT EXISTS user_information ( "
+							+ "  iduser SERIAL NOT NULL, "
+							+ "  user_name TEXT  DEFAULT '' NOT NULL ,"
+							+ "  user_second_name TEXT  DEFAULT '' NOT NULL ,"
+							+ "  user_mail TEXT  DEFAULT '' NOT NULL ,"
+							+ "  user_password TEXT  DEFAULT '' NOT NULL ,"
+							+ "  PRIMARY KEY(iduser));";
+					
+					stm.executeUpdate(sql_user_table);
 					stm.executeUpdate(sql_customer);
 					stm.executeUpdate(sql_allergy);
 					stm.executeUpdate(sql_allergy_level);
