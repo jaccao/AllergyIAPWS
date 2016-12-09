@@ -30,11 +30,11 @@ public class UserDao extends Dao<User>{
 		query.append(PASSWORD + " ");
 		query.append(") ");
 		query.append("VALUES");
-		query.append(" (");
-		query.append(bean.getUserName() + ", ");
-		query.append(bean.getUserSecondName() + ", ");
-		query.append(bean.getUserMail() + ", ");
-		query.append(bean.getUserPassword() + " ");
+		query.append(" ('");
+		query.append(bean.getUserName() + "', '");
+		query.append(bean.getUserSecondName() + "', '");
+		query.append(bean.getUserMail() + "', '");
+		query.append(bean.getUserPassword() + "' ");
 		query.append(") ");
 		db.executeUpdate(query.toString());
 		
@@ -45,11 +45,11 @@ public class UserDao extends Dao<User>{
 		StringBuilder query = new StringBuilder();
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
-		query.append(" set ");
-		query.append(NAME + " = " + bean.getUserName() + ", ");
-		query.append(SECONDNAME + " = " + bean.getUserSecondName() + ", ");
-		query.append(MAIL + " = " + bean.getUserMail() + " ");
-		query.append(PASSWORD + " = " + bean.getUserPassword() + " ");
+		query.append(" SET ");
+		query.append(NAME + " = '" + bean.getUserName() + "', ");
+		query.append(SECONDNAME + " = '" + bean.getUserSecondName() + "', ");
+		query.append(MAIL + " = '" + bean.getUserMail() + "', ");
+		query.append(PASSWORD + " = '" + bean.getUserPassword() + "' ");
 		query.append(" WHERE ");
 		query.append(ID + " = " + bean.getId());
 

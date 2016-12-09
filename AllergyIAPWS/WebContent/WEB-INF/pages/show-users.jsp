@@ -14,12 +14,12 @@
 			<div class="container-fluid">
 
 			<div class="col-sm-10 col-sm-offset-1">
-				<h2>Products</h2>
+				<h2>Users</h2>
 				<div class="panel panel-default">
 					
 				<div class="panel-heading text-right">
-					<a class="btn btn-success" href="ProductCatalog?action=new">
-						<i class="fa fa-plus"></i> New Product
+					<a class="btn btn-success" href="Users?action=new">
+						<i class="fa fa-plus"></i> New User
 					</a>
 				</div>
 					
@@ -30,28 +30,26 @@
 								<tr>
 									<th>Id</th>
 									<th>Name</th>
-									<th>Description</th>
-									<th>Allergy</th>
-									<% if(user.isAdmin()){%><th>Customer</th><%} %>
+									<th>Second Name</th>
+									<th>Mail</th>
+									<th>Password</th>
 									<th style="width: 15%"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${products}" var="p">
+								<c:forEach items="${users}" var="u">
 									<tr>
-										<td>${p.id}</td>
-										<td>${p.productName}</td>
-										<td>${p.productDescription}</td>
-										<td>${p.allergy.allergyName}</td>
-										<% if(user.isAdmin()){%>
-										<td>${p.customer.userName}</td>
-										<%} %>
+										<td>${u.id}</td>
+										<td>${u.userName}</td>
+										<td>${u.userSecondName}</td>
+										<td>${u.userMail}</td>
+										<td>${u.userPassword}</td>
 										<td>
-											<a class="btn btn-warning" href="ProductCatalog?action=edit&id=${p.id}"> 
+											<a class="btn btn-warning" href="Users?action=edit&id=${u.id}"> 
 												<i class="fa fa-pencil"></i>
 											</a>
 										
-											<a class="btn btn-danger" href="ProductCatalog?action=delete&id=${p.id}">
+											<a class="btn btn-danger" href="Users?action=delete&id=${u.id}">
 												<i class="fa fa-trash-o"></i>
 											</a>
 										

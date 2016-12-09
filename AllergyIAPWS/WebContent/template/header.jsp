@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">AllergyIAP</a>
+            <a class="navbar-brand" href="/AllergyIAPWS">AllergyIAP</a>
         </div>
 
         <div class="collapse navbar-collapse " id="navbar-collapse-1">

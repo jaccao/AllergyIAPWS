@@ -63,7 +63,7 @@ public class StartUp {
 							+ "  iduser SERIAL NOT NULL, "
 							+ "  user_name TEXT  DEFAULT '' NOT NULL ,"
 							+ "  user_second_name TEXT  DEFAULT '' NOT NULL ,"
-							+ "  user_mail TEXT  DEFAULT '' NOT NULL ,"
+							+ "  user_mail TEXT  DEFAULT '' UNIQUE NOT NULL ,"
 							+ "  user_password TEXT  DEFAULT '' NOT NULL ,"
 							+ "  PRIMARY KEY(iduser));";
 					

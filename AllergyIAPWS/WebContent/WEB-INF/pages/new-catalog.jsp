@@ -20,6 +20,22 @@
 			
 			                <form id="form-centers" action="ProductCatalog?action=new" method="POST" role="form">
 			                    
+			                    <% if(user.isAdmin()){ %>
+			                    </div>		
+									<div class="col-md-6">
+					                    <!-- User Id --> 
+					                    <div class="form-group btn-xs">
+					                        Select the user ID
+					                    	<select class="form-control" id="user" name="user">
+					                    	<c:forEach items="${users}" var="user">
+					                    		<option value="${user.id}">${user.userName}</option>
+					                    	</c:forEach>
+					                    	</select>
+					                    </div>
+				
+									</div>
+								<%} %>
+									
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->

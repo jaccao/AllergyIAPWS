@@ -107,7 +107,7 @@ public class ProductCatalogServlet extends HttpServlet {
 		// long customer = new Long(request.getParameter("customer"));
 		String description = request.getParameter("description");
 
-		if (request.getParameter("id") != null) { // Edti Product
+		if (request.getParameter("id") != null) { // Edit Product
 			id = Integer.parseInt(request.getParameter("id"));
 
 			ProductCatalog p = ProductCatalogService.get(id);

@@ -29,6 +29,9 @@
 	<li class=""><a href="XarxaImportServlet"> 
 		<span class="fa fa-cloud-download"></span> Import Allergies
 	</a></li>
+	<li class=""><a href="Users"> 
+		<span class="glyphicon glyphicon-user"></span> Users
+	</a></li>
 	<%} %>
 </ul>
 
