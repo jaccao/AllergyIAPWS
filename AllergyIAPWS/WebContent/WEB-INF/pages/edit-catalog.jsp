@@ -44,7 +44,17 @@
 					                    	</select>
 					                        <!--input type="text" class="form-control" id="allergy" name="allergy" value="${p.allergyId}" placeholder="Allergy" required-->
 					                    </div>
-					                    
+					              	</div>
+					             </div>
+					             	<div class="row">
+						             <div class="col-md-6">                  
+											<!-- Description -->
+						                    <div class="form-group btn-xs">
+						                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description">${p.productDescription}</textarea>
+						                    </div>
+										</div>
+										
+										
 					                    <% if(user.isAdmin()){ %>
 					                    <div class="col-md-6">
 					                    <!-- Customer ID -->
@@ -65,15 +75,8 @@
 					                    </div>
 										</div>
 										<%} %>
-				
-									</div>	  
-									<div class="col-md-6">                  
-										<!-- Description -->
-					                    <div class="form-group btn-xs">
-					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description">${p.productDescription}</textarea>
-					                    </div>
 									</div>
-									
+									</div>	 
 									</div>		
 									
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
