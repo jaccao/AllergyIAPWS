@@ -19,23 +19,7 @@
 			            <div class="panel-body">
 			
 			                <form id="form-centers" action="ProductCatalog?action=new" method="POST" role="form">
-			                    
-			                    <% if(user.isAdmin()){ %>
-			                    </div>		
-									<div class="col-md-6">
-					                    <!-- User Id --> 
-					                    <div class="form-group btn-xs">
-					                        Select the user ID
-					                    	<select class="form-control" id="user" name="user">
-					                    	<c:forEach items="${users}" var="user">
-					                    		<option value="${user.id}">${user.userName}</option>
-					                    	</c:forEach>
-					                    	</select>
-					                    </div>
-				
-									</div>
-								<%} %>
-									
+			                   
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
@@ -61,6 +45,21 @@
 					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description"></textarea>
 					                    </div>
 									</div>
+									
+									<% if(user.isAdmin()){ %>
+				                    </div>		
+										<div class="col-md-6">
+						                    <!-- User Id --> 
+						                    <div class="form-group btn-xs">
+						                        Select the customer ID
+						                    	<select class="form-control" id="customer" name="customer">
+						                    	<c:forEach items="${customers}" var="customer">
+						                    		<option value="${customer.id}">ID (${customer.id}) - ${customer.userName}</option>
+						                    	</c:forEach>
+						                    	</select>
+						                    </div>
+										</div>
+									<%} %>
 									
 									<div class="col-md-6">
 										Image Upload:<input type="file" name="fileName">

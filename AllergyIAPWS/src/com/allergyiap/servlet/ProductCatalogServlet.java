@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.allergy.service.AllergyService;
+import com.allergy.service.CustomerService;
 import com.allergy.service.ProductCatalogService;
+import com.allergy.service.UserService;
 import com.allergyiap.beans.Customer;
 import com.allergyiap.beans.ProductCatalog;
 
@@ -102,26 +104,24 @@ public class ProductCatalogServlet extends HttpServlet {
 
 		int id = 0;
 		String name = request.getParameter("name");
-		
 		long allergy = new Long(request.getParameter("allergy"));
-		// long customer = new Long(request.getParameter("customer"));
 		String description = request.getParameter("description");
+		
+		if(customer.getUserName().equals("admin")){
+			customer = (Customer) CustomerService.get(new Long(request.getParameter("customer")));
+		}
 
 		if (request.getParameter("id") != null) { // Edit Product
 			id = Integer.parseInt(request.getParameter("id"));
-
-			ProductCatalog p = ProductCatalogService.get(id);
-			p.setProductName(name);
-			p.setProductDescription(description);
-			p.setAllergyId(allergy);
-			ProductCatalogService.update(p);
+			ProductCatalog c = new ProductCatalog(id, allergy, customer.getId(), name, description);
+			ProductCatalogService.update(c);
 			
 		} else { // New Product
-
+			
 			ProductCatalog p = new ProductCatalog(allergy, customer.getId(), name, description);
 			ProductCatalogService.insert(p);
 			 
-			//TODO Implement Upload Images
+			//Implement Upload Images
 			//saveImage(request, id);
 		}
 
@@ -157,6 +157,7 @@ public class ProductCatalogServlet extends HttpServlet {
 
 		ProductCatalog product = ProductCatalogService.get(id);
 
+		request.setAttribute("customers", CustomerService.getAll());
 		request.setAttribute("p", product);
 		request.setAttribute("alergies", AllergyService.getAll());
 
@@ -167,7 +168,8 @@ public class ProductCatalogServlet extends HttpServlet {
 
 	private void newProduct(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		request.setAttribute("customers", CustomerService.getAll());
 		request.setAttribute("alergies", AllergyService.getAll());
 		request.getRequestDispatcher("WEB-INF/pages/new-catalog.jsp").forward(request, response);
 

@@ -130,7 +130,6 @@ public class UserServlet extends HttpServlet {
 	
 	private void newUser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		request.setAttribute("users", UserService.getAll());
 		request.getRequestDispatcher("WEB-INF/pages/new-user.jsp").forward(request, response);
 

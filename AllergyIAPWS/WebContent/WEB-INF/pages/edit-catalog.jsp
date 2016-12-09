@@ -44,6 +44,27 @@
 					                    	</select>
 					                        <!--input type="text" class="form-control" id="allergy" name="allergy" value="${p.allergyId}" placeholder="Allergy" required-->
 					                    </div>
+					                    
+					                    <% if(user.isAdmin()){ %>
+					                    <div class="col-md-6">
+					                    <!-- Customer ID -->
+					                    <div class="form-group btn-xs">
+					                    	Select the customer ID
+					                    	<select class="form-control" id="customer" name="customer">
+					                    	<c:forEach items="${customers}" var="customer">
+					                    		<c:choose>
+					                    		<c:when test="${customer.id == p.customerId }">
+					                    			<option value="${customer.id}" selected>ID (${customer.id}) - ${customer.userName}</option>
+					                    		</c:when>
+					                    		<c:otherwise>
+					                    			<option value="${customer.id}">ID (${customer.id}) - ${customer.userName}</option>
+					                    		</c:otherwise>
+					                    		</c:choose>
+					                    	</c:forEach>
+					                    	</select>
+					                    </div>
+										</div>
+										<%} %>
 				
 									</div>	  
 									<div class="col-md-6">                  
@@ -52,7 +73,9 @@
 					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description">${p.productDescription}</textarea>
 					                    </div>
 									</div>
-								</div>
+									
+									</div>		
+									
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">
 			                            Edit
