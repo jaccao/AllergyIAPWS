@@ -30,7 +30,7 @@
 		<span class="fa fa-cloud-download"></span> Import Allergies
 	</a></li>
 	<li class=""><a href="Users"> 
-		<span class="glyphicon glyphicon-user"></span> Users
+		<span class="fa fa-users"></span> Users
 	</a></li>
 	<%} %>
 </ul>
