@@ -28,5 +28,9 @@ private static UserDao dao = new UserDao();
 	public static List<User> getAll() {
 		return dao.getAll();
 	}
+	
+	public static User isValidLogin(String mail, String password){
+		return dao.isValidLogin(mail, password);
+	}
 
 }
