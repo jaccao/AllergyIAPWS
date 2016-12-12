@@ -38,16 +38,15 @@
 					                    	</select>
 					                    </div>
 									</div>
-								</div>	  
+								</div>
+								<% if(user.isAdmin()){ %>	  
 								<div class="row">
 									<div class="col-md-6">                  
 										<!-- Description -->
 					                    <div class="form-group btn-xs">
 					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description"></textarea>
 					                    </div>
-									</div>
-									
-									<% if(user.isAdmin()){ %>		
+									</div>	
 										<div class="col-md-6">
 						                    <!-- User Id --> 
 						                    <div class="form-group btn-xs">
@@ -59,11 +58,26 @@
 						                    	</select>
 						                    </div>
 										</div>
+									</div>
+									<div class="col-md-6 col-centered">
+										Image Upload:<input type="file" name="fileName">
+									</div>
 									<%} %>
+									
+									<% if(!user.isAdmin()){ %>	  
+								<div class="row">
+									<div class="col-md-6">                  
+										<!-- Description -->
+					                    <div class="form-group btn-xs">
+					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description"></textarea>
+					                    </div>
 									</div>
 									<div class="col-md-6">
 										Image Upload:<input type="file" name="fileName">
 									</div>
+									</div>
+									<%} %>
+									
 								</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">
