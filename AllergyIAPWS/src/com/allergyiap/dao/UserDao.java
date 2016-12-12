@@ -103,5 +103,11 @@ public class UserDao extends Dao<User>{
 		List<User> users = select(selectQuery);
 		return users.isEmpty() ? null : users.get(0);
 	}
+	
+	public User isValidLogin(String mail, String password){
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + MAIL + " = '" + mail + "' AND "+ PASSWORD + " = '" + password+"' ;";
+		List<User> users = select(selectQuery);
+		return users.isEmpty() ? null : users.get(0);
+	}
 
 }
