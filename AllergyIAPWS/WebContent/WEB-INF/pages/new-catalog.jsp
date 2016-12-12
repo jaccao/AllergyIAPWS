@@ -37,8 +37,9 @@
 					                    	</c:forEach>
 					                    	</select>
 					                    </div>
-				
-									</div>	  
+									</div>
+								</div>	  
+								<div class="row">
 									<div class="col-md-6">                  
 										<!-- Description -->
 					                    <div class="form-group btn-xs">
@@ -46,8 +47,7 @@
 					                    </div>
 									</div>
 									
-									<% if(user.isAdmin()){ %>
-				                    </div>		
+									<% if(user.isAdmin()){ %>		
 										<div class="col-md-6">
 						                    <!-- User Id --> 
 						                    <div class="form-group btn-xs">
@@ -60,7 +60,7 @@
 						                    </div>
 										</div>
 									<%} %>
-									
+									</div>
 									<div class="col-md-6">
 										Image Upload:<input type="file" name="fileName">
 									</div>
