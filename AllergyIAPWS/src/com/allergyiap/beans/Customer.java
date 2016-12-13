@@ -8,19 +8,23 @@ public class Customer implements java.io.Serializable {
 	private String userName;
 	private String password;
 	private String companyName;
+	private String pharmacy_location;
+	
 	
 
-	public Customer(long id, String userName, String userPassword, String companyName) {
+	public Customer(long id, String userName, String userPassword, String companyName, String pharmacy_location) {
 		this.id = id;
 		this.userName = userName;
 		this.password = userPassword;
 		this.companyName = companyName;
+		this.pharmacy_location = pharmacy_location;
 	}
 
-	public Customer(String userName, String userPassword, String companyName) {
+	public Customer(String userName, String userPassword, String companyName, String pharmacy_location) {
 		this.userName = userName;
 		this.password = userPassword;
 		this.companyName = companyName;
+		this.pharmacy_location = pharmacy_location;
 	}
 
 	public Customer() {
@@ -57,6 +61,10 @@ public class Customer implements java.io.Serializable {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+	
+	public String getPharmacy_location() {
+		return pharmacy_location;
 	}
 
 	public boolean isAdmin(){
