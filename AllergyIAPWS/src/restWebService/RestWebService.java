@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.ArrayList;
 
 
 @RequestScoped
@@ -18,31 +19,34 @@ import java.util.List;
 @Produces({ "application/xml", "application/json" })
 @Consumes({ "application/xml", "application/json" })
 
+
 public class RestWebService {
-	
-	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	@Path("/hello")
-	public String hello()
-	{
-		// http://localhost:8080/AllergyIAPWS/rest/allergyws/hello
-		return "Hello World";
-	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/login/{mail}/{password}")
-	public User isValidLogin(@PathParam("mail") String mail, @PathParam("password") String password){
-		return UserService.isValidLogin(mail, password);
+	public List<User> isValidLogin(@PathParam("mail") String mail, @PathParam("password") String password){
+		List<User> user = new ArrayList<>();
+		User u = UserService.isValidLogin(mail, password);
+		if (u != null){
+			user.add(u);
+		}
+		return user;
 	}
 	
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/customers/{id}")
-	public Customer getCustomer(@PathParam("id") long customerid){
-		return CustomerService.get(customerid);
+	public List<Customer> getCustomer(@PathParam("id") long customerid){
+		List<Customer> customer = new ArrayList<>();
+		Customer c =  CustomerService.get(customerid);
+		if (c != null){
+			customer.add(c);
+		}
+		return customer;
 	}
+	
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -51,11 +55,17 @@ public class RestWebService {
 		return CustomerService.getAll();
 	} 
 	
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/productCatalog/{id}")
-	public ProductCatalog getProduct(@PathParam("id") long productid){
-		return ProductCatalogService.get(productid);
+	public List<ProductCatalog> getProduct(@PathParam("id") long productid){
+		List<ProductCatalog> product = new ArrayList<>();
+		ProductCatalog pc = ProductCatalogService.get(productid);
+		if (pc != null){
+			product.add(pc);
+		}
+		return product;
 	}
 	
 	
@@ -70,8 +80,13 @@ public class RestWebService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/users/{id}")
-	public User getUser(@PathParam("id") long userid){
-		return UserService.get(userid);
+	public List<User> getUser(@PathParam("id") long userid){
+		List<User> user = new ArrayList<>();
+		User u = UserService.get(userid);
+		if (u != null){
+			user.add(u);
+		}
+		return user;
 	}
 	
 	
@@ -87,7 +102,5 @@ public class RestWebService {
 		} catch (Exception e) {
 			return "Some error adding new user";
 		}
- 
 	}
-
 }
