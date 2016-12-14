@@ -31,7 +31,7 @@ public class StartUp {
 
 					String sql_customer = "" + "CREATE TABLE IF NOT EXISTS customer ( "
 							+ "  idcustomer SERIAL  NOT NULL , " 
-							+ "  user_name TEXT  DEFAULT '' NOT NULL , "
+							+ "  user_name TEXT UNIQUE DEFAULT '' NOT NULL , "
 							+ "  user_password TEXT  DEFAULT '' NOT NULL , "
 							+ "  company_name TEXT  DEFAULT '' NOT NULL   , " 
 							+ "  pharmacy_location TEXT DEFAULT '' NOT NULL, "
@@ -63,7 +63,7 @@ public class StartUp {
 							+ "  iduser SERIAL NOT NULL, "
 							+ "  user_name TEXT  DEFAULT '' NOT NULL ,"
 							+ "  user_second_name TEXT  DEFAULT '' NOT NULL ,"
-							+ "  user_mail TEXT  DEFAULT '' UNIQUE NOT NULL ,"
+							+ "  user_mail TEXT UNIQUE DEFAULT '' NOT NULL ,"
 							+ "  user_password TEXT  DEFAULT '' NOT NULL ,"
 							+ "  PRIMARY KEY(iduser));";
 					

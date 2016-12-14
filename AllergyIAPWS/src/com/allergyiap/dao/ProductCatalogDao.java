@@ -96,26 +96,20 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
 		return list;
 	}
 
 	/* From a customerID, select all his products in the catalog */
 	public List<ProductCatalog> getByCustomer(long id) {
-
 		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + CUSTOMER_ID + " = " + id + ";";
 		return select(selectQuery);
 	}
 
 	public ProductCatalog get(long id) {
 		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id + ";";
-
 		List<ProductCatalog> list = select(selectQuery);
-		
-		if (list.isEmpty())
-			return null;
-		
-		return list.get(0);
-
+		return list.isEmpty() ? null : list.get(0);
 	}
 }

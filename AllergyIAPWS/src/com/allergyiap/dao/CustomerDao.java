@@ -15,6 +15,7 @@ public class CustomerDao extends Dao<Customer> {
 	private static String NAME = "user_name";
 	private static String PASSWORD = "user_password";
 	private static String COMPANY_NAME = "company_name";
+	private static String pharmacy_location = "pharmacy_location";
 
 	/**
 	 * 
@@ -27,13 +28,15 @@ public class CustomerDao extends Dao<Customer> {
 		query.append(" (");
 		query.append(NAME + ", ");
 		query.append(PASSWORD + ", ");
-		query.append(COMPANY_NAME + " ");
+		query.append(COMPANY_NAME + ", ");
+		query.append(pharmacy_location + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
 		query.append("'" + bean.getUserName() + "', ");
 		query.append("'" + bean.getPassword() + "', ");
-		query.append("'" + bean.getCompanyName() + "' ");
+		query.append("'" + bean.getCompanyName() + "', ");
+		query.append("'" + bean.getPharmacy_location() + "' ");
 		query.append(") ");
 
 		db.executeUpdate(query.toString());
@@ -48,7 +51,8 @@ public class CustomerDao extends Dao<Customer> {
 		query.append(" set ");
 		query.append(COMPANY_NAME + " = '" + bean.getCompanyName() + "', ");
 		query.append(NAME + " = '" + bean.getUserName() + "', ");
-		query.append(PASSWORD + " = '" + bean.getPassword() + "' ");
+		query.append(PASSWORD + " = '" + bean.getPassword() + "', ");
+		query.append(pharmacy_location + " = '" + bean.getPharmacy_location() + "' ");
 		query.append(" WHERE ");
 		query.append(ID + " = " + bean.getId());
 
@@ -76,36 +80,34 @@ public class CustomerDao extends Dao<Customer> {
 
 	private List<Customer> select(String query) {
 		List<Customer> list = new ArrayList<>();
-
 		try {
 
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
-
 				long id = rs.getLong(ID);
 				String name = rs.getString(NAME);
 				String pass = rs.getString(PASSWORD);
 				String description = rs.getString(COMPANY_NAME);
-
-				list.add(new Customer(id, name, pass, description));
+				String pharmacy = rs.getString(pharmacy_location);
+				list.add(new Customer(id, name, pass, description, pharmacy));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
 		return list;
 	}
 
 	public Customer get(long id) {
-
 		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id + ";";
 		List<Customer> customers = select(selectQuery);
-		return customers.isEmpty() ? null : customers.get(0);
+		Customer c = customers.isEmpty() ? null : customers.get(0);
+		return c;
 	}
 
 	public Customer get(String name, String password) {
-
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + NAME + " = '" + name + "' AND " + PASSWORD
-				+ " = '" + password + "';";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + NAME + " = '" + name 
+				+ "' AND " + PASSWORD + " = '" + password + "';";
 		List<Customer> customers = select(selectQuery);
 		return customers.isEmpty() ? null : customers.get(0);
 	}
