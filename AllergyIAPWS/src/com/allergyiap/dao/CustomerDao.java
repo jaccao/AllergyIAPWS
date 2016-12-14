@@ -80,35 +80,32 @@ public class CustomerDao extends Dao<Customer> {
 
 	private List<Customer> select(String query) {
 		List<Customer> list = new ArrayList<>();
-
 		try {
 
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
-
 				long id = rs.getLong(ID);
 				String name = rs.getString(NAME);
 				String pass = rs.getString(PASSWORD);
 				String description = rs.getString(COMPANY_NAME);
 				String pharmacy = rs.getString(pharmacy_location);
-
 				list.add(new Customer(id, name, pass, description, pharmacy));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
 		return list;
 	}
 
 	public Customer get(long id) {
-
 		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id + ";";
 		List<Customer> customers = select(selectQuery);
-		return customers.isEmpty() ? null : customers.get(0);
+		Customer c = customers.isEmpty() ? null : customers.get(0);
+		return c;
 	}
 
 	public Customer get(String name, String password) {
-
 		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + NAME + " = '" + name 
 				+ "' AND " + PASSWORD + " = '" + password + "';";
 		List<Customer> customers = select(selectQuery);
