@@ -29,6 +29,7 @@
 									<th>Name</th>
 									<th>Password</th>
 									<th>Company</th>
+									<th>Pharmacy location</th>
 									<th style="width: 15%"></th>
 								</tr>
 							</thead>
@@ -39,6 +40,7 @@
 										<td>${p.userName}</td>
 										<td>${p.password}</td>
 										<td>${p.companyName}</td>
+										<td>${p.pharmacy_location}</td>
 										<td>
 											<a class="btn btn-warning" href="Customers?action=edit&id=${p.id}"> 
 												<i class="fa fa-pencil"></i>
