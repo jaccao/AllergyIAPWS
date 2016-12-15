@@ -4,34 +4,34 @@ public class AllergyLevel implements java.io.Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	private long id;
-	private long allergyId;
-	private float currentLevel;
+	private long idallergy_level;
+	private long allergy_idallergy;
+	private float current_level;
 	private String station;
-	private String dateStart;
-	private String dateEnd;
-	private String forecastLevel;
+	private String date_start;
+	private String date_end;
+	private String forecast_level;
 	
 	
 	public AllergyLevel(long id, long allergyIdAllergy, float currentLevel, String station, String dateStart, String dateEnd, String forecastLevel ){
-		this.id = id;
-		this.allergyId = allergyIdAllergy;
-		this.currentLevel = currentLevel;
+		this.idallergy_level = id;
+		this.allergy_idallergy = allergyIdAllergy;
+		this.current_level = currentLevel;
 		this.station = station;
-		this.dateStart = dateStart;
-		this.dateEnd = dateEnd;
-		this.forecastLevel = forecastLevel;
+		this.date_start = dateStart;
+		this.date_end = dateEnd;
+		this.forecast_level = forecastLevel;
 	}
 	
 	public long getId(){
-		return this.id;
+		return this.idallergy_level;
 	}
 	public long getAlleryID(){
-		return this.allergyId;
+		return this.allergy_idallergy;
 	}
 	
 	public float getCurrentLevel(){
-		return this.currentLevel;
+		return this.current_level;
 	}
 	
 	public String getStation(){
@@ -39,15 +39,15 @@ public class AllergyLevel implements java.io.Serializable
 	}
 	
 	public String getDateStart(){
-		return this.dateStart;
+		return this.date_start;
 	}
 	
 	public String getDateEnd(){
-		return this.dateEnd;
+		return this.date_end;
 	}
 	
 	public String getForecastLevel(){
-		return this.forecastLevel;
+		return this.forecast_level;
 	}
 	
 	public static long getSerialversionUId() {
@@ -56,15 +56,15 @@ public class AllergyLevel implements java.io.Serializable
 	
 	
 	public void setId(long id){
-		this.id = id;
+		this.idallergy_level = id;
 	}
 	
 	public void setAlleryID(long allergyIdAllergy){
-		this.allergyId = allergyIdAllergy;
+		this.allergy_idallergy = allergyIdAllergy;
 	}
 	
 	public void setCurrentLevel(float currentLevel){
-		this.currentLevel = currentLevel;
+		this.current_level = currentLevel;
 	}
 	
 	public void setStation(String station){
@@ -72,15 +72,15 @@ public class AllergyLevel implements java.io.Serializable
 	}
 	
 	public void setDateStart(String dateStart){
-		this.dateStart = dateStart;
+		this.date_start = dateStart;
 	}
 	
 	public void setDateEnd(String dateEnd){
-		this.dateEnd = dateEnd;
+		this.date_end = dateEnd;
 	}
 	
 	public void setForecastLevel(String forecastLevel){
-		this.forecastLevel = forecastLevel;
+		this.forecast_level = forecastLevel;
 	}	
 	
 }

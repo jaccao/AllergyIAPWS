@@ -4,26 +4,25 @@ public class Customer implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id;
-	private String userName;
-	private String password;
-	private String companyName;
+	private long idcustomer;
+	private String user_name;
+	private String user_password;
+	private String company_name;
 	private String pharmacy_location;
 	
 	
-
 	public Customer(long id, String userName, String userPassword, String companyName, String pharmacy_location) {
-		this.id = id;
-		this.userName = userName;
-		this.password = userPassword;
-		this.companyName = companyName;
+		this.idcustomer = id;
+		this.user_name = userName;
+		this.user_password = userPassword;
+		this.company_name = companyName;
 		this.pharmacy_location = pharmacy_location;
 	}
 
 	public Customer(String userName, String userPassword, String companyName, String pharmacy_location) {
-		this.userName = userName;
-		this.password = userPassword;
-		this.companyName = companyName;
+		this.user_name = userName;
+		this.user_password = userPassword;
+		this.company_name = companyName;
 		this.pharmacy_location = pharmacy_location;
 	}
 
@@ -32,35 +31,35 @@ public class Customer implements java.io.Serializable {
 	}
 
 	public long getId() {
-		return id;
+		return idcustomer;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.idcustomer = id;
 	}
 
 	public String getUserName() {
-		return userName;
+		return user_name;
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.user_name = userName;
 	}
 
 	public String getPassword() {
-		return password;
+		return user_password;
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.user_password = password;
 	}
 
 	public String getCompanyName() {
-		return companyName;
+		return company_name;
 	}
 
 	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
+		this.company_name = companyName;
 	}
 	
 	public String getPharmacy_location() {
@@ -68,6 +67,6 @@ public class Customer implements java.io.Serializable {
 	}
 
 	public boolean isAdmin(){
-		return this.userName.equals("admin");
+		return this.user_name.equals("admin");
 	}
 }

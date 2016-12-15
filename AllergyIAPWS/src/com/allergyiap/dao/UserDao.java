@@ -12,11 +12,11 @@ public class UserDao extends Dao<User>{
 	
 	private static final String TABLE_NAME = "user_information";
 
-	private static String ID = "iduser";
-	private static String NAME = "user_name";
-	private static String SECONDNAME = "user_second_name";
-	private static String MAIL = "user_mail";
-	private static String PASSWORD = "user_password";
+	private static String iduser = "iduser";
+	private static String user_name = "user_name";
+	private static String user_second_name = "user_second_name";
+	private static String user_mail = "user_mail";
+	private static String user_password = "user_password";
 
 	@Override
 	public void insert(User bean) {
@@ -24,10 +24,10 @@ public class UserDao extends Dao<User>{
 		query.append("INSERT INTO ");
 		query.append(TABLE_NAME);
 		query.append(" (");
-		query.append(NAME + ", ");
-		query.append(SECONDNAME + ", ");
-		query.append(MAIL + ", ");
-		query.append(PASSWORD + " ");
+		query.append(user_name + ", ");
+		query.append(user_second_name + ", ");
+		query.append(user_mail + ", ");
+		query.append(user_password + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" ('");
@@ -46,12 +46,12 @@ public class UserDao extends Dao<User>{
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" SET ");
-		query.append(NAME + " = '" + bean.getUserName() + "', ");
-		query.append(SECONDNAME + " = '" + bean.getUserSecondName() + "', ");
-		query.append(MAIL + " = '" + bean.getUserMail() + "', ");
-		query.append(PASSWORD + " = '" + bean.getUserPassword() + "' ");
+		query.append(user_name + " = '" + bean.getUserName() + "', ");
+		query.append(user_second_name + " = '" + bean.getUserSecondName() + "', ");
+		query.append(user_mail + " = '" + bean.getUserMail() + "', ");
+		query.append(user_password + " = '" + bean.getUserPassword() + "' ");
 		query.append(" WHERE ");
-		query.append(ID + " = " + bean.getId());
+		query.append(iduser + " = " + bean.getId());
 
 		db.executeUpdate(query.toString());
 		
@@ -63,7 +63,7 @@ public class UserDao extends Dao<User>{
 		query.append("DELETE FROM ");
 		query.append(TABLE_NAME);
 		query.append(" WHERE ");
-		query.append(ID + " = " + id);
+		query.append(iduser + " = " + id);
 
 		db.executeUpdate(query.toString());
 		
@@ -83,11 +83,11 @@ public class UserDao extends Dao<User>{
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
 
-				long id = rs.getLong(ID);
-				String name = rs.getString(NAME);
-				String secondName = rs.getString(SECONDNAME);
-				String mail = rs.getString(MAIL);
-				String password = rs.getString(PASSWORD);
+				long id = rs.getLong(iduser);
+				String name = rs.getString(user_name);
+				String secondName = rs.getString(user_second_name);
+				String mail = rs.getString(user_mail);
+				String password = rs.getString(user_password);
 
 				list.add(new User(id, name, secondName, mail, password));
 			}
@@ -99,13 +99,13 @@ public class UserDao extends Dao<User>{
 	
 	public User get(long id) {
 
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id + ";";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + iduser + " = " + id + ";";
 		List<User> users = select(selectQuery);
 		return users.isEmpty() ? null : users.get(0);
 	}
 	
 	public User isValidLogin(String mail, String password){
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + MAIL + " = '" + mail + "' AND "+ PASSWORD + " = '" + password+"' ;";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + user_mail + " = '" + mail + "' AND "+ user_password + " = '" + password+"' ;";
 		List<User> users = select(selectQuery);
 		return users.isEmpty() ? null : users.get(0);
 	}

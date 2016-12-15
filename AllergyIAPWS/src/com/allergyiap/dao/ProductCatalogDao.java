@@ -11,11 +11,11 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 
 	private static final String TABLE_NAME = "product_catalog";
 
-	private static String ID = "idproduct_catalog";
-	private static String ALLERGY_ID = "allergy_idallergy";
-	private static String CUSTOMER_ID = "customer_idcustomer";
-	private static String NAME = "product_name";
-	private static String DESCRIPTION = "product_description";
+	private static String idproduct_catalog = "idproduct_catalog";
+	private static String allergy_idallergy = "allergy_idallergy";
+	private static String customer_idcustomer = "customer_idcustomer";
+	private static String product_name = "product_name";
+	private static String product_description = "product_description";
 
 	/**
 	 * 
@@ -26,10 +26,10 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 		query.append("INSERT INTO ");
 		query.append(TABLE_NAME);
 		query.append(" (");
-		query.append(ALLERGY_ID + ", ");
-		query.append(CUSTOMER_ID + ", ");
-		query.append(NAME + ", ");
-		query.append(DESCRIPTION + " ");
+		query.append(allergy_idallergy + ", ");
+		query.append(customer_idcustomer + ", ");
+		query.append(product_name + ", ");
+		query.append(product_description + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
@@ -49,12 +49,12 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
-		query.append(ALLERGY_ID + " = '" + bean.getAllergyId() + "', ");
-		query.append(CUSTOMER_ID + " = '" + bean.getCustomerId() + "', ");
-		query.append(NAME + " = '" + bean.getProductName() + "', ");
-		query.append(DESCRIPTION + " = '" + bean.getProductDescription() + "' ");
+		query.append(allergy_idallergy + " = '" + bean.getAllergyId() + "', ");
+		query.append(customer_idcustomer + " = '" + bean.getCustomerId() + "', ");
+		query.append(product_name + " = '" + bean.getProductName() + "', ");
+		query.append(product_description + " = '" + bean.getProductDescription() + "' ");
 		query.append(" WHERE ");
-		query.append(ID + " = " + bean.getId());
+		query.append(idproduct_catalog + " = " + bean.getId());
 
 		db.executeUpdate(query.toString());
 	}
@@ -66,7 +66,7 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 		query.append("DELETE FROM ");
 		query.append(TABLE_NAME);
 		query.append(" WHERE ");
-		query.append(ID + " = " + id);
+		query.append(idproduct_catalog + " = " + id);
 
 		db.executeUpdate(query.toString());
 	}
@@ -86,11 +86,11 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
 
-				long idlevel = rs.getLong(ID);
-				long idallergy = rs.getLong(ALLERGY_ID);
-				long idcustomer = rs.getLong(CUSTOMER_ID);
-				String name = rs.getString(NAME);
-				String description = rs.getString(DESCRIPTION);
+				long idlevel = rs.getLong(idproduct_catalog);
+				long idallergy = rs.getLong(allergy_idallergy);
+				long idcustomer = rs.getLong(customer_idcustomer);
+				String name = rs.getString(product_name);
+				String description = rs.getString(product_description);
 
 				list.add(new ProductCatalog(idlevel, idallergy, idcustomer, name, description));
 			}
@@ -103,12 +103,12 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 
 	/* From a customerID, select all his products in the catalog */
 	public List<ProductCatalog> getByCustomer(long id) {
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + CUSTOMER_ID + " = " + id + ";";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + customer_idcustomer + " = " + id + ";";
 		return select(selectQuery);
 	}
 
 	public ProductCatalog get(long id) {
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id + ";";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + idproduct_catalog + " = " + id + ";";
 		List<ProductCatalog> list = select(selectQuery);
 		return list.isEmpty() ? null : list.get(0);
 	}

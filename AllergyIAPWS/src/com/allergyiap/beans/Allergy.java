@@ -4,51 +4,51 @@ public class Allergy implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id;
-	private String allergyName;
-	private String allergyDescription;
-	private String allergyCode;
+	private long idallergy;
+	private String allergy_name;
+	private String allergy_description;
+	private String allergy_code;
 
 	public Allergy() {
 	}
 
 	public Allergy(long id, String allergyName, String allergyDescription, String allergyCode) {
-		this.id = id;
-		this.allergyName = allergyName;
-		this.allergyDescription = allergyDescription;
-		this.allergyCode = allergyCode;
+		this.idallergy = id;
+		this.allergy_name = allergyName;
+		this.allergy_description = allergyDescription;
+		this.allergy_code = allergyCode;
 	}
 
 	public long getId() {
-		return id;
+		return idallergy;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.idallergy = id;
 	}
 
 	public String getAllergyName() {
-		return allergyName;
+		return allergy_name;
 	}
 
 	public void setAllergyName(String allergyName) {
-		this.allergyName = allergyName;
+		this.allergy_name = allergyName;
 	}
 
 	public String getAllergyDescription() {
-		return allergyDescription;
+		return allergy_description;
 	}
 
 	public void setAllergyDescription(String allergyDescription) {
-		this.allergyDescription = allergyDescription;
+		this.allergy_description = allergyDescription;
 	}
 
 	public String getAllergyCode() {
-		return allergyCode;
+		return allergy_code;
 	}
 
 	public void setAllergyCode(String allergyCode) {
-		this.allergyCode = allergyCode;
+		this.allergy_code = allergyCode;
 	}
 
 }

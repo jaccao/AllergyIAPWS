@@ -3,22 +3,22 @@ package com.allergyiap.beans;
 public class ProductCatalog implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private long id;
-	private long allergyId;
-	private long customerId;
-	private String productName;
-	private String productDescription;
-
+	private long idproduct_catalog;
+	private long allergy_idallergy;
+	private long customer_idcustomer;
+	private String product_name;
+	private String product_description;
+	
 	private Allergy allergy;
 	private Customer customer;
 
 	public ProductCatalog(long id, long allergyIdAllergy, long customerIdCustomer, String productName,
 			String productDesctiption) {
-		this.id = id;
-		this.allergyId = allergyIdAllergy;
-		this.customerId = customerIdCustomer;
-		this.productName = productName;
-		this.productDescription = productDesctiption;
+		this.idproduct_catalog = id;
+		this.allergy_idallergy = allergyIdAllergy;
+		this.customer_idcustomer = customerIdCustomer;
+		this.product_name = productName;
+		this.product_description = productDesctiption;
 		this.allergy = new Allergy();
 	}
 
@@ -33,23 +33,23 @@ public class ProductCatalog implements java.io.Serializable {
 	}
 
 	public long getId() {
-		return this.id;
+		return this.idproduct_catalog;
 	}
 
 	public long getAllergyId() {
-		return this.allergyId;
+		return this.allergy_idallergy;
 	}
 
 	public long getCustomerId() {
-		return this.customerId;
+		return this.customer_idcustomer;
 	}
 
 	public String getProductName() {
-		return this.productName;
+		return this.product_name;
 	}
 
 	public String getProductDescription() {
-		return this.productDescription;
+		return this.product_description;
 	}
 
 	public static long getSerialversionUId() {
@@ -57,23 +57,23 @@ public class ProductCatalog implements java.io.Serializable {
 	}
 
 	public void getId(long id) {
-		this.id = id;
+		this.idproduct_catalog = id;
 	}
 
 	public void getAllergyId(long allergyIdAllergy) {
-		this.allergyId = allergyIdAllergy;
+		this.allergy_idallergy = allergyIdAllergy;
 	}
 
 	public void getCustomerId(long customerIdCustomer) {
-		this.customerId = customerIdCustomer;
+		this.customer_idcustomer = customerIdCustomer;
 	}
 
 	public void getProductName(String productName) {
-		this.productName = productName;
+		this.product_name = productName;
 	}
 
 	public void getProductDescription(String productDescription) {
-		this.productDescription = productDescription;
+		this.product_description = productDescription;
 	}
 	
 	public Allergy getAllergy() {
@@ -93,14 +93,14 @@ public class ProductCatalog implements java.io.Serializable {
 	}
 
 	public void setAllergyId(long allergyId) {
-		this.allergyId = allergyId;
+		this.allergy_idallergy = allergyId;
 	}
 
 	public void setProductName(String productName) {
-		this.productName = productName;
+		this.product_name = productName;
 	}
 
 	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
+		this.product_description = productDescription;
 	}
 }
