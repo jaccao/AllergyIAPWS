@@ -33,10 +33,10 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
-		query.append("'" + bean.getAllergyId() + "', ");
-		query.append("'" + bean.getCustomerId() + "', ");
-		query.append("'" + bean.getProductName() + "', ");
-		query.append("'" + bean.getProductDescription() + "' ");
+		query.append("'" + bean.getAllergy_idallergy() + "', ");
+		query.append("'" + bean.getCustomer_idcustomer() + "', ");
+		query.append("'" + bean.getProduct_name() + "', ");
+		query.append("'" + bean.getProduct_description() + "' ");
 		query.append(") ");
 
 		db.executeUpdate(query.toString());
@@ -49,12 +49,12 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
-		query.append(allergy_idallergy + " = '" + bean.getAllergyId() + "', ");
-		query.append(customer_idcustomer + " = '" + bean.getCustomerId() + "', ");
-		query.append(product_name + " = '" + bean.getProductName() + "', ");
-		query.append(product_description + " = '" + bean.getProductDescription() + "' ");
+		query.append(allergy_idallergy + " = '" + bean.getAllergy_idallergy() + "', ");
+		query.append(customer_idcustomer + " = '" + bean.getCustomer_idcustomer() + "', ");
+		query.append(product_name + " = '" + bean.getProduct_name() + "', ");
+		query.append(product_description + " = '" + bean.getProduct_description() + "' ");
 		query.append(" WHERE ");
-		query.append(idproduct_catalog + " = " + bean.getId());
+		query.append(idproduct_catalog + " = " + bean.getIdproduct_catalog());
 
 		db.executeUpdate(query.toString());
 	}

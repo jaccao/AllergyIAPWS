@@ -2,7 +2,7 @@ package com.allergyiap.beans;
 
 public class Customer implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 
 	private long idcustomer;
 	private String user_name;
@@ -11,8 +11,8 @@ public class Customer implements java.io.Serializable {
 	private String pharmacy_location;
 	
 	
-	public Customer(long id, String userName, String userPassword, String companyName, String pharmacy_location) {
-		this.idcustomer = id;
+	public Customer(long idcustomer, String userName, String userPassword, String companyName, String pharmacy_location) {
+		this.idcustomer = idcustomer;
 		this.user_name = userName;
 		this.user_password = userPassword;
 		this.company_name = companyName;
@@ -30,35 +30,35 @@ public class Customer implements java.io.Serializable {
 
 	}
 
-	public long getId() {
+	public long getIdcustomer() {
 		return idcustomer;
 	}
 
-	public void setId(long id) {
-		this.idcustomer = id;
+	public void setIdcustomer(long idcustomer) {
+		this.idcustomer = idcustomer;
 	}
 
-	public String getUserName() {
+	public String getUser_name() {
 		return user_name;
 	}
 
-	public void setUserName(String userName) {
+	public void setUser_name(String userName) {
 		this.user_name = userName;
 	}
 
-	public String getPassword() {
+	public String getUser_password() {
 		return user_password;
 	}
 
-	public void setPassword(String password) {
+	public void setUser_password(String password) {
 		this.user_password = password;
 	}
 
-	public String getCompanyName() {
+	public String getCompany_name() {
 		return company_name;
 	}
 
-	public void setCompanyName(String companyName) {
+	public void setCompany_name(String companyName) {
 		this.company_name = companyName;
 	}
 	

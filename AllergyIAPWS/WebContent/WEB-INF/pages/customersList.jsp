@@ -36,17 +36,17 @@
 							<tbody>
 								<c:forEach items="${customers}" var="p">
 									<tr>
-										<td>${p.id}</td>
-										<td>${p.userName}</td>
-										<td>${p.password}</td>
-										<td>${p.companyName}</td>
+										<td>${p.idcustomer}</td>
+										<td>${p.user_name}</td>
+										<td>${p.user_password}</td>
+										<td>${p.company_name}</td>
 										<td>${p.pharmacy_location}</td>
 										<td>
-											<a class="btn btn-warning" href="Customers?action=edit&id=${p.id}"> 
+											<a class="btn btn-warning" href="Customers?action=edit&idcustomer=${p.idcustomer}"> 
 												<i class="fa fa-pencil"></i>
 											</a>
 									
-											<a class="btn btn-danger" href="Customers?action=delete&id=${p.id}">
+											<a class="btn btn-danger" href="Customers?action=delete&idcustomer=${p.idcustomer}">
 												<i class="fa fa-trash-o"></i>
 											</a>
 										</td>

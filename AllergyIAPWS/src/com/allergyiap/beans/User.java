@@ -28,43 +28,43 @@ public class User implements java.io.Serializable {
 		this.user_mail = userMail;
 	}
 
-	public long getId() {
+	public long getIduser() {
 		return iduser;
 	}
 
-	public void setId(long id) {
+	public void setIduser(long id) {
 		this.iduser = id;
 	}
 
-	public String getUserName() {
+	public String getUser_name() {
 		return user_name;
 	}
 
-	public void setUserName(String userName) {
+	public void setUser_name(String userName) {
 		this.user_name = userName;
 	}
 
-	public String getUserSecondName() {
+	public String getUser_second_name() {
 		return user_second_name;
 	}
 
-	public void setUserSecondName(String userSecondName) {
+	public void setUser_second_name(String userSecondName) {
 		this.user_second_name = userSecondName;
 	}
 
-	public String getUserPassword() {
+	public String getUser_password() {
 		return user_password;
 	}
 
-	public void setUserPassword(String userPassword) {
+	public void setUser_password(String userPassword) {
 		this.user_password = userPassword;
 	}
 	
-	public String getUserMail() {
+	public String getUser_mail() {
 		return user_mail;
 	}
 
-	public void setUserMail(String userMail) {
+	public void setUser_mail(String userMail) {
 		this.user_mail = userMail;
 	}
 }

@@ -85,10 +85,10 @@ public class UserServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id"));
 
 			User u = UserService.get(id);
-			u.setUserName(name);
-			u.setUserSecondName(secondName);
-			u.setUserMail(mail);
-			u.setUserPassword(password);
+			u.setUser_name(name);
+			u.setUser_second_name(secondName);
+			u.setUser_mail(mail);
+			u.setUser_password(password);
 			UserService.update(u);
 			
 		} else { // New Product

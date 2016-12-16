@@ -32,23 +32,23 @@ public class ProductCatalog implements java.io.Serializable {
 		this(0, 0, 0, "", "");
 	}
 
-	public long getId() {
+	public long getIdproduct_catalog() {
 		return this.idproduct_catalog;
 	}
 
-	public long getAllergyId() {
+	public long getAllergy_idallergy() {
 		return this.allergy_idallergy;
 	}
 
-	public long getCustomerId() {
+	public long getCustomer_idcustomer() {
 		return this.customer_idcustomer;
 	}
 
-	public String getProductName() {
+	public String getProduct_name() {
 		return this.product_name;
 	}
 
-	public String getProductDescription() {
+	public String getProduct_description() {
 		return this.product_description;
 	}
 
@@ -56,15 +56,15 @@ public class ProductCatalog implements java.io.Serializable {
 		return serialVersionUID;
 	}
 
-	public void getId(long id) {
+	public void getIdproduct_catalog(long id) {
 		this.idproduct_catalog = id;
 	}
 
-	public void getAllergyId(long allergyIdAllergy) {
+	public void getAllergy_idallergy(long allergyIdAllergy) {
 		this.allergy_idallergy = allergyIdAllergy;
 	}
 
-	public void getCustomerId(long customerIdCustomer) {
+	public void getCustomer_idcustomer(long customerIdCustomer) {
 		this.customer_idcustomer = customerIdCustomer;
 	}
 
@@ -72,7 +72,7 @@ public class ProductCatalog implements java.io.Serializable {
 		this.product_name = productName;
 	}
 
-	public void getProductDescription(String productDescription) {
+	public void getProduct_description(String productDescription) {
 		this.product_description = productDescription;
 	}
 	
@@ -92,15 +92,15 @@ public class ProductCatalog implements java.io.Serializable {
 		this.customer = customer;
 	}
 
-	public void setAllergyId(long allergyId) {
+	public void setAllergy_idallergy(long allergyId) {
 		this.allergy_idallergy = allergyId;
 	}
 
-	public void setProductName(String productName) {
+	public void setProduct_name(String productName) {
 		this.product_name = productName;
 	}
 
-	public void setProductDescription(String productDescription) {
+	public void setProduct_description(String productDescription) {
 		this.product_description = productDescription;
 	}
 }

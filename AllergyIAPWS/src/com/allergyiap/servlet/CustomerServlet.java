@@ -100,8 +100,8 @@ public class CustomerServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		int id = 0;
-		if (request.getParameter("id") != null) {
-			id = Integer.parseInt(request.getParameter("id"));
+		if (request.getParameter("idcustomer") != null) {
+			id = Integer.parseInt(request.getParameter("idcustomer"));
 		}
 		String userName = request.getParameter("nUserName");
 		String userPass = request.getParameter("nUserPassword");
@@ -115,7 +115,7 @@ public class CustomerServlet extends HttpServlet {
         	session.setAttribute("error", "Invalid pharmacy map coordinate");
         	
         	if (id != 0) {
-        		response.sendRedirect("Customers?action=edit&id="+id); 
+        		response.sendRedirect("Customers?action=edit&idcustomer="+id); 
         	}
         	else{
         		response.sendRedirect("Customers?action=new"); 
@@ -138,7 +138,7 @@ public class CustomerServlet extends HttpServlet {
 	private void editCustomer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("idcustomer"));
 
 		Customer customer = CustomerService.get(id);
 
@@ -158,7 +158,7 @@ public class CustomerServlet extends HttpServlet {
 
 	private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("idcustomer"));
 
 		CustomerService.delete(id);
 

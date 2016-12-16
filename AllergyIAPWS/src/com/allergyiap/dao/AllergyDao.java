@@ -31,9 +31,9 @@ public class AllergyDao extends Dao<Allergy> {
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
-		query.append(bean.getAllergyName() + ", ");
-		query.append(bean.getAllergyDescription() + ", ");
-		query.append(bean.getAllergyCode() + " ");
+		query.append(bean.getAllergy_name() + ", ");
+		query.append(bean.getAllergy_description() + ", ");
+		query.append(bean.getAllergy_code() + " ");
 		query.append(") ");
 
 		db.executeUpdate(query.toString());
@@ -46,11 +46,11 @@ public class AllergyDao extends Dao<Allergy> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
-		query.append(allergy_code + " = " + bean.getAllergyCode() + ", ");
-		query.append(allergy_name + " = " + bean.getAllergyName() + ", ");
-		query.append(allergy_description + " = " + bean.getAllergyDescription() + " ");
+		query.append(allergy_code + " = " + bean.getAllergy_code() + ", ");
+		query.append(allergy_name + " = " + bean.getAllergy_name() + ", ");
+		query.append(allergy_description + " = " + bean.getAllergy_description() + " ");
 		query.append(" WHERE ");
-		query.append(idallergy + " = " + bean.getId());
+		query.append(idallergy + " = " + bean.getIdallergy());
 
 		db.executeUpdate(query.toString());
 	}

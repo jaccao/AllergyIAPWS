@@ -23,14 +23,14 @@ public class AllergyLevel implements java.io.Serializable
 		this.forecast_level = forecastLevel;
 	}
 	
-	public long getId(){
+	public long getIdallergy_level(){
 		return this.idallergy_level;
 	}
-	public long getAlleryID(){
+	public long getAllergy_idallergy(){
 		return this.allergy_idallergy;
 	}
 	
-	public float getCurrentLevel(){
+	public float getCurrent_level(){
 		return this.current_level;
 	}
 	
@@ -38,15 +38,15 @@ public class AllergyLevel implements java.io.Serializable
 		return this.station;
 	}
 	
-	public String getDateStart(){
+	public String getDate_start(){
 		return this.date_start;
 	}
 	
-	public String getDateEnd(){
+	public String getDate_end(){
 		return this.date_end;
 	}
 	
-	public String getForecastLevel(){
+	public String getForecast_level(){
 		return this.forecast_level;
 	}
 	
@@ -55,15 +55,15 @@ public class AllergyLevel implements java.io.Serializable
 	}
 	
 	
-	public void setId(long id){
+	public void setIdallergy_level(long id){
 		this.idallergy_level = id;
 	}
 	
-	public void setAlleryID(long allergyIdAllergy){
+	public void setAllergy_idallergy(long allergyIdAllergy){
 		this.allergy_idallergy = allergyIdAllergy;
 	}
 	
-	public void setCurrentLevel(float currentLevel){
+	public void setCurrent_level(float currentLevel){
 		this.current_level = currentLevel;
 	}
 	
@@ -71,15 +71,15 @@ public class AllergyLevel implements java.io.Serializable
 		this.station = station;
 	}
 	
-	public void setDateStart(String dateStart){
+	public void setdate_start(String dateStart){
 		this.date_start = dateStart;
 	}
 	
-	public void setDateEnd(String dateEnd){
+	public void setDate_end(String dateEnd){
 		this.date_end = dateEnd;
 	}
 	
-	public void setForecastLevel(String forecastLevel){
+	public void setForecast_level(String forecastLevel){
 		this.forecast_level = forecastLevel;
 	}	
 	

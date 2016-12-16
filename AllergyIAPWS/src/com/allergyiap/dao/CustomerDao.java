@@ -33,9 +33,9 @@ public class CustomerDao extends Dao<Customer> {
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
-		query.append("'" + bean.getUserName() + "', ");
-		query.append("'" + bean.getPassword() + "', ");
-		query.append("'" + bean.getCompanyName() + "', ");
+		query.append("'" + bean.getUser_name() + "', ");
+		query.append("'" + bean.getUser_password() + "', ");
+		query.append("'" + bean.getCompany_name() + "', ");
 		query.append("'" + bean.getPharmacy_location() + "' ");
 		query.append(") ");
 
@@ -49,12 +49,12 @@ public class CustomerDao extends Dao<Customer> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
-		query.append(company_name + " = '" + bean.getCompanyName() + "', ");
-		query.append(user_name + " = '" + bean.getUserName() + "', ");
-		query.append(user_password + " = '" + bean.getPassword() + "', ");
+		query.append(company_name + " = '" + bean.getCompany_name() + "', ");
+		query.append(user_name + " = '" + bean.getUser_name() + "', ");
+		query.append(user_password + " = '" + bean.getUser_password() + "', ");
 		query.append(pharmacy_location + " = '" + bean.getPharmacy_location() + "' ");
 		query.append(" WHERE ");
-		query.append(idcustomer + " = " + bean.getId());
+		query.append(idcustomer + " = " + bean.getIdcustomer());
 
 		db.executeUpdate(query.toString());
 	}

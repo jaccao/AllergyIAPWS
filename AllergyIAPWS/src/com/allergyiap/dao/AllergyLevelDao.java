@@ -40,12 +40,12 @@ public class AllergyLevelDao extends Dao<AllergyLevel> {
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
-		query.append(bean.getAlleryID() + ", ");
-		query.append(bean.getCurrentLevel() + ", ");
+		query.append(bean.getAllergy_idallergy() + ", ");
+		query.append(bean.getCurrent_level() + ", ");
 		query.append(bean.getStation() + ", ");
-		query.append(bean.getDateStart() + ", ");
-		query.append(bean.getDateEnd() + ", ");
-		query.append(bean.getForecastLevel());
+		query.append(bean.getDate_start() + ", ");
+		query.append(bean.getDate_end() + ", ");
+		query.append(bean.getForecast_level());
 		query.append(") ");
 
 		db.executeUpdate(query.toString());
@@ -77,14 +77,14 @@ public class AllergyLevelDao extends Dao<AllergyLevel> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
-		query.append(allergy_idallergy + " = " + bean.getAlleryID() + ", ");
-		query.append(current_level + " = " + bean.getCurrentLevel() + ", ");
+		query.append(allergy_idallergy + " = " + bean.getAllergy_idallergy() + ", ");
+		query.append(current_level + " = " + bean.getCurrent_level() + ", ");
 		query.append(station + " = " + bean.getStation() + ", ");
-		query.append(date_start + " = " + bean.getDateStart() + ", ");
-		query.append(date_end + " = " + bean.getDateEnd() + ", ");
-		query.append(forecast_level + " = " + bean.getForecastLevel());
+		query.append(date_start + " = " + bean.getDate_start() + ", ");
+		query.append(date_end + " = " + bean.getDate_end() + ", ");
+		query.append(forecast_level + " = " + bean.getForecast_level());
 		query.append(" WHERE ");
-		query.append(idallergy_level + " = " + bean.getId());
+		query.append(idallergy_level + " = " + bean.getIdallergy_level());
 
 		db.executeUpdate(query.toString());
 	}
