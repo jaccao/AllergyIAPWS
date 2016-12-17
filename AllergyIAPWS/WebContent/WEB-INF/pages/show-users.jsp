@@ -39,17 +39,17 @@
 							<tbody>
 								<c:forEach items="${users}" var="u">
 									<tr>
-										<td>${u.id}</td>
-										<td>${u.userName}</td>
-										<td>${u.userSecondName}</td>
-										<td>${u.userMail}</td>
-										<td>${u.userPassword}</td>
+										<td>${u.iduser}</td>
+										<td>${u.user_name}</td>
+										<td>${u.user_second_name}</td>
+										<td>${u.user_mail}</td>
+										<td>${u.user_password}</td>
 										<td>
-											<a class="btn btn-warning" href="Users?action=edit&id=${u.id}"> 
+											<a class="btn btn-warning" href="Users?action=edit&id=${u.iduser}"> 
 												<i class="fa fa-pencil"></i>
 											</a>
 										
-											<a class="btn btn-danger" href="Users?action=delete&id=${u.id}">
+											<a class="btn btn-danger" href="Users?action=delete&id=${u.iduser}">
 												<i class="fa fa-trash-o"></i>
 											</a>
 										

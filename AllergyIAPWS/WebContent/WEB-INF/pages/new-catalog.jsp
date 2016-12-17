@@ -33,7 +33,7 @@
 					                    <div class="form-group btn-xs">
 					                    	<select class="form-control" id="allergy" name="allergy">
 					                    	<c:forEach items="${alergies}" var="allergy">
-					                    		<option value="${allergy.id}">${allergy.allergyName}</option>
+					                    		<option value="${allergy.idallergy}">${allergy.allergy_name}</option>
 					                    	</c:forEach>
 					                    	</select>
 					                    </div>
@@ -53,7 +53,7 @@
 						                        Select the customer ID
 						                    	<select class="form-control" id="customer" name="customer">
 						                    	<c:forEach items="${customers}" var="customer">
-						                    		<option value="${customer.id}">ID (${customer.id}) - ${customer.userName}</option>
+						                    		<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_name}</option>
 						                    	</c:forEach>
 						                    	</select>
 						                    </div>

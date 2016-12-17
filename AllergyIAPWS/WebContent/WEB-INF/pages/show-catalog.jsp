@@ -39,19 +39,19 @@
 							<tbody>
 								<c:forEach items="${products}" var="p">
 									<tr>
-										<td>${p.id}</td>
-										<td>${p.productName}</td>
-										<td>${p.productDescription}</td>
-										<td>${p.allergy.allergyName}</td>
+										<td>${p.idproduct_catalog}</td>
+										<td>${p.product_name}</td>
+										<td>${p.product_description}</td>
+										<td>${p.allergy.allergy_name}</td>
 										<% if(user.isAdmin()){%>
-										<td>${p.customer.userName}</td>
+										<td>${p.customer.user_name}</td>
 										<%} %>
 										<td>
-											<a class="btn btn-warning" href="ProductCatalog?action=edit&id=${p.id}"> 
+											<a class="btn btn-warning" href="ProductCatalog?action=edit&id=${p.idproduct_catalog}"> 
 												<i class="fa fa-pencil"></i>
 											</a>
 										
-											<a class="btn btn-danger" href="ProductCatalog?action=delete&id=${p.id}">
+											<a class="btn btn-danger" href="ProductCatalog?action=delete&id=${p.idproduct_catalog}">
 												<i class="fa fa-trash-o"></i>
 											</a>
 										

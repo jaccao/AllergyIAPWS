@@ -17,13 +17,13 @@
 			            <div class="panel-heading text-left">&nbsp;</div>
 			            <div class="panel-body">
 			
-			                <form id="form-centers" action="ProductCatalog?action=edit&id=${p.id}" method="POST" role="form" >
+			                <form id="form-centers" action="ProductCatalog?action=edit&id=${p.idproduct_catalog}" method="POST" role="form" >
 			                    
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="name" name="name" value="${p.productName}" placeholder="Name" required>
+					                        <input type="text" class="form-control" id="name" name="name" value="${p.product_name}" placeholder="Name" required>
 					                    </div>
 					
 									</div>		
@@ -33,16 +33,16 @@
 					                    	<select class="form-control" id="allergy" name="allergy">
 					                    	<c:forEach items="${alergies}" var="allergy">
 					                    		<c:choose>
-					                    		<c:when test="${allergy.id == p.allergyId }">
-					                    			<option value="${allergy.id}" selected>${allergy.allergyName}</option>
+					                    		<c:when test="${allergy.idallergy == p.allergy_idallergy}">
+					                    			<option value="${allergy.idallergy}" selected>${allergy.allergy_name}</option>
 					                    		</c:when>
 					                    		<c:otherwise>
-					                    			<option value="${allergy.id}" >${allergy.allergyName}</option>
+					                    			<option value="${allergy.idallergy}" >${allergy.allergy_name}</option>
 					                    		</c:otherwise>
 					                    		</c:choose>
 					                    	</c:forEach>
 					                    	</select>
-					                        <!--input type="text" class="form-control" id="allergy" name="allergy" value="${p.allergyId}" placeholder="Allergy" required-->
+					                        <!--input type="text" class="form-control" id="allergy" name="allergy" value="${p.allergy_idallergy}" placeholder="Allergy" required-->
 					                    </div>
 					              	</div>
 					             </div>
@@ -50,7 +50,7 @@
 						             <div class="col-md-6">                  
 											<!-- Description -->
 						                    <div class="form-group btn-xs">
-						                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description">${p.productDescription}</textarea>
+						                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description">${p.product_description}</textarea>
 						                    </div>
 										</div>
 										
@@ -63,11 +63,11 @@
 					                    	<select class="form-control" id="customer" name="customer">
 					                    	<c:forEach items="${customers}" var="customer">
 					                    		<c:choose>
-					                    		<c:when test="${customer.id == p.customerId }">
-					                    			<option value="${customer.id}" selected>ID (${customer.id}) - ${customer.userName}</option>
+					                    		<c:when test="${customer.idcustomer == p.customer_idcustomer }">
+					                    			<option value="${customer.idcustomer}" selected>ID (${customer.idcustomer}) - ${customer.user_name}</option>
 					                    		</c:when>
 					                    		<c:otherwise>
-					                    			<option value="${customer.id}">ID (${customer.id}) - ${customer.userName}</option>
+					                    			<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_name}</option>
 					                    		</c:otherwise>
 					                    		</c:choose>
 					                    	</c:forEach>

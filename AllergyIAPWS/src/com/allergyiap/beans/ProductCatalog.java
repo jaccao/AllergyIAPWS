@@ -12,20 +12,20 @@ public class ProductCatalog implements java.io.Serializable {
 	private Allergy allergy;
 	private Customer customer;
 
-	public ProductCatalog(long id, long allergyIdAllergy, long customerIdCustomer, String productName,
-			String productDesctiption) {
-		this.idproduct_catalog = id;
-		this.allergy_idallergy = allergyIdAllergy;
-		this.customer_idcustomer = customerIdCustomer;
-		this.product_name = productName;
-		this.product_description = productDesctiption;
+	public ProductCatalog(long idproduct_catalog, long allergy_idallergy, long customer_idcustomer, String product_name,
+			String product_description) {
+		this.idproduct_catalog = idproduct_catalog;
+		this.allergy_idallergy = allergy_idallergy;
+		this.customer_idcustomer = customer_idcustomer;
+		this.product_name = product_name;
+		this.product_description = product_description;
 		this.allergy = new Allergy();
 	}
 
-	public ProductCatalog(long allergyIdAllergy, long customerIdCustomer, String productName,
-			String productDesctiption) {
+	public ProductCatalog(long allergy_idallergy, long customer_idcustomer, String product_name,
+			String product_description) {
 
-		this(0, allergyIdAllergy, customerIdCustomer, productName, productDesctiption);
+		this(0, allergy_idallergy, customer_idcustomer, product_name, product_description);
 	}
 
 	public ProductCatalog() {

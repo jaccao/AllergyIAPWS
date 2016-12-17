@@ -16,20 +16,20 @@
 			            <div class="panel-heading text-left">Edit User</div>
 			            <div class="panel-body">
 			
-			                <form id="form-centers" action="Users?action=edit&id=${u.id}" method="POST" role="form" >
+			                <form id="form-centers" action="Users?action=edit&id=${u.iduser}" method="POST" role="form" >
 			                    
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="name" name="name" value="${u.userName}" placeholder="User Name" required>
+					                        <input type="text" class="form-control" id="name" name="name" value="${u.user_name}" placeholder="User Name" required>
 					                    </div>
 					                </div>
 					                 
 					                <div class="col-md-6">
 					                    <!-- Second Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="secondName" name="secondName" value="${u.userSecondName}" placeholder="User Second Name" required>
+					                        <input type="text" class="form-control" id="secondName" name="secondName" value="${u.user_second_name}" placeholder="User Second Name" required>
 					                    </div>
 					                    
 									</div>
@@ -37,14 +37,14 @@
 									<div class="col-md-6">
 					                    <!-- User Mail -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="mail" name="mail" value="${u.userMail}" placeholder="Mail" required>
+					                        <input type="text" class="form-control" id="mail" name="mail" value="${u.user_mail}" placeholder="Mail" required>
 					                    </div>
 					                </div>
 											
 									<div class="col-md-6">
 					                    <!-- User Password -->
 					                    <div class="form-group btn-xs">
-					                        <input type="password" class="form-control" id="password" name="password" value="${u.userPassword}" placeholder="Password" required>
+					                        <input type="password" class="form-control" id="password" name="password" value="${u.user_password}" placeholder="Password" required>
 					                    </div>
 				
 									</div>	  

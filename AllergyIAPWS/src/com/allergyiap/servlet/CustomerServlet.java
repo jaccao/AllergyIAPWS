@@ -6,13 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.allergy.service.CustomerService;
 import com.allergyiap.beans.Customer;
@@ -20,12 +18,10 @@ import com.allergyiap.beans.Customer;
 /**
  * Servlet implementation class CustomerServlet
  */
-
 @WebServlet(description = "Manage the customer segment", urlPatterns = { "/Customers" })
 public class CustomerServlet extends HttpServlet {
-	
 	private static final long serialVersionUID = 1L;
-	private ServletContext context;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -96,12 +92,10 @@ public class CustomerServlet extends HttpServlet {
 
 	private void saveCustomer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		HttpSession session = request.getSession(true);
-		
+
 		int id = 0;
-		if (request.getParameter("idcustomer") != null) {
-			id = Integer.parseInt(request.getParameter("idcustomer"));
+		if (request.getParameter("id") != null) {
+			id = Integer.parseInt(request.getParameter("id"));
 		}
 		String userName = request.getParameter("nUserName");
 		String userPass = request.getParameter("nUserPassword");
@@ -111,28 +105,19 @@ public class CustomerServlet extends HttpServlet {
 		String regex_coords = "([+-]?\\d+\\.?\\d+)\\s*,\\s*([+-]?\\d+\\.?\\d+)";
         Pattern p = Pattern.compile(regex_coords);
         Matcher m = p.matcher(pharmacy_location);
-        if (!m.find()) {
-        	session.setAttribute("error", "Invalid pharmacy map coordinate");
-        	
-        	if (id != 0) {
-        		response.sendRedirect("Customers?action=edit&idcustomer="+id); 
-        	}
-        	else{
-        		response.sendRedirect("Customers?action=new"); 
-        	}
+        while (m.find()) {
+            System.out.println("Is Valid Map Coordinate: " + m.group());
         }
-        else
-        {
-        	Customer c = new Customer(id, userName, userPass, companyName, pharmacy_location);
 
-    		if (id != 0) {
-    			CustomerService.update(c);
-    		} else {
-    			CustomerService.insert(c);
-    		}
+		Customer c = new Customer(id, userName, userPass, companyName, pharmacy_location);
 
-    		response.sendRedirect("Customers");
-        }
+		if (id != 0) {
+			CustomerService.update(c);
+		} else {
+			CustomerService.insert(c);
+		}
+
+		response.sendRedirect("Customers");
 	}
 
 	private void editCustomer(HttpServletRequest request, HttpServletResponse response)

@@ -40,7 +40,7 @@
 		data-toggle="dropdown" role="button" aria-haspopup="true"
 		aria-expanded="false">
 		<i class="fa fa-user fa-lg"></i> 
-		<% out.print(user.getUser_name);%> 
+		<% out.print(user.getUser_name());%> 
 		<span class="caret"></span>
 		
 	</a>
