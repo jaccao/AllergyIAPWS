@@ -11,10 +11,10 @@ public class CustomerDao extends Dao<Customer> {
 
 	private static final String TABLE_NAME = "customer";
 
-	private static String ID = "idcustomer";
-	private static String NAME = "user_name";
-	private static String PASSWORD = "user_password";
-	private static String COMPANY_NAME = "company_name";
+	private static String idcustomer = "idcustomer";
+	private static String user_name = "user_name";
+	private static String user_password = "user_password";
+	private static String company_name = "company_name";
 	private static String pharmacy_location = "pharmacy_location";
 
 	/**
@@ -26,16 +26,16 @@ public class CustomerDao extends Dao<Customer> {
 		query.append("INSERT INTO ");
 		query.append(TABLE_NAME);
 		query.append(" (");
-		query.append(NAME + ", ");
-		query.append(PASSWORD + ", ");
-		query.append(COMPANY_NAME + ", ");
+		query.append(user_name + ", ");
+		query.append(user_password + ", ");
+		query.append(company_name + ", ");
 		query.append(pharmacy_location + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
-		query.append("'" + bean.getUserName() + "', ");
-		query.append("'" + bean.getPassword() + "', ");
-		query.append("'" + bean.getCompanyName() + "', ");
+		query.append("'" + bean.getUser_name() + "', ");
+		query.append("'" + bean.getUser_password() + "', ");
+		query.append("'" + bean.getCompany_name() + "', ");
 		query.append("'" + bean.getPharmacy_location() + "' ");
 		query.append(") ");
 
@@ -49,12 +49,12 @@ public class CustomerDao extends Dao<Customer> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
-		query.append(COMPANY_NAME + " = '" + bean.getCompanyName() + "', ");
-		query.append(NAME + " = '" + bean.getUserName() + "', ");
-		query.append(PASSWORD + " = '" + bean.getPassword() + "', ");
+		query.append(company_name + " = '" + bean.getCompany_name() + "', ");
+		query.append(user_name + " = '" + bean.getUser_name() + "', ");
+		query.append(user_password + " = '" + bean.getUser_password() + "', ");
 		query.append(pharmacy_location + " = '" + bean.getPharmacy_location() + "' ");
 		query.append(" WHERE ");
-		query.append(ID + " = " + bean.getId());
+		query.append(idcustomer + " = " + bean.getIdcustomer());
 
 		db.executeUpdate(query.toString());
 	}
@@ -66,7 +66,7 @@ public class CustomerDao extends Dao<Customer> {
 		query.append("DELETE FROM ");
 		query.append(TABLE_NAME);
 		query.append(" WHERE ");
-		query.append(ID + " = " + id);
+		query.append(idcustomer + " = " + id);
 
 		db.executeUpdate(query.toString());
 	}
@@ -84,10 +84,10 @@ public class CustomerDao extends Dao<Customer> {
 
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
-				long id = rs.getLong(ID);
-				String name = rs.getString(NAME);
-				String pass = rs.getString(PASSWORD);
-				String description = rs.getString(COMPANY_NAME);
+				long id = rs.getLong(idcustomer);
+				String name = rs.getString(user_name);
+				String pass = rs.getString(user_password);
+				String description = rs.getString(company_name);
 				String pharmacy = rs.getString(pharmacy_location);
 				list.add(new Customer(id, name, pass, description, pharmacy));
 			}
@@ -99,15 +99,15 @@ public class CustomerDao extends Dao<Customer> {
 	}
 
 	public Customer get(long id) {
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id + ";";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + idcustomer + " = " + id + ";";
 		List<Customer> customers = select(selectQuery);
 		Customer c = customers.isEmpty() ? null : customers.get(0);
 		return c;
 	}
 
 	public Customer get(String name, String password) {
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + NAME + " = '" + name 
-				+ "' AND " + PASSWORD + " = '" + password + "';";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + user_name + " = '" + name 
+				+ "' AND " + user_password + " = '" + password + "';";
 		List<Customer> customers = select(selectQuery);
 		return customers.isEmpty() ? null : customers.get(0);
 	}

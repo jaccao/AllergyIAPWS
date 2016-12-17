@@ -18,7 +18,10 @@
 			            <div class="panel-body">
 			
 			                <form id="form-centers" action="Customers?action=new" method="POST" role="form" >
-			                    
+			                    <% String error = (String) session.getAttribute("error");
+									if(error != null  && !error.isEmpty()) {%>
+										<div class="alert alert-danger">${error}</div>
+								<%} %>
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->

@@ -33,8 +33,8 @@ public class ProductCatalogService {
 		List<ProductCatalog> list = productDao.getByCustomer(id);
 
 		for (ProductCatalog productCatalog : list) {
-			productCatalog.setAllergy(allergyDao.get(productCatalog.getAllergyId()));
-			productCatalog.setCustomer(customerDao.get(productCatalog.getCustomerId()));
+			productCatalog.setAllergy(allergyDao.get(productCatalog.getAllergy_idallergy()));
+			productCatalog.setCustomer(customerDao.get(productCatalog.getCustomer_idcustomer()));
 		}
 
 		return list;
@@ -44,8 +44,8 @@ public class ProductCatalogService {
 		List<ProductCatalog> list = productDao.getAll();
 
 		for (ProductCatalog productCatalog : list) {
-			productCatalog.setAllergy(allergyDao.get(productCatalog.getAllergyId()));
-			productCatalog.setCustomer(customerDao.get(productCatalog.getCustomerId()));
+			productCatalog.setAllergy(allergyDao.get(productCatalog.getAllergy_idallergy()));
+			productCatalog.setCustomer(customerDao.get(productCatalog.getCustomer_idcustomer()));
 		}
 
 		return list;

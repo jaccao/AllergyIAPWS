@@ -37,8 +37,8 @@ public class RestWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/customers/{id}")
-	public List<Customer> getCustomer(@PathParam("id") long customerid){
+	@Path("/customers/{idcustomer}")
+	public List<Customer> getCustomer(@PathParam("idcustomer") long customerid){
 		List<Customer> customer = new ArrayList<>();
 		Customer c =  CustomerService.get(customerid);
 		if (c != null){

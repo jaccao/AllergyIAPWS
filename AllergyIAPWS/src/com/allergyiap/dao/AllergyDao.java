@@ -11,10 +11,10 @@ public class AllergyDao extends Dao<Allergy> {
 
 	private static final String TABLE_NAME = "allergy";
 
-	private static String ID = "idallergy";
-	private static String NAME = "allergy_name";
-	private static String DESCRIPTION = "allergy_description";
-	private static String CODE = "allergy_code";
+	private static String idallergy = "idallergy";
+	private static String allergy_name = "allergy_name";
+	private static String allergy_description = "allergy_description";
+	private static String allergy_code = "allergy_code";
 
 	/**
 	 * 
@@ -25,15 +25,15 @@ public class AllergyDao extends Dao<Allergy> {
 		query.append("INSERT INTO ");
 		query.append(TABLE_NAME);
 		query.append(" (");
-		query.append(NAME + ", ");
-		query.append(DESCRIPTION + ", ");
-		query.append(CODE + " ");
+		query.append(allergy_name + ", ");
+		query.append(allergy_description + ", ");
+		query.append(allergy_code + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
-		query.append(bean.getAllergyName() + ", ");
-		query.append(bean.getAllergyDescription() + ", ");
-		query.append(bean.getAllergyCode() + " ");
+		query.append(bean.getAllergy_name() + ", ");
+		query.append(bean.getAllergy_description() + ", ");
+		query.append(bean.getAllergy_code() + " ");
 		query.append(") ");
 
 		db.executeUpdate(query.toString());
@@ -46,11 +46,11 @@ public class AllergyDao extends Dao<Allergy> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
-		query.append(CODE + " = " + bean.getAllergyCode() + ", ");
-		query.append(NAME + " = " + bean.getAllergyName() + ", ");
-		query.append(DESCRIPTION + " = " + bean.getAllergyDescription() + " ");
+		query.append(allergy_code + " = " + bean.getAllergy_code() + ", ");
+		query.append(allergy_name + " = " + bean.getAllergy_name() + ", ");
+		query.append(allergy_description + " = " + bean.getAllergy_description() + " ");
 		query.append(" WHERE ");
-		query.append(ID + " = " + bean.getId());
+		query.append(idallergy + " = " + bean.getIdallergy());
 
 		db.executeUpdate(query.toString());
 	}
@@ -62,7 +62,7 @@ public class AllergyDao extends Dao<Allergy> {
 		query.append("DELETE FROM ");
 		query.append(TABLE_NAME);
 		query.append(" WHERE ");
-		query.append(ID + " = " + id);
+		query.append(idallergy + " = " + id);
 
 		db.executeUpdate(query.toString());
 	}
@@ -82,10 +82,10 @@ public class AllergyDao extends Dao<Allergy> {
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
 
-				long id = rs.getLong(ID);
-				String name = rs.getString(NAME);
-				String description = rs.getString(DESCRIPTION);
-				String code = rs.getString(CODE);
+				long id = rs.getLong(idallergy);
+				String name = rs.getString(allergy_name);
+				String description = rs.getString(allergy_description);
+				String code = rs.getString(allergy_code);
 
 				list.add(new Allergy(id, name, description, code));
 			}
@@ -97,7 +97,7 @@ public class AllergyDao extends Dao<Allergy> {
 
 	public Allergy get(long id) {
 
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id + ";";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + idallergy + " = " + id + ";";
 		List<Allergy> customers = select(selectQuery);
 		return customers.isEmpty() ? null : customers.get(0);
 	}

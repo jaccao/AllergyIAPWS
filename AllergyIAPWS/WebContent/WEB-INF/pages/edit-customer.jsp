@@ -16,27 +16,30 @@
 			            <div class="panel-heading text-left">Edit Customer</div>
 			            <div class="panel-body">
 			
-			                <form id="form-centers" action="Customers?action=edit&id=${c.id}" method="POST" role="form" >
-			                    
+			                <form id="form-centers" action="Customers?action=edit&id=${c.idcustomer}" method="POST" role="form" >
+			                    <% String error = (String) session.getAttribute("error");
+									if(error != null  && !error.isEmpty()) {%>
+										<div class="alert alert-danger">${error}</div>
+								<%} %>
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="nUserName" name="nUserName" value="${c.userName}" placeholder="User Name" required>
+					                        <input type="text" class="form-control" id="nUserName" name="nUserName" value="${c.user_name}" placeholder="User Name" required>
 					                    </div>
 					
 									</div>		
 									<div class="col-md-6">
 					                    <!-- Password -->
 					                    <div class="form-group btn-xs">
-					                        <input type="password" class="form-control" id="nUserPassword" name="nUserPassword" value="${c.password}" placeholder="Password" required>
+					                        <input type="password" class="form-control" id="nUserPassword" name="nUserPassword" value="${c.user_password}" placeholder="Password" required>
 					                    </div>
 				
 									</div>	  
 									<div class="col-md-6">                  
 										<!-- Company Name -->
 					                    <div class="form-group btn-xs">
-					                    	<input type="text" class="form-control" id="nCompanyName" name="nCompanyName" value="${c.companyName}" placeholder="Company Name" required>
+					                    	<input type="text" class="form-control" id="nCompanyName" name="nCompanyName" value="${c.company_name}" placeholder="Company Name" required>
 					                    </div>
 									</div>
 									<div class="col-md-6">                  
