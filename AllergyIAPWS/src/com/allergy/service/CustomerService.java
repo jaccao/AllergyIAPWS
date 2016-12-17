@@ -17,12 +17,12 @@ public class CustomerService {
 		dao.update(bean);
 	}
 	
-	public static void delete(int id){
-		dao.delete(id);
+	public static void delete(int idcustomer){
+		dao.delete(idcustomer);
 	}
 	
-	public static Customer get(long id) {
-		return dao.get(id);
+	public static Customer get(long idcustomer) {
+		return dao.get(idcustomer);
 	}
 	
 	public static Customer get(String name, String password) {

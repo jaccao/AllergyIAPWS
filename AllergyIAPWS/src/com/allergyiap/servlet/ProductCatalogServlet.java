@@ -107,18 +107,18 @@ public class ProductCatalogServlet extends HttpServlet {
 		long allergy = new Long(request.getParameter("allergy"));
 		String description = request.getParameter("description");
 		
-		if(customer.getUserName().equals("admin")){
+		if(customer.getUser_name().equals("admin")){
 			customer = (Customer) CustomerService.get(new Long(request.getParameter("customer")));
 		}
 
 		if (request.getParameter("id") != null) { // Edit Product
 			id = Integer.parseInt(request.getParameter("id"));
-			ProductCatalog c = new ProductCatalog(id, allergy, customer.getId(), name, description);
+			ProductCatalog c = new ProductCatalog(id, allergy, customer.getIdcustomer(), name, description);
 			ProductCatalogService.update(c);
 			
 		} else { // New Product
 			
-			ProductCatalog p = new ProductCatalog(allergy, customer.getId(), name, description);
+			ProductCatalog p = new ProductCatalog(allergy, customer.getIdcustomer(), name, description);
 			ProductCatalogService.insert(p);
 			 
 			//Implement Upload Images
@@ -133,7 +133,7 @@ public class ProductCatalogServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		Customer customer = (Customer) session.getAttribute("User");
-		long id = customer.getId();
+		long id = customer.getIdcustomer();
 
 		List<ProductCatalog> products = null;
 		if (customer.isAdmin())

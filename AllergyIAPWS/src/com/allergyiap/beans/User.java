@@ -4,67 +4,67 @@ public class User implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id;
-	private String userName;
-	private String userSecondName;
-	private String userPassword;
-	private String userMail;
+	private long iduser;
+	private String user_name;
+	private String user_second_name;
+	private String user_password;
+	private String user_mail;
 
 	public User() {
 	}
 
 	public User(long id, String userName, String userSecondName, String userMail, String userPassword) {
-		this.id = id;
-		this.userName = userName;
-		this.userSecondName = userSecondName;
-		this.userPassword = userPassword;
-		this.userMail = userMail;
+		this.iduser = id;
+		this.user_name = userName;
+		this.user_second_name = userSecondName;
+		this.user_password = userPassword;
+		this.user_mail = userMail;
 	}
 	
 	public User(String userName, String userSecondName, String userMail, String userPassword) {
-		this.userName = userName;
-		this.userSecondName = userSecondName;
-		this.userPassword = userPassword;
-		this.userMail = userMail;
+		this.user_name = userName;
+		this.user_second_name = userSecondName;
+		this.user_password = userPassword;
+		this.user_mail = userMail;
 	}
 
-	public long getId() {
-		return id;
+	public long getIduser() {
+		return iduser;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIduser(long id) {
+		this.iduser = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUser_name(String userName) {
+		this.user_name = userName;
 	}
 
-	public String getUserSecondName() {
-		return userSecondName;
+	public String getUser_second_name() {
+		return user_second_name;
 	}
 
-	public void setUserSecondName(String userSecondName) {
-		this.userSecondName = userSecondName;
+	public void setUser_second_name(String userSecondName) {
+		this.user_second_name = userSecondName;
 	}
 
-	public String getUserPassword() {
-		return userPassword;
+	public String getUser_password() {
+		return user_password;
 	}
 
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setUser_password(String userPassword) {
+		this.user_password = userPassword;
 	}
 	
-	public String getUserMail() {
-		return userMail;
+	public String getUser_mail() {
+		return user_mail;
 	}
 
-	public void setUserMail(String userMail) {
-		this.userMail = userMail;
+	public void setUser_mail(String userMail) {
+		this.user_mail = userMail;
 	}
 }

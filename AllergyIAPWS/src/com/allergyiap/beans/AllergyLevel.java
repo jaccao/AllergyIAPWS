@@ -4,50 +4,50 @@ public class AllergyLevel implements java.io.Serializable
 {
 	private static final long serialVersionUID = 1L;
 
-	private long id;
-	private long allergyId;
-	private float currentLevel;
+	private long idallergy_level;
+	private long allergy_idallergy;
+	private float current_level;
 	private String station;
-	private String dateStart;
-	private String dateEnd;
-	private String forecastLevel;
+	private String date_start;
+	private String date_end;
+	private String forecast_level;
 	
 	
 	public AllergyLevel(long id, long allergyIdAllergy, float currentLevel, String station, String dateStart, String dateEnd, String forecastLevel ){
-		this.id = id;
-		this.allergyId = allergyIdAllergy;
-		this.currentLevel = currentLevel;
+		this.idallergy_level = id;
+		this.allergy_idallergy = allergyIdAllergy;
+		this.current_level = currentLevel;
 		this.station = station;
-		this.dateStart = dateStart;
-		this.dateEnd = dateEnd;
-		this.forecastLevel = forecastLevel;
+		this.date_start = dateStart;
+		this.date_end = dateEnd;
+		this.forecast_level = forecastLevel;
 	}
 	
-	public long getId(){
-		return this.id;
+	public long getIdallergy_level(){
+		return this.idallergy_level;
 	}
-	public long getAlleryID(){
-		return this.allergyId;
+	public long getAllergy_idallergy(){
+		return this.allergy_idallergy;
 	}
 	
-	public float getCurrentLevel(){
-		return this.currentLevel;
+	public float getCurrent_level(){
+		return this.current_level;
 	}
 	
 	public String getStation(){
 		return this.station;
 	}
 	
-	public String getDateStart(){
-		return this.dateStart;
+	public String getDate_start(){
+		return this.date_start;
 	}
 	
-	public String getDateEnd(){
-		return this.dateEnd;
+	public String getDate_end(){
+		return this.date_end;
 	}
 	
-	public String getForecastLevel(){
-		return this.forecastLevel;
+	public String getForecast_level(){
+		return this.forecast_level;
 	}
 	
 	public static long getSerialversionUId() {
@@ -55,32 +55,32 @@ public class AllergyLevel implements java.io.Serializable
 	}
 	
 	
-	public void setId(long id){
-		this.id = id;
+	public void setIdallergy_level(long id){
+		this.idallergy_level = id;
 	}
 	
-	public void setAlleryID(long allergyIdAllergy){
-		this.allergyId = allergyIdAllergy;
+	public void setAllergy_idallergy(long allergyIdAllergy){
+		this.allergy_idallergy = allergyIdAllergy;
 	}
 	
-	public void setCurrentLevel(float currentLevel){
-		this.currentLevel = currentLevel;
+	public void setCurrent_level(float currentLevel){
+		this.current_level = currentLevel;
 	}
 	
 	public void setStation(String station){
 		this.station = station;
 	}
 	
-	public void setDateStart(String dateStart){
-		this.dateStart = dateStart;
+	public void setdate_start(String dateStart){
+		this.date_start = dateStart;
 	}
 	
-	public void setDateEnd(String dateEnd){
-		this.dateEnd = dateEnd;
+	public void setDate_end(String dateEnd){
+		this.date_end = dateEnd;
 	}
 	
-	public void setForecastLevel(String forecastLevel){
-		this.forecastLevel = forecastLevel;
+	public void setForecast_level(String forecastLevel){
+		this.forecast_level = forecastLevel;
 	}	
 	
 }
