@@ -105,13 +105,25 @@ public class XarxaImportServlet extends HttpServlet {
 				lmAllergyLevel = SystemSql.executeQuery(
 						"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE AND CURRENT_DATE <= date_end");
 			}
+			boolean isFirst = true;
 			for (HashMap<String, Object> oAllergyLevel : lmAllergyLevel) {
+				if (!isFirst) {
+					response.getWriter().append(",");
+				}
+				isFirst = false;
 				response.getWriter().append("{");
-				response.getWriter().append("date_start:").append("'").append(oAllergyLevel.get("date_start").toString()).append("',");
-				response.getWriter().append("date_end:").append("'").append(oAllergyLevel.get("date_end").toString()).append("',");
-				response.getWriter().append("current_level:").append("'").append(oAllergyLevel.get("current_level").toString()).append("',");
-				response.getWriter().append("station:").append("'").append(oAllergyLevel.get("station").toString()).append("',");
-				response.getWriter().append("},");
+				response.getWriter().append("\"date_start\":").append("\"")
+						.append(oAllergyLevel.get("date_start").toString()).append("\",");
+				response.getWriter().append("\"date_end\":").append("\"").append(oAllergyLevel.get("date_end").toString())
+						.append("\",");
+				
+				response.getWriter().append("\"current_level\":").append("\"").append(oAllergyLevel.get("current_level").toString()).append("\",");
+				response.getWriter().append("\"forecast_level\":").append("\"").append(oAllergyLevel.get("forecast_level").toString()).append("\",");
+				response.getWriter().append("\"allergy_idallergy\":").append("\"").append(oAllergyLevel.get("allergy_idallergy").toString()).append("\",");
+				response.getWriter().append("\"idallergy_level\":").append("\"").append(oAllergyLevel.get("idallergy_level").toString()).append("\",");
+				
+				response.getWriter().append("\"station\":").append("\"").append(oAllergyLevel.get("station").toString());
+				response.getWriter().append("\"}");
 			}
 			response.getWriter().append("]");
 		} catch (Exception e) {
