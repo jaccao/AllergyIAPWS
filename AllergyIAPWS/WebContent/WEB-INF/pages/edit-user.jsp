@@ -11,7 +11,7 @@
 		<div id="main" class="row">
 			<div class="container-fluid">
 				<div class="col-sm-8 col-sm-offset-2">
-					<h2>Edit Customer</h2>
+					<h2>Edit User</h2>
 			        <div class="panel panel-default">
 			            <div class="panel-heading text-left">Edit User</div>
 			            <div class="panel-body">
