@@ -100,13 +100,13 @@ public class RestWebService {
 	@Consumes("application/json; charset=UTF-8")
 	@Produces("application/json; charset=UTF-8")
 	@Path("/addUser")
-	public String addNewUser(User user){		
+	public int addNewUser(User user){		
 		try {
 			UserService.insert(user);
-			return "User added successfully";
+			return 0;
   
 		} catch (Exception e) {
-			return "Some error adding new user";
+			return 1;
 		}
 	}
 }
