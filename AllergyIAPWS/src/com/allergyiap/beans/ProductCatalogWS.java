@@ -1,6 +1,6 @@
 package com.allergyiap.beans;
 
-public class ProductCatalogWS implements java.io.Serializable{
+public class ProductCatalogWS implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private long idproduct_catalog;
@@ -9,14 +9,14 @@ public class ProductCatalogWS implements java.io.Serializable{
 	private String product_name;
 	private String product_description;
 
-	public ProductCatalogWS(ProductCatalog pc){
+	public ProductCatalogWS(ProductCatalog pc) {
 		this.idproduct_catalog = pc.getIdproduct_catalog();
 		this.allergy_idallergy = pc.getAllergy_idallergy();
 		this.customer_idcustomer = pc.getCustomer_idcustomer();
 		this.product_name = pc.getProduct_name();
 		this.product_description = pc.getProduct_description();
 	}
-	
+
 	public long getIdproduct_catalog() {
 		return this.idproduct_catalog;
 	}
