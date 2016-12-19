@@ -38,11 +38,11 @@ public class RestWebService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/customers/{idcustomer}")
-	public List<Customer> getCustomer(@PathParam("idcustomer") long customerid){
-		List<Customer> customer = new ArrayList<>();
+	public List<CustomerWS> getCustomer(@PathParam("idcustomer") long customerid){
+		List<CustomerWS> customer = new ArrayList<>();
 		Customer c =  CustomerService.get(customerid);
 		if (c != null){
-			customer.add(c);
+			customer.add(new CustomerWS(c));
 		}
 		return customer;
 	}
@@ -51,31 +51,37 @@ public class RestWebService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/customers")
-	public List<Customer> getAllCustomer(){
-		return CustomerService.getAll();
+	public List<CustomerWS> getAllCustomer(){
+		List<CustomerWS> customers = new ArrayList<>();
+		for (Customer customer:CustomerService.getAll()){
+			customers.add(new CustomerWS(customer));
+		}
+		return customers;
 	} 
 	
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/productCatalog/{id}")
-	public List<ProductCatalog> getProduct(@PathParam("id") long productid){
-		List<ProductCatalog> product = new ArrayList<>();
+	public List<ProductCatalogWS> getProduct(@PathParam("id") long productid){
+		List<ProductCatalogWS> product = new ArrayList<>();
 		ProductCatalog pc = ProductCatalogService.get(productid);
 		if (pc != null){
-			product.add(pc);
+			product.add(new ProductCatalogWS(pc));
 		}
 		return product;
 	}
 	
-	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/productCatalog")
-	public List<ProductCatalog> getProduct(){
-		return ProductCatalogService.getAll();
+	public List<ProductCatalogWS> getProduct(){
+		List<ProductCatalogWS> products = new ArrayList<>();
+		for (ProductCatalog product:ProductCatalogService.getAll()){
+			products.add(new ProductCatalogWS(product));
+		}
+		return products;
 	}
-	
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
