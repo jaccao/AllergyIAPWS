@@ -13,40 +13,42 @@
 				sessionID = cookie.getValue();
 		}
 	}
-	
 %>
 
 <ul class="nav navbar-nav navbar-antisida">
-	
-	<li class=""><a href="ProductCatalog"> 
-		<span class="glyphicon glyphicon-th-list"></span> Products
+
+	<li class=""><a href="ProductCatalog"> <span
+			class="glyphicon glyphicon-th-list"></span> Products
 	</a></li>
-	
-	<% if(user.isAdmin()){%>
-	<li class=""><a href="Customers"> 
-		<span class="fa fa-users"></span> Customers
+
+	<%
+		if (user.isAdmin()) {
+	%>
+	<li class=""><a href="Customers"> <span class="fa fa-users"></span>
+			Customers
 	</a></li>
 	<!-- li class=""><a href="XarxaImportServlet"> 
 		<span class="fa fa-cloud-download"></span> Import Allergies
 	</a></li-->
-	<li class=""><a href="Users"> 
-		<span class="fa fa-users"></span> Users
+	<li class=""><a href="Users"> <span class="fa fa-users"></span>
+			Users
 	</a></li>
-	<%} %>
+	<%
+		}
+	%>
 </ul>
 
 <ul class="nav navbar-nav navbar-antisida navbar-right">
 	<li class="dropdown"><a href="#" class="dropdown-toggle"
 		data-toggle="dropdown" role="button" aria-haspopup="true"
-		aria-expanded="false">
-		<i class="fa fa-user fa-lg"></i> 
-		<% out.print(user.getUser_name());%> 
-		<span class="caret"></span>
-		
+		aria-expanded="false"> <i class="fa fa-user fa-lg"></i> <%
+ 	out.print(user.getUser_name());
+ %> <span class="caret"></span>
+
 	</a>
 		<ul class="dropdown-menu">
-			<li><a href="LogoutServlet"> <i class="fa fa-sign-out" style="color: red"></i>
-					Logout
+			<li><a href="LogoutServlet"> <i class="fa fa-sign-out"
+					style="color: red"></i> Logout
 			</a></li>
 		</ul></li>
 </ul>
