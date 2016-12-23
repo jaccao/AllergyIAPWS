@@ -77,7 +77,7 @@ public class StartUp {
 					String sql_pharmacy_table = "" + "CREATE TABLE IF NOT EXISTS pharmacy ("
 							+ "  id_pharmacy SERIAL NOT NULL ,"
 							+ "  id_customer INTEGER NOT NULL ,"
-							+ "  name_station TEXT DEFAULT '' NOT NULL ,"
+							+ "  name_pharmacy TEXT DEFAULT '' NOT NULL ,"
 							+ "  latitude TEXT DEFAULT '' NOT NULL ,"
 							+ "  longitude TEXT DEFAULT '' NOT NULL,"
 							+ "  PRIMARY KEY(id_pharmacy),"
