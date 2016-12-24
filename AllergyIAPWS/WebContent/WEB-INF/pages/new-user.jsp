@@ -41,6 +41,16 @@
 					                    <div class="form-group btn-xs">
 					                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 					                    </div>
+									</div>
+									<div class="col-md-6">
+					                    <!-- Posible locations -->
+					                    <div class="form-group btn-xs">
+					                    	<select class="form-control" id="location" name="location">
+					                    	<c:forEach items="${locations}" var="loc">
+					                    		<option value="${loc.name_station}">${loc.name_station}</option>
+					                    	</c:forEach>
+					                    	</select>
+					                    </div>
 									</div>	  
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">

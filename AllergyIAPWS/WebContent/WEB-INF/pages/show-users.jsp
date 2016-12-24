@@ -33,6 +33,7 @@
 									<th>Second Name</th>
 									<th>Mail</th>
 									<th>Password</th>
+									<th>Default location</th>
 									<th style="width: 15%"></th>
 								</tr>
 							</thead>
@@ -44,6 +45,7 @@
 										<td>${u.user_second_name}</td>
 										<td>${u.user_mail}</td>
 										<td>${u.user_password}</td>
+										<td>${u.user_station_default}</td>
 										<td>
 											<a class="btn btn-warning" href="Users?action=edit&id=${u.iduser}"> 
 												<i class="fa fa-pencil"></i>

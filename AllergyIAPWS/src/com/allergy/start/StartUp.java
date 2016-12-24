@@ -83,6 +83,7 @@ public class StartUp {
 							+ "  user_second_name TEXT  DEFAULT '' NOT NULL ,"
 							+ "  user_mail TEXT UNIQUE NOT NULL ,"
 							+ "  user_password TEXT  DEFAULT '' NOT NULL ,"
+							+ "  user_station_default TEXT NOT NULL,"
 							+ "  PRIMARY KEY(iduser));";
 					
 					String sql_pharmacy_table = "" + "CREATE TABLE IF NOT EXISTS pharmacy ("

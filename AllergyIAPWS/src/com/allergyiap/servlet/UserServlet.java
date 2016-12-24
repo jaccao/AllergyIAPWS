@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.allergy.service.AllergyService;
 import com.allergy.service.ProductCatalogService;
+import com.allergy.service.StationService;
 import com.allergy.service.UserService;
 import com.allergyiap.beans.User;
 
@@ -80,6 +81,7 @@ public class UserServlet extends HttpServlet {
 		String secondName = request.getParameter("secondName");
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
+		String location = request.getParameter("location");
 
 		if (request.getParameter("id") != null) { // Edit user
 			id = Integer.parseInt(request.getParameter("id"));
@@ -89,11 +91,12 @@ public class UserServlet extends HttpServlet {
 			u.setUser_second_name(secondName);
 			u.setUser_mail(mail);
 			u.setUser_password(password);
+			u.setUser_station_default(location);
 			UserService.update(u);
 			
 		} else { // New Product
 
-			User u = new User(name, secondName, mail, password);
+			User u = new User(name, secondName, mail, password, location);
 			UserService.insert(u);
 		}
 
@@ -119,9 +122,10 @@ public class UserServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		User user = UserService.get(id);
-
+		
 		request.setAttribute("u", user);
 		request.setAttribute("users", UserService.getAll());
+		request.setAttribute("locations", StationService.getAll());
 
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/edit-user.jsp");
 		rd.forward(request, response);
@@ -131,6 +135,7 @@ public class UserServlet extends HttpServlet {
 	private void newUser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("users", UserService.getAll());
+		request.setAttribute("locations", StationService.getAll());
 		request.getRequestDispatcher("WEB-INF/pages/new-user.jsp").forward(request, response);
 
 	}

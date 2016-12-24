@@ -47,7 +47,24 @@
 					                        <input type="password" class="form-control" id="password" name="password" value="${u.user_password}" placeholder="Password" required>
 					                    </div>
 				
-									</div>	  
+									</div>	
+									<div class="col-md-6">
+					                    <!-- Location default -->
+					                    <div class="form-group btn-xs">
+					                    	<select class="form-control" id="location" name="location">
+					                    	<c:forEach items="${locations}" var="loc">
+					                    		<c:choose>
+					                    		<c:when test="${loc.name_station == u.user_station_default}">
+					                    			<option value="${loc.name_station}" selected>${loc.name_station}</option>
+					                    		</c:when>
+					                    		<c:otherwise>
+					                    			<option value="${loc.name_station}" >${loc.name_station}</option>
+					                    		</c:otherwise>
+					                    		</c:choose>
+					                    	</c:forEach>
+					                    	</select>
+					                    </div>
+					              	</div>  
 								</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">
