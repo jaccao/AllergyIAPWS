@@ -54,6 +54,8 @@ public class XarxaImportServlet extends HttpServlet {
 
 				Element eStation = (Element) eReport.getElementsByTagName("station").item(0);
 				Element eStationName = (Element) eStation.getElementsByTagName("name").item(0);
+				Element elatitudeStation = (Element) eStation.getElementsByTagName("latitude").item(0);
+				Element elongitudeStation = (Element) eStation.getElementsByTagName("longitude").item(0);
 
 				Element eDate = (Element) eReport.getElementsByTagName("date").item(0);
 				Element eDateStart = (Element) eDate.getElementsByTagName("start").item(0);
@@ -66,6 +68,22 @@ public class XarxaImportServlet extends HttpServlet {
 				Element eForecastPollens = (Element) eForecast.getElementsByTagName("pollens").item(0);
 
 				String sStationName = eStationName.getTextContent();
+				String slatitudeStation = elatitudeStation.getTextContent();
+				String slongitudeStation = elongitudeStation.getTextContent();
+
+				String qStationInsert = "INSERT INTO station(name_station, latitude, longitude) VALUES ('"
+						+ sStationName + "'," + slatitudeStation + "," + slongitudeStation + ");";
+				String qStationUpdate = "UPDATE station SET latitude = " + slatitudeStation + ", longitude = "
+						+ slongitudeStation + " WHERE name_station = '" + sStationName + "';";
+				List<HashMap<String, Object>> stationExists = SystemSql
+						.executeQuery("SELECT * FROM station WHERE name_station = '" + sStationName + "';");
+
+				if (stationExists.isEmpty()) {
+					SystemSql.execute(qStationInsert);
+				} else {
+					SystemSql.execute(qStationUpdate);
+				}
+
 				String sDateStart = eDateStart.getTextContent();
 				String sDateEnd = eDateEnd.getTextContent();
 
@@ -99,11 +117,11 @@ public class XarxaImportServlet extends HttpServlet {
 		try {
 			response.getWriter().append("[");
 			List<HashMap<String, Object>> lmAllergyLevel = SystemSql.executeQuery(
-					"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE AND CURRENT_DATE <= date_end");
+					"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE+2 AND CURRENT_DATE+2 <= date_end");
 			if (lmAllergyLevel.isEmpty()) {
 				this.updateData();
 				lmAllergyLevel = SystemSql.executeQuery(
-						"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE AND CURRENT_DATE <= date_end");
+						"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE+2 AND CURRENT_DATE+2 <= date_end");
 			}
 			boolean isFirst = true;
 			for (HashMap<String, Object> oAllergyLevel : lmAllergyLevel) {
@@ -114,15 +132,26 @@ public class XarxaImportServlet extends HttpServlet {
 				response.getWriter().append("{");
 				response.getWriter().append("\"date_start\":").append("\"")
 						.append(oAllergyLevel.get("date_start").toString()).append("\",");
-				response.getWriter().append("\"date_end\":").append("\"").append(oAllergyLevel.get("date_end").toString())
-						.append("\",");
-				
-				response.getWriter().append("\"current_level\":").append("\"").append(oAllergyLevel.get("current_level").toString()).append("\",");
-				response.getWriter().append("\"forecast_level\":").append("\"").append(oAllergyLevel.get("forecast_level").toString()).append("\",");
-				response.getWriter().append("\"allergy_idallergy\":").append("\"").append(oAllergyLevel.get("allergy_idallergy").toString()).append("\",");
-				response.getWriter().append("\"idallergy_level\":").append("\"").append(oAllergyLevel.get("idallergy_level").toString()).append("\",");
-				
-				response.getWriter().append("\"station\":").append("\"").append(oAllergyLevel.get("station").toString());
+				response.getWriter().append("\"date_end\":").append("\"")
+						.append(oAllergyLevel.get("date_end").toString()).append("\",");
+
+				response.getWriter().append("\"current_level\":").append("\"")
+						.append(oAllergyLevel.get("current_level").toString()).append("\",");
+				response.getWriter().append("\"forecast_level\":").append("\"")
+						.append(oAllergyLevel.get("forecast_level").toString()).append("\",");
+				response.getWriter().append("\"allergy_idallergy\":").append("\"")
+						.append(oAllergyLevel.get("allergy_idallergy").toString()).append("\",");
+				response.getWriter().append("\"idallergy_level\":").append("\"")
+						.append(oAllergyLevel.get("idallergy_level").toString()).append("\",");
+
+				String nameStation = oAllergyLevel.get("station").toString();
+				response.getWriter().append("\"station\":").append("\"").append(nameStation).append("\",");
+				List<HashMap<String, Object>> lmStation = SystemSql
+						.executeQuery("SELECT * FROM station WHERE name_station = '" + nameStation + "';");
+				response.getWriter().append("\"latitude\":").append("\"")
+						.append(lmStation.get(0).get("latitude").toString()).append("\",");
+				response.getWriter().append("\"longitude\":").append("\"")
+						.append(lmStation.get(0).get("longitude").toString());
 				response.getWriter().append("\"}");
 			}
 			response.getWriter().append("]");
