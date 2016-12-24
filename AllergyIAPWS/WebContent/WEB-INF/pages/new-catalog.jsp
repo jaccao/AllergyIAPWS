@@ -55,14 +55,16 @@
 						                    	</select>
 						                    </div>
 										</div>
-										<div class="col-md-6">                  
+										</div>
+										<div class="row">
+										<div class="col-md-12">                  
 										<!-- Image URL -->
-					                    <div class="form-group btn-xs">
-					                    	<textarea class="form-control" id="url" name="url" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Image URL"></textarea>
+										<div class="input-group">
+  											<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  											<input type="text" class="form-control" placeholder="Image URL" id="url" name="url" aria-describedby="basic-addon3">
+										</div>
 					                    </div>
-									</div>	
 									</div>
-									
 								</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">

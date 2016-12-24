@@ -52,9 +52,7 @@
 						                    <div class="form-group btn-xs">
 						                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description">${p.product_description}</textarea>
 						                    </div>
-										</div>
-										
-										
+									</div>
 					                    <% if(user.isAdmin()){ %>
 					                    <div class="col-md-6">
 					                    <!-- Customer ID -->
@@ -75,6 +73,13 @@
 					                    </div>
 										</div>
 										<%} %>
+									<div class="col-md-12">                  
+										<!-- Image URL -->
+										<div class="input-group">
+  											<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  											<textarea type="text" class="form-control" style="resize:none" placeholder="Image URL" id="url" name="url" rows="1" aria-describedby="basic-addon3">${p.product_url_image}</textarea>
+										</div>
+					                    </div>
 									</div>
 									</div>	 
 									</div>		
