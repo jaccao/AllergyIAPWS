@@ -12,10 +12,9 @@ public class CustomerDao extends Dao<Customer> {
 	private static final String TABLE_NAME = "customer";
 
 	private static String idcustomer = "idcustomer";
-	private static String user_name = "user_name";
+	private static String user_name = "user_mail";
 	private static String user_password = "user_password";
 	private static String company_name = "company_name";
-	private static String pharmacy_location = "pharmacy_location";
 
 	/**
 	 * 
@@ -28,15 +27,13 @@ public class CustomerDao extends Dao<Customer> {
 		query.append(" (");
 		query.append(user_name + ", ");
 		query.append(user_password + ", ");
-		query.append(company_name + ", ");
-		query.append(pharmacy_location + " ");
+		query.append(company_name);
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
 		query.append("'" + bean.getUser_name() + "', ");
 		query.append("'" + bean.getUser_password() + "', ");
-		query.append("'" + bean.getCompany_name() + "', ");
-		query.append("'" + bean.getPharmacy_location() + "' ");
+		query.append("'" + bean.getCompany_name() + "'");
 		query.append(") ");
 
 		db.executeUpdate(query.toString());
@@ -51,8 +48,7 @@ public class CustomerDao extends Dao<Customer> {
 		query.append(" set ");
 		query.append(company_name + " = '" + bean.getCompany_name() + "', ");
 		query.append(user_name + " = '" + bean.getUser_name() + "', ");
-		query.append(user_password + " = '" + bean.getUser_password() + "', ");
-		query.append(pharmacy_location + " = '" + bean.getPharmacy_location() + "' ");
+		query.append(user_password + " = '" + bean.getUser_password() + "'");
 		query.append(" WHERE ");
 		query.append(idcustomer + " = " + bean.getIdcustomer());
 
@@ -88,8 +84,7 @@ public class CustomerDao extends Dao<Customer> {
 				String name = rs.getString(user_name);
 				String pass = rs.getString(user_password);
 				String description = rs.getString(company_name);
-				String pharmacy = rs.getString(pharmacy_location);
-				list.add(new Customer(id, name, pass, description, pharmacy));
+				list.add(new Customer(id, name, pass, description));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

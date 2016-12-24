@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 			if (!user.isEmpty() && !pass.isEmpty()) {
 
 				if (user.equals("admin") && pass.equals("admin")) {
-					customer = new Customer(user, pass, "Admin","");
+					customer = new Customer(user, pass, "Admin");
 				} else {
 					customer = CustomerService.get(user, pass);
 				}

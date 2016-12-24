@@ -39,12 +39,6 @@
 					                    	<input type="text" class="form-control" id="nCompanyName" name="nCompanyName" value="${c.company_name}" placeholder="Company Name" required>
 					                    </div>
 									</div>
-									<div class="col-md-6">                  
-										<!-- Pharmacy location -->
-					                    <div class="form-group btn-xs">
-					                    	<input type="text" class="form-control" id="nPharmacyLocation" name="nPharmacyLocation" value="${c.pharmacy_location}" placeholder="Pharmacy Location" required>
-					                    </div>
-									</div>
 								</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">

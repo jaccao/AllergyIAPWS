@@ -100,16 +100,15 @@ public class CustomerServlet extends HttpServlet {
 		String userName = request.getParameter("nUserName");
 		String userPass = request.getParameter("nUserPassword");
 		String companyName = request.getParameter("nCompanyName");
-		String pharmacy_location = request.getParameter("nPharmacyLocation");
-		
+		/*
 		String regex_coords = "([+-]?\\d+\\.?\\d+)\\s*,\\s*([+-]?\\d+\\.?\\d+)";
         Pattern p = Pattern.compile(regex_coords);
         Matcher m = p.matcher(pharmacy_location);
         while (m.find()) {
             System.out.println("Is Valid Map Coordinate: " + m.group());
-        }
+        }*/
 
-		Customer c = new Customer(id, userName, userPass, companyName, pharmacy_location);
+		Customer c = new Customer(id, userName, userPass, companyName);
 
 		if (id != 0) {
 			CustomerService.update(c);
