@@ -7,10 +7,10 @@ import java.util.List;
 
 import com.allergyiap.beans.Pharmacy;
 
-public class PharmacyDao extends Dao<Pharmacy>{
-	
+public class PharmacyDao extends Dao<Pharmacy> {
+
 	private static final String TABLE_NAME = "pharmacy";
-	
+
 	private String id_pharmacy = "id_pharmacy";
 	private String id_customer = "id_customer";
 	private String name_pharmacy = "name_pharmacy";
@@ -35,7 +35,7 @@ public class PharmacyDao extends Dao<Pharmacy>{
 		query.append("'" + bean.getLatitude() + "', ");
 		query.append("'" + bean.getLongitude() + "' ");
 		query.append(") ");
-		
+
 		db.executeUpdate(query.toString());
 	}
 
@@ -53,7 +53,7 @@ public class PharmacyDao extends Dao<Pharmacy>{
 		query.append(id_pharmacy + " = " + bean.getId_pharmacy());
 
 		db.executeUpdate(query.toString());
-		
+
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class PharmacyDao extends Dao<Pharmacy>{
 		query.append(id_pharmacy + " = " + id);
 
 		db.executeUpdate(query.toString());
-		
+
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class PharmacyDao extends Dao<Pharmacy>{
 		String selectQuery = "SELECT * FROM " + TABLE_NAME + ";";
 		return select(selectQuery);
 	}
-	
+
 	private List<Pharmacy> select(String query) {
 		List<Pharmacy> list = new ArrayList<>();
 		try {
@@ -94,5 +94,10 @@ public class PharmacyDao extends Dao<Pharmacy>{
 		return list;
 	}
 
+	public Pharmacy get(long id_pharmacy) {
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + "WHERE id_pharmacy = " + id_pharmacy + ";";
+		List<Pharmacy> pharmacies = select(selectQuery);
+		return pharmacies.isEmpty() ? null : pharmacies.get(0);
+	}
 
 }

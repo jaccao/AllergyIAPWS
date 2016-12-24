@@ -5,13 +5,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.allergyiap.beans.Pharmacy;
 import com.allergyiap.beans.Station;
 
-public class StationDao extends Dao<Station>{
-	
+public class StationDao extends Dao<Station> {
+
 	private static final String TABLE_NAME = "station";
-	
-	private static String name_station = "name_station" ;
+
+	private static String name_station = "name_station";
 	private static String latitude = "latitude";
 	private static String longitude = "longitude";
 
@@ -31,7 +32,7 @@ public class StationDao extends Dao<Station>{
 		query.append("'" + bean.getLatitude() + "', ");
 		query.append("'" + bean.getLongitude() + "' ");
 		query.append(") ");
-		
+
 		db.executeUpdate(query.toString());
 	}
 
@@ -47,7 +48,7 @@ public class StationDao extends Dao<Station>{
 		query.append(name_station + " = " + bean.getName_station());
 
 		db.executeUpdate(query.toString());
-		
+
 	}
 
 	public void delete(String station) {
@@ -58,7 +59,7 @@ public class StationDao extends Dao<Station>{
 		query.append(name_station + " = " + station);
 
 		db.executeUpdate(query.toString());
-		
+
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class StationDao extends Dao<Station>{
 		String selectQuery = "SELECT * FROM " + TABLE_NAME + ";";
 		return select(selectQuery);
 	}
-	
+
 	private List<Station> select(String query) {
 		List<Station> list = new ArrayList<>();
 		try {
@@ -85,9 +86,15 @@ public class StationDao extends Dao<Station>{
 		return list;
 	}
 
+	public Station get(String name) {
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE name_station = '" + name_station + "';";
+		List<Station> stations = select(selectQuery);
+		return stations.isEmpty() ? null : stations.get(0);
+	}
+
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		// Not implemented because the primary key is an String instead of a long as the others
 	}
 
 }
