@@ -37,7 +37,6 @@ public class StartUp {
 							+ "  user_mail TEXT UNIQUE NOT NULL , "
 							+ "  user_password TEXT  DEFAULT '' NOT NULL , "
 							+ "  company_name TEXT  DEFAULT '' NOT NULL   , " 
-							+ "  pharmacy_location TEXT DEFAULT '' NOT NULL, "
 							+ "  PRIMARY KEY(idcustomer));";
 
 					String sql_allergy = "" + "CREATE TABLE IF NOT EXISTS allergy ( "
@@ -71,6 +70,7 @@ public class StartUp {
 							+ "  customer_idcustomer INTEGER   NOT NULL , " 
 							+ "  product_name TEXT , "
 							+ "  product_description TEXT , " 
+							+ "  product_url_image TEXT ,"
 							+ "  PRIMARY KEY(idproduct_catalog) , "
 							+ "  FOREIGN KEY(customer_idcustomer) REFERENCES customer(idcustomer) "
 							+ "  ON DELETE CASCADE ON UPDATE RESTRICT, "

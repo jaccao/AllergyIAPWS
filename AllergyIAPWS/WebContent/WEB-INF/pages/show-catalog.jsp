@@ -28,6 +28,7 @@
 						<table class="table">
 							<thead>
 								<tr>
+									<th>Image</th>
 									<th>Id</th>
 									<th>Name</th>
 									<th>Description</th>
@@ -39,6 +40,8 @@
 							<tbody>
 								<c:forEach items="${products}" var="p">
 									<tr>
+										<td><img src="${p.product_url_image}" alt="Product Image" style="width:25px;height:25px;"></td>
+										
 										<td>${p.idproduct_catalog}</td>
 										<td>${p.product_name}</td>
 										<td>${p.product_description}</td>

@@ -19,14 +19,12 @@
 			            <div class="panel-body">
 			
 			                <form id="form-centers" action="ProductCatalog?action=new" method="POST" role="form">
-			                   
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
 					                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
 					                    </div>
-					
 									</div>		
 									<div class="col-md-6">
 					                    <!-- Allergy -->
@@ -39,7 +37,6 @@
 					                    </div>
 									</div>
 								</div>
-								<% if(user.isAdmin()){ %>	  
 								<div class="row">
 									<div class="col-md-6">                  
 										<!-- Description -->
@@ -58,25 +55,13 @@
 						                    	</select>
 						                    </div>
 										</div>
-									</div>
-									<div class="col-md-6 col-centered">
-										Image Upload:<input type="file" name="fileName">
-									</div>
-									<%} %>
-									
-									<% if(!user.isAdmin()){ %>	  
-								<div class="row">
-									<div class="col-md-6">                  
-										<!-- Description -->
+										<div class="col-md-6">                  
+										<!-- Image URL -->
 					                    <div class="form-group btn-xs">
-					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description"></textarea>
+					                    	<textarea class="form-control" id="url" name="url" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Image URL"></textarea>
 					                    </div>
+									</div>	
 									</div>
-									<div class="col-md-6">
-										Image Upload:<input type="file" name="fileName">
-									</div>
-									</div>
-									<%} %>
 									
 								</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
