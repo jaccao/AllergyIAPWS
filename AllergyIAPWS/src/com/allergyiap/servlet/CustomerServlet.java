@@ -63,7 +63,6 @@ public class CustomerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
 			String action = (String) request.getParameter("action");
 
@@ -97,18 +96,11 @@ public class CustomerServlet extends HttpServlet {
 		if (request.getParameter("id") != null) {
 			id = Integer.parseInt(request.getParameter("id"));
 		}
-		String userName = request.getParameter("nUserName");
+		String userMail = request.getParameter("nUserName");
 		String userPass = request.getParameter("nUserPassword");
 		String companyName = request.getParameter("nCompanyName");
-		/*
-		String regex_coords = "([+-]?\\d+\\.?\\d+)\\s*,\\s*([+-]?\\d+\\.?\\d+)";
-        Pattern p = Pattern.compile(regex_coords);
-        Matcher m = p.matcher(pharmacy_location);
-        while (m.find()) {
-            System.out.println("Is Valid Map Coordinate: " + m.group());
-        }*/
 
-		Customer c = new Customer(id, userName, userPass, companyName);
+		Customer c = new Customer(id, userMail, userPass, companyName);
 
 		if (id != 0) {
 			CustomerService.update(c);
@@ -141,7 +133,6 @@ public class CustomerServlet extends HttpServlet {
 	}
 
 	private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("idcustomer"));
 
 		CustomerService.delete(id);

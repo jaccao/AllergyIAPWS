@@ -5,23 +5,20 @@ public class Pharmacy implements java.io.Serializable{
 	private static final long serialVersionUID = 2L;
 
 	private long id_pharmacy;
-	private long id_customer;
 	private String name_pharmacy;
 	private String latitude;
 	private String longitude;
 	
 	public Pharmacy(){}
 	
-	public Pharmacy(long id_pharmacy, long id_customer, String name_pharmacy, String latitude, String longitude){
+	public Pharmacy(long id_pharmacy, String name_pharmacy, String latitude, String longitude){
 		this.id_pharmacy = id_pharmacy;
-		this.id_customer= id_customer;
 		this.name_pharmacy = name_pharmacy;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 	
-	public Pharmacy(long id_customer, String name_pharmacy, String latitude, String longitude){
-		this.id_customer= id_customer;
+	public Pharmacy(String name_pharmacy, String latitude, String longitude){
 		this.name_pharmacy = name_pharmacy;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -33,14 +30,6 @@ public class Pharmacy implements java.io.Serializable{
 	
 	public long getId_pharmacy(){
 		return this.id_pharmacy;
-	}
-	
-	public void setId_customer(long id_customer){
-		this.id_customer = id_customer;
-	}
-	
-	public long getId_customer(){
-		return this.id_customer;
 	}
 	
 	public void setName_pharmacy(String name_pharmacy){

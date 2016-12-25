@@ -43,18 +43,20 @@
 					                    <div class="form-group btn-xs">
 					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description"></textarea>
 					                    </div>
-									</div>	
+									</div>
+									<% if(user.isAdmin()){ %>	
 										<div class="col-md-6">
 						                    <!-- User Id --> 
 						                    <div class="form-group btn-xs">
 						                        Select the customer ID
 						                    	<select class="form-control" id="customer" name="customer">
 						                    	<c:forEach items="${customers}" var="customer">
-						                    		<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_name}</option>
+						                    		<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_mail}</option>
 						                    	</c:forEach>
 						                    	</select>
 						                    </div>
 										</div>
+										<%} %>
 										</div>
 										<div class="row">
 										<div class="col-md-12">                  

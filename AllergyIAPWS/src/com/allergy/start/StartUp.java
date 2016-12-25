@@ -88,14 +88,20 @@ public class StartUp {
 					
 					String sql_pharmacy_table = "" + "CREATE TABLE IF NOT EXISTS pharmacy ("
 							+ "  id_pharmacy SERIAL NOT NULL ,"
-							+ "  id_customer INTEGER NOT NULL ,"
 							+ "  name_pharmacy TEXT DEFAULT '' NOT NULL ,"
 							+ "  latitude TEXT DEFAULT '' NOT NULL ,"
 							+ "  longitude TEXT DEFAULT '' NOT NULL,"
-							+ "  PRIMARY KEY(id_pharmacy),"
-							+ "  FOREIGN KEY(id_customer) REFERENCES customer(idcustomer) "
+							+ "  PRIMARY KEY(id_pharmacy));";
+										
+					String sql_pharmacy_customer_table = "" + "CREATE TABLE IF NOT EXISTS relation_pharmacies_customers ("
+							+ "  id_pharmacy INTEGER NOT NULL , "
+							+ "  id_customer INTEGER NOT NULL , "
+							+ "  PRIMARY KEY (id_pharmacy, id_customer), "
+							+ "  FOREIGN KEY(id_customer) REFERENCES customer(idcustomer)"
+							+ "  ON DELETE CASCADE ON UPDATE RESTRICT,"
+							+ "  FOREIGN KEY(id_pharmacy) REFERENCES pharmacy(id_pharmacy)"
 							+ "  ON DELETE CASCADE ON UPDATE RESTRICT);";
-					
+										
 					stm.executeUpdate(sql_user_table);
 					stm.executeUpdate(sql_customer);
 					stm.executeUpdate(sql_station_table);
@@ -103,6 +109,7 @@ public class StartUp {
 					stm.executeUpdate(sql_allergy_level);
 					stm.executeUpdate(sql_product_catalog);
 					stm.executeUpdate(sql_pharmacy_table);
+					stm.executeUpdate(sql_pharmacy_customer_table);
 
 					String sql_script;
 					

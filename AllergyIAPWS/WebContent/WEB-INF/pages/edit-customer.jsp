@@ -22,7 +22,7 @@
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="nUserName" name="nUserName" value="${c.user_name}" placeholder="User Name" required>
+					                        <input type="text" class="form-control" id="nUserName" name="nUserName" value="${c.user_mail}" placeholder="User Name" required>
 					                    </div>
 					
 									</div>		

@@ -26,7 +26,7 @@
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="nUserName" name="nUserName" placeholder="User Name" required>
+					                        <input type="text" class="form-control" id="nUserName" name="nUserName" placeholder="Mail" required>
 					                    </div>
 					
 									</div>		

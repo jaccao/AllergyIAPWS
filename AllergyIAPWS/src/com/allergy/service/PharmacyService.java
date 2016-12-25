@@ -17,8 +17,8 @@ public class PharmacyService {
 		dao.update(bean);
 	}
 
-	public static void delete(int idcustomer) {
-		dao.delete(idcustomer);
+	public static void delete(int id_pharmacy) {
+		dao.delete(id_pharmacy);
 	}
 
 	public static Pharmacy get(long id_pharmacy) {

@@ -62,10 +62,10 @@
 					                    	<c:forEach items="${customers}" var="customer">
 					                    		<c:choose>
 					                    		<c:when test="${customer.idcustomer == p.customer_idcustomer }">
-					                    			<option value="${customer.idcustomer}" selected>ID (${customer.idcustomer}) - ${customer.user_name}</option>
+					                    			<option value="${customer.idcustomer}" selected>ID (${customer.idcustomer}) - ${customer.user_mail}</option>
 					                    		</c:when>
 					                    		<c:otherwise>
-					                    			<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_name}</option>
+					                    			<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_mail}</option>
 					                    		</c:otherwise>
 					                    		</c:choose>
 					                    	</c:forEach>

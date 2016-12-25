@@ -47,7 +47,7 @@
 										<td>${p.product_description}</td>
 										<td>${p.allergy.allergy_name}</td>
 										<% if(user.isAdmin()){%>
-										<td>${p.customer.user_name}</td>
+										<td>${p.customer.user_mail}</td>
 										<%} %>
 										<td>
 											<a class="btn btn-warning" href="ProductCatalog?action=edit&id=${p.idproduct_catalog}"> 

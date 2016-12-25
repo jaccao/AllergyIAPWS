@@ -45,7 +45,7 @@
 	<li class="dropdown"><a href="#" class="dropdown-toggle"
 		data-toggle="dropdown" role="button" aria-haspopup="true"
 		aria-expanded="false"> <i class="fa fa-user fa-lg"></i> <%
- 	out.print(user.getUser_name());
+ 	out.print(user.getUser_mail());
  %> <span class="caret"></span>
 
 	</a>
@@ -53,5 +53,7 @@
 			<li><a href="LogoutServlet"> <i class="fa fa-sign-out"
 					style="color: red"></i> Logout
 			</a></li>
-		</ul></li>
+		</ul>
+		
+	</li>
 </ul>

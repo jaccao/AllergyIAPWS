@@ -108,7 +108,7 @@ public class ProductCatalogServlet extends HttpServlet {
 		String description = request.getParameter("description");
 		String url = request.getParameter("url");
 		
-		if(customer.getUser_name().equals("admin")){
+		if(customer.getUser_mail().equals("admin")){
 			customer = (Customer) CustomerService.get(new Long(request.getParameter("customer")));
 		}
 

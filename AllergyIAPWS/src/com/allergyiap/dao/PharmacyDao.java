@@ -12,7 +12,6 @@ public class PharmacyDao extends Dao<Pharmacy> {
 	private static final String TABLE_NAME = "pharmacy";
 
 	private String id_pharmacy = "id_pharmacy";
-	private String id_customer = "id_customer";
 	private String name_pharmacy = "name_pharmacy";
 	private String latitude = "latitude";
 	private String longitude = "longitude";
@@ -23,14 +22,12 @@ public class PharmacyDao extends Dao<Pharmacy> {
 		query.append("INSERT INTO ");
 		query.append(TABLE_NAME);
 		query.append(" (");
-		query.append(id_customer + ", ");
 		query.append(name_pharmacy + ", ");
 		query.append(latitude + ", ");
 		query.append(longitude + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
-		query.append("'" + bean.getId_customer() + "', ");
 		query.append("'" + bean.getName_pharmacy() + "', ");
 		query.append("'" + bean.getLatitude() + "', ");
 		query.append("'" + bean.getLongitude() + "' ");
@@ -45,7 +42,6 @@ public class PharmacyDao extends Dao<Pharmacy> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
-		query.append(id_customer + " = '" + bean.getId_customer() + "', ");
 		query.append(name_pharmacy + " = '" + bean.getName_pharmacy() + "', ");
 		query.append(latitude + " = '" + bean.getLatitude() + "', ");
 		query.append(longitude + " = '" + bean.getLongitude() + "' ");
@@ -53,7 +49,6 @@ public class PharmacyDao extends Dao<Pharmacy> {
 		query.append(id_pharmacy + " = " + bean.getId_pharmacy());
 
 		db.executeUpdate(query.toString());
-
 	}
 
 	@Override
@@ -81,11 +76,10 @@ public class PharmacyDao extends Dao<Pharmacy> {
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
 				long idp = rs.getLong(id_pharmacy);
-				long idc = rs.getLong(id_customer);
 				String name = rs.getString(name_pharmacy);
 				String lat = rs.getString(latitude);
 				String lon = rs.getString(longitude);
-				list.add(new Pharmacy(idp, idc, name, lat, lon));
+				list.add(new Pharmacy(idp, name, lat, lon));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -93,11 +87,10 @@ public class PharmacyDao extends Dao<Pharmacy> {
 		}
 		return list;
 	}
-
-	public Pharmacy get(long id_pharmacy) {
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + "WHERE id_pharmacy = " + id_pharmacy + ";";
+	
+	public Pharmacy get(long id_pharmacy){
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE id_pharmacy = " + id_pharmacy + ";";
 		List<Pharmacy> pharmacies = select(selectQuery);
 		return pharmacies.isEmpty() ? null : pharmacies.get(0);
 	}
-
 }
