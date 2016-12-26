@@ -12,11 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.allergy.service.CustomerService;
+import com.allergy.service.PharmacyService;
 import com.allergy.service.ProductCatalogService;
 import com.allergy.service.RelationPharmaciesCustomersService;
 import com.allergyiap.beans.Customer;
 import com.allergyiap.beans.Pharmacy;
 import com.allergyiap.beans.ProductCatalog;
+import com.allergyiap.beans.RelationPharmaciesCustomers;
 
 @WebServlet("/Relations")
 public class RelationPharmaciesCustomersServlet extends HttpServlet {
@@ -82,8 +84,9 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 
 	private void saveRelation(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-
+		int idcustomer = Integer.parseInt(request.getParameter("idcustomer"));
+		int idpharmacy = Integer.parseInt(request.getParameter("pharmacy"));
+		RelationPharmaciesCustomersService.insert(new RelationPharmaciesCustomers(idpharmacy, idcustomer));
 		response.sendRedirect("Customers");
 	}
 
@@ -102,6 +105,9 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 
 	private void newRelation(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("idcustomer"));
+		request.setAttribute("idcustomer",id);
+		request.setAttribute("pharmacies", PharmacyService.getAll());
 		request.getRequestDispatcher("WEB-INF/pages/new-relation.jsp").forward(request, response);
 
 	}

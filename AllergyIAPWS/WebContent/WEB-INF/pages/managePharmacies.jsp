@@ -14,7 +14,7 @@
 			<div class="container-fluid">
 
 			<div class="col-sm-10 col-sm-offset-1">
-				<h2>Pharmacies related</h2>
+				<h2>Pharmacies related to customer ${idcustomer}</h2>
 				<div class="panel panel-default">
 					
 				<div class="panel-heading text-right">
