@@ -2,6 +2,7 @@ package com.allergy.service;
 
 import java.util.List;
 
+import com.allergyiap.beans.Pharmacy;
 import com.allergyiap.beans.RelationPharmaciesCustomers;
 import com.allergyiap.dao.RelationPharmaciesCustomersDao;
 
@@ -20,7 +21,7 @@ public class RelationPharmaciesCustomersService {
 		dao.delete(idcustomer, id_pharmacy);
 	}
 	
-	public static List<RelationPharmaciesCustomers> getPharmaciesByCustomer(long id_customer) {
+	public static List<Pharmacy> getPharmaciesByCustomer(long id_customer) {
 		return dao.getPharmaciesByCustomer(id_customer);
 	}
 	

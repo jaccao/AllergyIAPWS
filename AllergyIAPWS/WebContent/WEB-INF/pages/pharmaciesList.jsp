@@ -50,7 +50,7 @@
 											    <span class="caret"></span></button>
 											    <ul class="dropdown-menu">
 											    <c:forEach items="${p.value}" var="entry">
-    												<li>Customer ID: ${entry}</li>
+    												<li><a href="#">Customer ID: ${entry}</a></li>
 												</c:forEach>
 											    </ul>
 											 </div>

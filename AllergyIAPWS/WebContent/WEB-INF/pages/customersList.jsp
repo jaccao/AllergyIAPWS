@@ -35,16 +35,29 @@
 							<tbody>
 								<c:forEach items="${customers}" var="p">
 									<tr>
-										<td>${p.idcustomer}</td>
-										<td>${p.user_mail}</td>
-										<td>${p.user_password}</td>
-										<td>${p.company_name}</td>
+										<td>${p.key.idcustomer}</td>
+										<td>${p.key.user_mail}</td>
+										<td>${p.key.user_password}</td>
+										<td>${p.key.company_name}</td>
 										<td>
-											<a class="btn btn-warning" href="Customers?action=edit&idcustomer=${p.idcustomer}"> 
+											<div class="dropdown">
+											    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Pharmacies
+											    <span class="caret"></span></button>
+											    <ul class="dropdown-menu">
+											    <c:forEach items="${p.value}" var="entry">
+    												<li><a href="#">${entry.name_pharmacy}</a></li>
+												</c:forEach>
+											    </ul>
+											 </div>
+										</td>
+										<td>
+										<a class="btn btn-info" href=""> 
+												<i class="fa fa-medkit"></i>
+											</a>
+											<a class="btn btn-warning" href="Customers?action=edit&idcustomer=${p.key.idcustomer}"> 
 												<i class="fa fa-pencil"></i>
 											</a>
-									
-											<a class="btn btn-danger" href="Customers?action=delete&idcustomer=${p.idcustomer}">
+											<a class="btn btn-danger" href="Customers?action=delete&idcustomer=${p.key.idcustomer}">
 												<i class="fa fa-trash-o"></i>
 											</a>
 										</td>

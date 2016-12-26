@@ -117,11 +117,11 @@ public class XarxaImportServlet extends HttpServlet {
 		try {
 			response.getWriter().append("[");
 			List<HashMap<String, Object>> lmAllergyLevel = SystemSql.executeQuery(
-					"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE+2 AND CURRENT_DATE+2 <= date_end");
+					"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE AND CURRENT_DATE <= date_end");
 			if (lmAllergyLevel.isEmpty()) {
 				this.updateData();
 				lmAllergyLevel = SystemSql.executeQuery(
-						"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE+2 AND CURRENT_DATE+2 <= date_end");
+						"SELECT * FROM allergy_level WHERE date_start <= CURRENT_DATE AND CURRENT_DATE <= date_end");
 			}
 			boolean isFirst = true;
 			for (HashMap<String, Object> oAllergyLevel : lmAllergyLevel) {

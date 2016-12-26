@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.allergy.service.PharmacyService;
+import com.allergyiap.beans.Customer;
+import com.allergyiap.beans.Pharmacy;
 import com.allergyiap.beans.RelationPharmaciesCustomers;
 
 public class RelationPharmaciesCustomersDao extends Dao<RelationPharmaciesCustomers> {
@@ -93,10 +96,21 @@ public class RelationPharmaciesCustomersDao extends Dao<RelationPharmaciesCustom
 		return list.isEmpty() ? null : list;
 	}
 
-	public List<RelationPharmaciesCustomers> getPharmaciesByCustomer(long idcustomer) {
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE "+ id_customer + " = "+idcustomer + ";";
-		List<RelationPharmaciesCustomers> list = select(selectQuery);
-		return list.isEmpty() ? null : list;
+	public List<Pharmacy> getPharmaciesByCustomer(long idcustomer) {
+		String selectQuery = "SELECT id_pharmacy FROM " + TABLE_NAME + " WHERE "+ id_customer + " = "+idcustomer + ";";
+		List<Pharmacy> pharmacies = new ArrayList<>();
+		try {
+			ResultSet rs = db.execute(selectQuery);
+			while (rs.next()) {
+				int idp = rs.getInt(id_pharmacy);
+				Pharmacy p = PharmacyService.get(new Long(idp));
+				pharmacies.add(p);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return pharmacies.isEmpty() ? null : pharmacies;
 	}
 
 }

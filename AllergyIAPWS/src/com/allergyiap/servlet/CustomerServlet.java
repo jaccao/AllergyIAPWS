@@ -1,7 +1,9 @@
 package com.allergyiap.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.allergy.service.CustomerService;
+import com.allergy.service.PharmacyService;
+import com.allergy.service.RelationPharmaciesCustomersService;
 import com.allergyiap.beans.Customer;
+import com.allergyiap.beans.Pharmacy;
 
 /**
  * Servlet implementation class CustomerServlet
@@ -79,8 +84,12 @@ public class CustomerServlet extends HttpServlet {
 	private void listCustomers(HttpServletRequest request, HttpServletResponse response) {
 
 		List<Customer> customers = CustomerService.getAll();
-
-		request.setAttribute("customers", customers);
+		Map<Customer, List<Pharmacy>> relations = new HashMap<Customer, List<Pharmacy>>();
+		for(Customer c: customers){
+			List<Pharmacy> p = RelationPharmaciesCustomersService.getPharmaciesByCustomer(c.getIdcustomer());
+			relations.put(c, p);
+		}
+		request.setAttribute("customers", relations);
 		try {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/customersList.jsp");
 			rd.forward(request, response);
