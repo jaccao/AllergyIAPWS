@@ -51,7 +51,7 @@
 											 </div>
 										</td>
 										<td>
-										<a class="btn btn-info" href=""> 
+										<a class="btn btn-info" href="Relations?idcustomer=${p.key.idcustomer}"> 
 												<i class="fa fa-medkit"></i>
 											</a>
 											<a class="btn btn-warning" href="Customers?action=edit&idcustomer=${p.key.idcustomer}"> 
