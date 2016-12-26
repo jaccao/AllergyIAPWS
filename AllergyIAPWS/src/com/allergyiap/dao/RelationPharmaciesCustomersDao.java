@@ -45,12 +45,12 @@ public class RelationPharmaciesCustomersDao extends Dao<RelationPharmaciesCustom
 	public void delete(int id) {
 	}
 
-	public void delete(int id_customer, int id_pharmacy) {
+	public void delete(int idcustomer, int idpharmacy) {
 		StringBuilder query = new StringBuilder();
 		query.append("DELETE FROM ");
 		query.append(TABLE_NAME);
 		query.append(" WHERE ");
-		query.append(id_customer + " = " + id_customer + " AND " + id_pharmacy + " = " + id_pharmacy);
+		query.append(id_customer + " = " + idcustomer + " AND " + id_pharmacy + " = " + idpharmacy);
 
 		db.executeUpdate(query.toString());
 
