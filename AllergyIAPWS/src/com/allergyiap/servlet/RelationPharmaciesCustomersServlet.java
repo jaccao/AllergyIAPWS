@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.allergy.service.AllergyService;
 import com.allergy.service.CustomerService;
 import com.allergy.service.ProductCatalogService;
 import com.allergy.service.RelationPharmaciesCustomersService;
@@ -52,7 +51,7 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			response.sendRedirect("Relations");
+			response.sendRedirect("Customers");
 		}
 
 	}
@@ -68,7 +67,7 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			saveRelation(request, response);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			response.sendRedirect("Relations");
+			response.sendRedirect("Customers");
 		}
 
 	}
@@ -78,41 +77,19 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 		int id_customer = Integer.parseInt(request.getParameter("idcustomer"));
 		int id_pharmacy = Integer.parseInt(request.getParameter("idpharmacy"));
 		RelationPharmaciesCustomersService.delete(id_customer,id_pharmacy);
-		response.sendRedirect("Relations");
+		response.sendRedirect("Customers");
 	}
 
 	private void saveRelation(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession(false);
-		Customer customer = (Customer) session.getAttribute("User");
 
-		int id = 0;
-		String name = request.getParameter("name");
-		long allergy = new Long(request.getParameter("allergy"));
-		String description = request.getParameter("description");
-		String url = request.getParameter("url");
-		
-		if(customer.getUser_mail().equals("admin")){
-			customer = (Customer) CustomerService.get(new Long(request.getParameter("customer")));
-		}
 
-		if (request.getParameter("id") != null) { // Edit Product
-			id = Integer.parseInt(request.getParameter("id"));
-			ProductCatalog c = new ProductCatalog(id, allergy, customer.getIdcustomer(), name, description, url);
-			ProductCatalogService.update(c);
-			
-		} else { // New Product
-			ProductCatalog p = new ProductCatalog(allergy, customer.getIdcustomer(), name, description, url);
-			ProductCatalogService.insert(p);
-		}
-
-		response.sendRedirect("Relations");
+		response.sendRedirect("Customers");
 	}
 
 	private void listRelations(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("LLISTEM FARMACIES");
 		int id = Integer.parseInt(request.getParameter("idcustomer"));
+		request.setAttribute("idcustomer",id);
 		List<Pharmacy> pharmacies = RelationPharmaciesCustomersService.getPharmaciesByCustomer(id);
 		request.setAttribute("pharmacies", pharmacies);
 		try {
@@ -125,7 +102,6 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 
 	private void newRelation(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("NOVA RELACIÓ");
 		request.getRequestDispatcher("WEB-INF/pages/new-relation.jsp").forward(request, response);
 
 	}
