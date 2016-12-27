@@ -11,34 +11,36 @@
 		<div id="main" class="row">
 			<div class="container-fluid">
 				<div class="col-sm-8 col-sm-offset-2">
-					<h2>Edit Customer</h2>
+					<h2>Edit Pharmacy</h2>
 			        <div class="panel panel-default">
-			            <div class="panel-heading text-left">Edit Customer</div>
+			            <div class="panel-heading text-left">Edit Pharmacy</div>
 			            <div class="panel-body">
 			
-			                <form id="form-centers" action="Customers?action=edit&id=${c.idcustomer}" method="POST" role="form" >
+			                <form id="form-centers" action="Pharmacies?action=edit&id_pharmacy=${p.id_pharmacy}" method="POST" role="form" >
 			                    
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="nUserName" name="nUserName" value="${c.user_mail}" placeholder="User Name" required>
+					                        <input type="text" class="form-control" id="nPharmacyName" name="nPharmacyName" value="${p.name_pharmacy}" placeholder="Pharmacy Name" required>
 					                    </div>
-					
-									</div>		
-									<div class="col-md-6">
-					                    <!-- Password -->
+					                </div>
+					                 
+					                <div class="col-md-6">
+					                    <!-- Latitude -->
 					                    <div class="form-group btn-xs">
-					                        <input type="password" class="form-control" id="nUserPassword" name="nUserPassword" value="${c.user_password}" placeholder="Password" required>
+					                        <input type="text" class="form-control" id="nLatitude" name="nLatitude" value="${p.latitude}" placeholder="Latitude" required>
 					                    </div>
-				
-									</div>	  
-									<div class="col-md-6">                  
-										<!-- Company Name -->
-					                    <div class="form-group btn-xs">
-					                    	<input type="text" class="form-control" id="nCompanyName" name="nCompanyName" value="${c.company_name}" placeholder="Company Name" required>
-					                    </div>
+					                    
 									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+					                    <!-- Longitude -->
+					                    <div class="form-group btn-xs">
+					                        <input type="text" class="form-control" id="nLongitude" name="nLongitude" value="${p.longitude}" placeholder="Longitude" required>
+					                    </div>
+					                </div>  
 								</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">

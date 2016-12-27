@@ -17,6 +17,7 @@ public class UserDao extends Dao<User>{
 	private static String user_second_name = "user_second_name";
 	private static String user_mail = "user_mail";
 	private static String user_password = "user_password";
+	private static String user_station_default = "user_station_default";
 
 	@Override
 	public void insert(User bean) {
@@ -27,14 +28,16 @@ public class UserDao extends Dao<User>{
 		query.append(user_name + ", ");
 		query.append(user_second_name + ", ");
 		query.append(user_mail + ", ");
-		query.append(user_password + " ");
+		query.append(user_password + ", ");
+		query.append(user_station_default + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" ('");
 		query.append(bean.getUser_name() + "', '");
 		query.append(bean.getUser_second_name() + "', '");
 		query.append(bean.getUser_mail() + "', '");
-		query.append(bean.getUser_password() + "' ");
+		query.append(bean.getUser_password() + "', '");
+		query.append(bean.getUser_station_default() + "' ");
 		query.append(") ");
 		db.executeUpdate(query.toString());
 		
@@ -49,7 +52,8 @@ public class UserDao extends Dao<User>{
 		query.append(user_name + " = '" + bean.getUser_name() + "', ");
 		query.append(user_second_name + " = '" + bean.getUser_second_name() + "', ");
 		query.append(user_mail + " = '" + bean.getUser_mail() + "', ");
-		query.append(user_password + " = '" + bean.getUser_password() + "' ");
+		query.append(user_password + " = '" + bean.getUser_password() + "', ");
+		query.append(user_station_default +"= '"+bean.getUser_station_default() + "' ");
 		query.append(" WHERE ");
 		query.append(iduser + " = " + bean.getIduser());
 
@@ -88,8 +92,9 @@ public class UserDao extends Dao<User>{
 				String secondName = rs.getString(user_second_name);
 				String mail = rs.getString(user_mail);
 				String password = rs.getString(user_password);
+				String location = rs.getString(user_station_default);
 
-				list.add(new User(id, name, secondName, mail, password));
+				list.add(new User(id, name, secondName, mail, password, location));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

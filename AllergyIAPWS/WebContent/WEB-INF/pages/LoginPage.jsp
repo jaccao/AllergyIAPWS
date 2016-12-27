@@ -24,7 +24,7 @@
 			                    <div class="form-group btn-xs">
 			                        <div class="input-group">
 			                            <span class="input-group-addon" id="iconmail"><i class="fa fa-user"></i></span>
-			                            <input type="text" class="form-control" name="user_name" value="" placeholder="Name" aria-describedby="iconmail">
+			                            <input type="text" class="form-control" name="user_name" value="" placeholder="Mail" aria-describedby="iconmail">
 			                        </div>
 			                    </div>
 			                    <div class="form-group btn-xs">

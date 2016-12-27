@@ -5,30 +5,25 @@ public class Customer implements java.io.Serializable {
 	private static final long serialVersionUID = 2L;
 
 	private long idcustomer;
-	private String user_name;
+	private String user_mail;
 	private String user_password;
 	private String company_name;
-	private String pharmacy_location;
 	
 	
-	public Customer(long idcustomer, String userName, String userPassword, String companyName, String pharmacy_location) {
+	public Customer(long idcustomer, String userMail, String userPassword, String companyName) {
 		this.idcustomer = idcustomer;
-		this.user_name = userName;
+		this.user_mail = userMail;
 		this.user_password = userPassword;
 		this.company_name = companyName;
-		this.pharmacy_location = pharmacy_location;
 	}
 
-	public Customer(String userName, String userPassword, String companyName, String pharmacy_location) {
-		this.user_name = userName;
+	public Customer(String userMail, String userPassword, String companyName) {
+		this.user_mail = userMail;
 		this.user_password = userPassword;
 		this.company_name = companyName;
-		this.pharmacy_location = pharmacy_location;
 	}
 
-	public Customer() {
-
-	}
+	public Customer() {}
 
 	public long getIdcustomer() {
 		return idcustomer;
@@ -38,12 +33,12 @@ public class Customer implements java.io.Serializable {
 		this.idcustomer = idcustomer;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public String getUser_mail() {
+		return user_mail;
 	}
 
-	public void setUser_name(String userName) {
-		this.user_name = userName;
+	public void setUser_mail(String userMail) {
+		this.user_mail = userMail;
 	}
 
 	public String getUser_password() {
@@ -61,12 +56,8 @@ public class Customer implements java.io.Serializable {
 	public void setCompany_name(String companyName) {
 		this.company_name = companyName;
 	}
-	
-	public String getPharmacy_location() {
-		return pharmacy_location;
-	}
 
 	public boolean isAdmin(){
-		return this.user_name.equals("admin");
+		return this.user_mail.equals("admin");
 	}
 }

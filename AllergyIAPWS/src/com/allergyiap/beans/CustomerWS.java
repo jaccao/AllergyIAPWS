@@ -5,12 +5,10 @@ public class CustomerWS implements java.io.Serializable{
 
 	private long idcustomer;
 	private String company_name;
-	private String pharmacy_location;
 	
 	public CustomerWS(Customer customer){
 		this.idcustomer = customer.getIdcustomer();
 		this.company_name = customer.getCompany_name();
-		this.pharmacy_location = customer.getPharmacy_location();
 	}
 
 	public CustomerWS() {
@@ -33,8 +31,5 @@ public class CustomerWS implements java.io.Serializable{
 		this.company_name = companyName;
 	}
 	
-	public String getPharmacy_location() {
-		return pharmacy_location;
-	}
 
 }

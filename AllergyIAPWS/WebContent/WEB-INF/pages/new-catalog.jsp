@@ -19,14 +19,12 @@
 			            <div class="panel-body">
 			
 			                <form id="form-centers" action="ProductCatalog?action=new" method="POST" role="form">
-			                   
 			                    <div class="row">
 			                    	<div class="col-md-6">
 					                    <!-- Name -->
 					                    <div class="form-group btn-xs">
 					                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
 					                    </div>
-					
 									</div>		
 									<div class="col-md-6">
 					                    <!-- Allergy -->
@@ -39,45 +37,36 @@
 					                    </div>
 									</div>
 								</div>
-								<% if(user.isAdmin()){ %>	  
 								<div class="row">
 									<div class="col-md-6">                  
 										<!-- Description -->
 					                    <div class="form-group btn-xs">
 					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description"></textarea>
 					                    </div>
-									</div>	
+									</div>
+									<% if(user.isAdmin()){ %>	
 										<div class="col-md-6">
 						                    <!-- User Id --> 
 						                    <div class="form-group btn-xs">
 						                        Select the customer ID
 						                    	<select class="form-control" id="customer" name="customer">
 						                    	<c:forEach items="${customers}" var="customer">
-						                    		<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_name}</option>
+						                    		<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_mail}</option>
 						                    	</c:forEach>
 						                    	</select>
 						                    </div>
 										</div>
-									</div>
-									<div class="col-md-6 col-centered">
-										Image Upload:<input type="file" name="fileName">
-									</div>
-									<%} %>
-									
-									<% if(!user.isAdmin()){ %>	  
-								<div class="row">
-									<div class="col-md-6">                  
-										<!-- Description -->
-					                    <div class="form-group btn-xs">
-					                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description"></textarea>
+										<%} %>
+										</div>
+										<div class="row">
+										<div class="col-md-12">                  
+										<!-- Image URL -->
+										<div class="input-group">
+  											<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  											<input type="text" class="form-control" placeholder="Image URL" id="url" name="url" aria-describedby="basic-addon3">
+										</div>
 					                    </div>
 									</div>
-									<div class="col-md-6">
-										Image Upload:<input type="file" name="fileName">
-									</div>
-									</div>
-									<%} %>
-									
 								</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">

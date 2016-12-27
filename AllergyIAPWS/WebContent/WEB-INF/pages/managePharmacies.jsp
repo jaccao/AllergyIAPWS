@@ -14,12 +14,12 @@
 			<div class="container-fluid">
 
 			<div class="col-sm-10 col-sm-offset-1">
-				<h2>Products</h2>
+				<h2>Pharmacies related to customer ${idcustomer}</h2>
 				<div class="panel panel-default">
 					
 				<div class="panel-heading text-right">
-					<a class="btn btn-success" href="ProductCatalog?action=new">
-						<i class="fa fa-plus"></i> New Product
+					<a class="btn btn-success" href="Relations?action=new&idcustomer=${idcustomer}">
+						<i class="fa fa-plus"></i> New 
 					</a>
 				</div>
 					
@@ -28,36 +28,24 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th>Image</th>
 									<th>Id</th>
 									<th>Name</th>
-									<th>Description</th>
-									<th>Allergy</th>
-									<% if(user.isAdmin()){%><th>Customer</th><%} %>
+									<th>Latitude</th>
+									<th>Longitude</th>
 									<th style="width: 15%"></th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${products}" var="p">
+								<c:forEach items="${pharmacies}" var="p">
 									<tr>
-										<td><img src="${p.product_url_image}" alt="Product Image" style="width:25px;height:25px;"></td>
-										
-										<td>${p.idproduct_catalog}</td>
-										<td>${p.product_name}</td>
-										<td>${p.product_description}</td>
-										<td>${p.allergy.allergy_name}</td>
-										<% if(user.isAdmin()){%>
-										<td>${p.customer.user_mail}</td>
-										<%} %>
+										<td>${p.id_pharmacy}</td>
+										<td>${p.name_pharmacy}</td>
+										<td>${p.latitude}</td>
+										<td>${p.longitude}</td>
 										<td>
-											<a class="btn btn-warning" href="ProductCatalog?action=edit&id=${p.idproduct_catalog}"> 
-												<i class="fa fa-pencil"></i>
-											</a>
-										
-											<a class="btn btn-danger" href="ProductCatalog?action=delete&id=${p.idproduct_catalog}">
+											<a class="btn btn-danger" href="Relations?action=delete&idcustomer=${idcustomer}&idpharmacy=${p.id_pharmacy}">
 												<i class="fa fa-trash-o"></i>
 											</a>
-										
 										</td>
 									</tr>
 								</c:forEach>

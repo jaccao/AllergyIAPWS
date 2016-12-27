@@ -8,28 +8,30 @@ public class ProductCatalog implements java.io.Serializable {
 	private long customer_idcustomer;
 	private String product_name;
 	private String product_description;
+	private String product_url_image;
 	
 	private Allergy allergy;
 	private Customer customer;
 
 	public ProductCatalog(long idproduct_catalog, long allergy_idallergy, long customer_idcustomer, String product_name,
-			String product_description) {
+			String product_description, String product_url_image) {
 		this.idproduct_catalog = idproduct_catalog;
 		this.allergy_idallergy = allergy_idallergy;
 		this.customer_idcustomer = customer_idcustomer;
 		this.product_name = product_name;
 		this.product_description = product_description;
+		this.product_url_image = product_url_image;
 		this.allergy = new Allergy();
 	}
 
 	public ProductCatalog(long allergy_idallergy, long customer_idcustomer, String product_name,
-			String product_description) {
+			String product_description, String product_url_image) {
 
-		this(0, allergy_idallergy, customer_idcustomer, product_name, product_description);
+		this(0, allergy_idallergy, customer_idcustomer, product_name, product_description, product_url_image);
 	}
 
 	public ProductCatalog() {
-		this(0, 0, 0, "", "");
+		this(0, 0, 0, "", "", "");
 	}
 
 	public long getIdproduct_catalog() {
@@ -87,6 +89,10 @@ public class ProductCatalog implements java.io.Serializable {
 	public Customer getCustomer() {
 		return customer;
 	}
+	
+	public String getProduct_url_image(){
+		return product_url_image;
+	}
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
@@ -102,5 +108,9 @@ public class ProductCatalog implements java.io.Serializable {
 
 	public void setProduct_description(String productDescription) {
 		this.product_description = productDescription;
+	}
+	
+	public void setProduct_url_image(String product_url_image){
+		this.product_url_image = product_url_image;
 	}
 }

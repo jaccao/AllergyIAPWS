@@ -1,7 +1,9 @@
 package com.allergyiap.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,7 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.allergy.service.CustomerService;
+import com.allergy.service.PharmacyService;
+import com.allergy.service.RelationPharmaciesCustomersService;
 import com.allergyiap.beans.Customer;
+import com.allergyiap.beans.Pharmacy;
 
 /**
  * Servlet implementation class CustomerServlet
@@ -50,7 +55,6 @@ public class CustomerServlet extends HttpServlet {
 			} else if (action.equals("delete")) {
 				deleteCustomer(request, response);
 			}
-
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -63,7 +67,6 @@ public class CustomerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
 			String action = (String) request.getParameter("action");
 
@@ -80,8 +83,12 @@ public class CustomerServlet extends HttpServlet {
 	private void listCustomers(HttpServletRequest request, HttpServletResponse response) {
 
 		List<Customer> customers = CustomerService.getAll();
-
-		request.setAttribute("customers", customers);
+		Map<Customer, List<Pharmacy>> relations = new HashMap<Customer, List<Pharmacy>>();
+		for(Customer c: customers){
+			List<Pharmacy> p = RelationPharmaciesCustomersService.getPharmaciesByCustomer(c.getIdcustomer());
+			relations.put(c, p);
+		}
+		request.setAttribute("customers", relations);
 		try {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/customersList.jsp");
 			rd.forward(request, response);
@@ -97,19 +104,11 @@ public class CustomerServlet extends HttpServlet {
 		if (request.getParameter("id") != null) {
 			id = Integer.parseInt(request.getParameter("id"));
 		}
-		String userName = request.getParameter("nUserName");
+		String userMail = request.getParameter("nUserName");
 		String userPass = request.getParameter("nUserPassword");
 		String companyName = request.getParameter("nCompanyName");
-		String pharmacy_location = request.getParameter("nPharmacyLocation");
-		
-		String regex_coords = "([+-]?\\d+\\.?\\d+)\\s*,\\s*([+-]?\\d+\\.?\\d+)";
-        Pattern p = Pattern.compile(regex_coords);
-        Matcher m = p.matcher(pharmacy_location);
-        while (m.find()) {
-            System.out.println("Is Valid Map Coordinate: " + m.group());
-        }
 
-		Customer c = new Customer(id, userName, userPass, companyName, pharmacy_location);
+		Customer c = new Customer(id, userMail, userPass, companyName);
 
 		if (id != 0) {
 			CustomerService.update(c);
@@ -136,13 +135,12 @@ public class CustomerServlet extends HttpServlet {
 
 	private void newCustomer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		request.getRequestDispatcher("WEB-INF/pages/new-customer.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("WEB-INF/pages/new-relation.jsp").forward(request, response);
 
 	}
 
 	private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("idcustomer"));
 
 		CustomerService.delete(id);

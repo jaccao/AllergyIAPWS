@@ -52,9 +52,7 @@
 						                    <div class="form-group btn-xs">
 						                    	<textarea class="form-control" id="description" name="description" maxlength="100" rows="2" aria-describedby="iconbody" placeholder="Description">${p.product_description}</textarea>
 						                    </div>
-										</div>
-										
-										
+									</div>
 					                    <% if(user.isAdmin()){ %>
 					                    <div class="col-md-6">
 					                    <!-- Customer ID -->
@@ -64,10 +62,10 @@
 					                    	<c:forEach items="${customers}" var="customer">
 					                    		<c:choose>
 					                    		<c:when test="${customer.idcustomer == p.customer_idcustomer }">
-					                    			<option value="${customer.idcustomer}" selected>ID (${customer.idcustomer}) - ${customer.user_name}</option>
+					                    			<option value="${customer.idcustomer}" selected>ID (${customer.idcustomer}) - ${customer.user_mail}</option>
 					                    		</c:when>
 					                    		<c:otherwise>
-					                    			<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_name}</option>
+					                    			<option value="${customer.idcustomer}">ID (${customer.idcustomer}) - ${customer.user_mail}</option>
 					                    		</c:otherwise>
 					                    		</c:choose>
 					                    	</c:forEach>
@@ -75,6 +73,13 @@
 					                    </div>
 										</div>
 										<%} %>
+									<div class="col-md-12">                  
+										<!-- Image URL -->
+										<div class="input-group">
+  											<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  											<textarea type="text" class="form-control" style="resize:none" placeholder="Image URL" id="url" name="url" rows="1" aria-describedby="basic-addon3">${p.product_url_image}</textarea>
+										</div>
+					                    </div>
 									</div>
 									</div>	 
 									</div>		

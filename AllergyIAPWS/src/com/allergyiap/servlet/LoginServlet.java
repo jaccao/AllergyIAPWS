@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 			if (!user.isEmpty() && !pass.isEmpty()) {
 
 				if (user.equals("admin") && pass.equals("admin")) {
-					customer = new Customer(user, pass, "Admin","");
+					customer = new Customer(user, pass, "Admin");
 				} else {
 					customer = CustomerService.get(user, pass);
 				}
@@ -57,14 +57,13 @@ public class LoginServlet extends HttpServlet {
 				// setting session to expiry in 30 mins
 				session.setMaxInactiveInterval(30 * 60);
 
-				Cookie userName = new Cookie("username", customer.getUser_name());
+				Cookie userName = new Cookie("username", customer.getUser_mail());
 				// Cookie password = new Cookie("password",
 				// customer.getPassword());
 				userName.setMaxAge(30 * 60);
 				// password.setMaxAge(30 * 60);
 				response.addCookie(userName);
 				// response.addCookie(password);
-
 				response.sendRedirect("index.jsp");
 			} else {
 				// response.sendRedirect("WEB-INF/pages/InvalidLogin.jsp"); //

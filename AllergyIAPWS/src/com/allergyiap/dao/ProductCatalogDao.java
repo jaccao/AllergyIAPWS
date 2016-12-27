@@ -16,6 +16,7 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 	private static String customer_idcustomer = "customer_idcustomer";
 	private static String product_name = "product_name";
 	private static String product_description = "product_description";
+	private static String product_url_image = "product_url_image";
 
 	/**
 	 * 
@@ -29,14 +30,16 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 		query.append(allergy_idallergy + ", ");
 		query.append(customer_idcustomer + ", ");
 		query.append(product_name + ", ");
-		query.append(product_description + " ");
+		query.append(product_description + ", ");
+		query.append(product_url_image + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" (");
 		query.append("'" + bean.getAllergy_idallergy() + "', ");
 		query.append("'" + bean.getCustomer_idcustomer() + "', ");
 		query.append("'" + bean.getProduct_name() + "', ");
-		query.append("'" + bean.getProduct_description() + "' ");
+		query.append("'" + bean.getProduct_description() + "', ");
+		query.append("'" + bean.getProduct_url_image() + "'");
 		query.append(") ");
 
 		db.executeUpdate(query.toString());
@@ -52,7 +55,8 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 		query.append(allergy_idallergy + " = '" + bean.getAllergy_idallergy() + "', ");
 		query.append(customer_idcustomer + " = '" + bean.getCustomer_idcustomer() + "', ");
 		query.append(product_name + " = '" + bean.getProduct_name() + "', ");
-		query.append(product_description + " = '" + bean.getProduct_description() + "' ");
+		query.append(product_description + " = '" + bean.getProduct_description() + "', ");
+		query.append(product_url_image + " = '" + bean.getProduct_url_image() + "'");
 		query.append(" WHERE ");
 		query.append(idproduct_catalog + " = " + bean.getIdproduct_catalog());
 
@@ -91,8 +95,9 @@ public class ProductCatalogDao extends Dao<ProductCatalog> {
 				long idcustomer = rs.getLong(customer_idcustomer);
 				String name = rs.getString(product_name);
 				String description = rs.getString(product_description);
+				String url = rs.getString(product_url_image);
 
-				list.add(new ProductCatalog(idlevel, idallergy, idcustomer, name, description));
+				list.add(new ProductCatalog(idlevel, idallergy, idcustomer, name, description, url));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

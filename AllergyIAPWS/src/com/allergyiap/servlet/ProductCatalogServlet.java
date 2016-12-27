@@ -106,23 +106,20 @@ public class ProductCatalogServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		long allergy = new Long(request.getParameter("allergy"));
 		String description = request.getParameter("description");
+		String url = request.getParameter("url");
 		
-		if(customer.getUser_name().equals("admin")){
+		if(customer.getUser_mail().equals("admin")){
 			customer = (Customer) CustomerService.get(new Long(request.getParameter("customer")));
 		}
 
 		if (request.getParameter("id") != null) { // Edit Product
 			id = Integer.parseInt(request.getParameter("id"));
-			ProductCatalog c = new ProductCatalog(id, allergy, customer.getIdcustomer(), name, description);
+			ProductCatalog c = new ProductCatalog(id, allergy, customer.getIdcustomer(), name, description, url);
 			ProductCatalogService.update(c);
 			
 		} else { // New Product
-			
-			ProductCatalog p = new ProductCatalog(allergy, customer.getIdcustomer(), name, description);
+			ProductCatalog p = new ProductCatalog(allergy, customer.getIdcustomer(), name, description, url);
 			ProductCatalogService.insert(p);
-			 
-			//Implement Upload Images
-			//saveImage(request, id);
 		}
 
 		response.sendRedirect("ProductCatalog");
@@ -174,64 +171,4 @@ public class ProductCatalogServlet extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/pages/new-catalog.jsp").forward(request, response);
 
 	}
-
-	private void saveImage(HttpServletRequest request, int id) {
-
-		System.out.println("saveImage");
-		
-		InputStream inputStream = null;
-		FileOutputStream outputStream = null;
-
-		try {
-			for (Part part : request.getParts()) {
-				inputStream = request.getPart(part.getName()).getInputStream();
-				int i = inputStream.available();
-				byte[] b = new byte[i];
-				inputStream.read(b);
-
-				System.out.println("Length : " + b.length);
-
-				// Finding the fileName //
-				String fileName = "";
-				String partHeader = part.getHeader("content-disposition");
-
-				System.out.println("Part Header = " + partHeader);
-				System.out.println("part.getHeader(content-disposition) = " + part.getHeader("content-disposition"));
-
-				for (String temp : part.getHeader("content-disposition").split(";")) {
-					if (temp.trim().startsWith("filename")) {
-						fileName = temp.substring(temp.indexOf('=') + 1).trim().replace("\"", "");
-					}
-				}
-
-				String uploadDir = System.getProperty("jboss.server.base.dir") + "/upload";
-				System.out.println("File will be Uploaded at: " + uploadDir + "/" + fileName);
-				outputStream = new FileOutputStream(uploadDir + "/" + fileName);
-				outputStream.write(b);
-				inputStream.close();
-
-			}
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		} finally {
-			if (inputStream != null) {
-				try {
-					inputStream.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			if (outputStream != null) {
-				try {
-					outputStream.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
 }
