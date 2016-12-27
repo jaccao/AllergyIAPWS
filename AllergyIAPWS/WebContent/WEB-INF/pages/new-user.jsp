@@ -45,13 +45,13 @@
 									<div class="col-md-6">
 					                    <!-- Weekdays -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="weekdays" name="weekdays" placeholder="Weekdays String" required>
+					                        <input type="text" class="form-control" id="weekdays" name="weekdays" placeholder="Weekdays String" >
 					                    </div>
 									</div>
 									<div class="col-md-6">
 					                    <!-- Time -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="time" name="time" placeholder="Time" required>
+					                        <input type="text" class="form-control" id="time" name="time" placeholder="Time" >
 					                    </div>
 									</div>
 									<div class="col-md-6">

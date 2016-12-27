@@ -51,13 +51,13 @@
 									<div class="col-md-6">
 					                    <!-- Weekdays -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="weekdays" name="weekdays" value="${u.alarm_weekdays}" placeholder="Weekdays String" required>
+					                        <input type="text" class="form-control" id="weekdays" name="weekdays" value="${u.alarm_weekdays}" placeholder="Weekdays String">
 					                    </div>
 									</div>
 									<div class="col-md-6">
 					                    <!-- Time -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="time" name="time" value="${u.alarm_time}" placeholder="Time" required>
+					                        <input type="text" class="form-control" id="time" name="time" value="${u.alarm_time}" placeholder="Time">
 					                    </div>
 									</div>
 									<div class="col-md-6">
