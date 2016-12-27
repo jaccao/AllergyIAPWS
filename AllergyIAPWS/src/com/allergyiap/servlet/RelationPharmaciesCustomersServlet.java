@@ -53,7 +53,8 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			response.sendRedirect("Customers");
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
 		}
 
 	}
@@ -69,7 +70,8 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			saveRelation(request, response);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			response.sendRedirect("Customers");
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
 		}
 
 	}
@@ -78,7 +80,13 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		int id_customer = Integer.parseInt(request.getParameter("idcustomer"));
 		int id_pharmacy = Integer.parseInt(request.getParameter("idpharmacy"));
-		RelationPharmaciesCustomersService.delete(id_customer,id_pharmacy);
+		try{
+			RelationPharmaciesCustomersService.delete(id_customer,id_pharmacy);
+		}catch(Exception ex){
+			ex.printStackTrace();
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
+		}
 		response.sendRedirect("Customers");
 	}
 
@@ -86,20 +94,28 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int idcustomer = Integer.parseInt(request.getParameter("idcustomer"));
 		int idpharmacy = Integer.parseInt(request.getParameter("pharmacy"));
-		RelationPharmaciesCustomersService.insert(new RelationPharmaciesCustomers(idpharmacy, idcustomer));
+		try{
+			RelationPharmaciesCustomersService.insert(new RelationPharmaciesCustomers(idpharmacy, idcustomer));
+		}catch(Exception ex){
+			ex.printStackTrace();
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
+		}
 		response.sendRedirect("Customers");
 	}
 
-	private void listRelations(HttpServletRequest request, HttpServletResponse response) {
+	private void listRelations(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int id = Integer.parseInt(request.getParameter("idcustomer"));
 		request.setAttribute("idcustomer",id);
-		List<Pharmacy> pharmacies = RelationPharmaciesCustomersService.getPharmaciesByCustomer(id);
-		request.setAttribute("pharmacies", pharmacies);
 		try {
+			List<Pharmacy> pharmacies = RelationPharmaciesCustomersService.getPharmaciesByCustomer(id);
+			request.setAttribute("pharmacies", pharmacies);
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/managePharmacies.jsp");
 			rd.forward(request, response);
-		} catch (Exception ex) {
+		}catch(Exception ex){
 			ex.printStackTrace();
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
 		}
 	}
 
@@ -107,8 +123,15 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("idcustomer"));
 		request.setAttribute("idcustomer",id);
-		request.setAttribute("pharmacies", PharmacyService.getAll());
-		request.getRequestDispatcher("WEB-INF/pages/new-relation.jsp").forward(request, response);
+		List<Pharmacy> p = PharmacyService.getNewPharmacies(id);
+		request.setAttribute("pharmacies", p);
+		try{
+			request.getRequestDispatcher("WEB-INF/pages/new-relation.jsp").forward(request, response);
+		}catch(Exception ex){
+			ex.printStackTrace();
+			String referer = request.getHeader("Referer");
+			response.sendRedirect(referer);
+		}
 
 	}
 }

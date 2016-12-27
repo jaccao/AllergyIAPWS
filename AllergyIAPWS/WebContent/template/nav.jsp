@@ -16,10 +16,18 @@
 %>
 
 <ul class="nav navbar-nav navbar-antisida">
-
 	<li class=""><a href="ProductCatalog"> <span
 			class="glyphicon glyphicon-th-list"></span> Products
 	</a></li>
+	<%
+		if (!user.isAdmin()) {
+	%>
+		<li class=""><a href="Relations?action=new&idcustomer=1"> <span class="fa fa-medkit"></span>
+			Add new pharmacy related
+	</a></li>
+	<%
+		}
+	%>
 
 	<%
 		if (user.isAdmin()) {

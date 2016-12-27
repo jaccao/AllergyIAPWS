@@ -24,6 +24,10 @@ public class PharmacyService {
 	public static Pharmacy get(long id_pharmacy) {
 		return dao.get(id_pharmacy);
 	}
+	
+	public static List<Pharmacy> getNewPharmacies(int id_customer){
+		return dao.getNewPharmacies(id_customer);
+	}
 
 	public static List<Pharmacy> getAll() {
 		return dao.getAll();
