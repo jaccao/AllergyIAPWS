@@ -10,25 +10,33 @@ public class User implements java.io.Serializable {
 	private String user_password;
 	private String user_mail;
 	private String user_station_default;
+	private String alarm_weekdays;
+	private String alarm_time;
 
 	public User() {
 	}
 
-	public User(long id, String userName, String userSecondName, String userMail, String userPassword, String user_station_default) {
+	public User(long id, String userName, String userSecondName, String userMail, String userPassword,
+			String user_station_default, String alarm_weekdays, String alarm_time) {
 		this.iduser = id;
 		this.user_name = userName;
 		this.user_second_name = userSecondName;
 		this.user_password = userPassword;
 		this.user_mail = userMail;
 		this.user_station_default = user_station_default;
+		this.alarm_weekdays = alarm_weekdays;
+		this.alarm_time = alarm_time;
 	}
 	
-	public User(String userName, String userSecondName, String userMail, String userPassword, String user_station_default) {
+	public User(String userName, String userSecondName, String userMail, String userPassword,
+			String user_station_default, String alarm_weekdays, String alarm_time) {
 		this.user_name = userName;
 		this.user_second_name = userSecondName;
 		this.user_password = userPassword;
 		this.user_mail = userMail;
 		this.user_station_default = user_station_default;
+		this.alarm_weekdays = alarm_weekdays;
+		this.alarm_time = alarm_time;
 	}
 
 	public long getIduser() {
@@ -37,6 +45,22 @@ public class User implements java.io.Serializable {
 
 	public void setIduser(long id) {
 		this.iduser = id;
+	}
+	
+	public String getAlarm_weekdays() {
+		return alarm_weekdays;
+	}
+
+	public void setAlarm_weekdays(String alarm_weekdays) {
+		this.alarm_weekdays = alarm_weekdays;
+	}
+	
+	public String getAlarm_time() {
+		return alarm_time;
+	}
+
+	public void setAlarm_time(String alarm_time) {
+		this.alarm_time = alarm_time;
 	}
 
 	public String getUser_name() {

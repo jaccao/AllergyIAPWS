@@ -34,6 +34,8 @@
 									<th>Mail</th>
 									<th>Password</th>
 									<th>Default location</th>
+									<th>Weekdays</th>
+									<th>Time</th>
 									<th style="width: 15%"></th>
 								</tr>
 							</thead>
@@ -46,6 +48,8 @@
 										<td>${u.user_mail}</td>
 										<td>${u.user_password}</td>
 										<td>${u.user_station_default}</td>
+										<td>${u.alarm_weekdays}</td>
+										<td>${u.alarm_time}</td>
 										<td>
 											<a class="btn btn-warning" href="Users?action=edit&id=${u.iduser}"> 
 												<i class="fa fa-pencil"></i>
