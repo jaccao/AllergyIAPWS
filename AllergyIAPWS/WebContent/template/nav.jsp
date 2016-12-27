@@ -22,8 +22,8 @@
 	<%
 		if (!user.isAdmin()) {
 	%>
-		<li class=""><a href="Relations?action=new&idcustomer=1"> <span class="fa fa-medkit"></span>
-			Add new pharmacy related
+		<li class=""><a href="Relations?idcustomer=1"> <span class="fa fa-medkit"></span>
+			Manage pharmacies relations
 	</a></li>
 	<%
 		}

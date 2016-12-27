@@ -53,8 +53,6 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			String referer = request.getHeader("Referer");
-			response.sendRedirect(referer);
 		}
 
 	}
@@ -70,8 +68,6 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			saveRelation(request, response);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			String referer = request.getHeader("Referer");
-			response.sendRedirect(referer);
 		}
 
 	}
@@ -84,10 +80,10 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			RelationPharmaciesCustomersService.delete(id_customer,id_pharmacy);
 		}catch(Exception ex){
 			ex.printStackTrace();
-			String referer = request.getHeader("Referer");
-			response.sendRedirect(referer);
 		}
-		response.sendRedirect("Customers");
+		String referer = request.getHeader("Referer");
+		System.out.println("DELETE URL: "+referer);
+		response.sendRedirect(referer);
 	}
 
 	private void saveRelation(HttpServletRequest request, HttpServletResponse response)
@@ -98,10 +94,11 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			RelationPharmaciesCustomersService.insert(new RelationPharmaciesCustomers(idpharmacy, idcustomer));
 		}catch(Exception ex){
 			ex.printStackTrace();
-			String referer = request.getHeader("Referer");
-			response.sendRedirect(referer);
 		}
-		response.sendRedirect("Customers");
+		String referer = request.getHeader("Referer");
+		System.out.println("SAVE URL: "+referer);
+		response.sendRedirect(referer);
+		
 	}
 
 	private void listRelations(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -114,8 +111,6 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			rd.forward(request, response);
 		}catch(Exception ex){
 			ex.printStackTrace();
-			String referer = request.getHeader("Referer");
-			response.sendRedirect(referer);
 		}
 	}
 
@@ -129,8 +124,6 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/pages/new-relation.jsp").forward(request, response);
 		}catch(Exception ex){
 			ex.printStackTrace();
-			String referer = request.getHeader("Referer");
-			response.sendRedirect(referer);
 		}
 
 	}

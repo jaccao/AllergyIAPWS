@@ -98,9 +98,7 @@ public class PharmacyDao extends Dao<Pharmacy> {
 			Set<Pharmacy> foo = new HashSet<Pharmacy>(RelationPharmaciesCustomersService.getPharmaciesByCustomer(idcustomer)) ;
 			Set<Pharmacy> all = new HashSet<Pharmacy>(PharmacyService.getAll());
 			for(Pharmacy m : all){
-				System.out.println("ELEM: "+m.getId_pharmacy());
 				if(!foo.contains(m)){
-					System.out.print("TRUE");
 					p.add(m);
 				}
 			}

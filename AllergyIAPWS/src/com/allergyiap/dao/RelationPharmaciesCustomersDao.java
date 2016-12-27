@@ -94,7 +94,7 @@ public class RelationPharmaciesCustomersDao extends Dao<RelationPharmaciesCustom
 			e.printStackTrace();
 			return null;
 		}
-		return list.isEmpty() ? null : list;
+		return list;
 	}
 
 	public List<Pharmacy> getPharmaciesByCustomer(long idcustomer) {
@@ -111,7 +111,7 @@ public class RelationPharmaciesCustomersDao extends Dao<RelationPharmaciesCustom
 			e.printStackTrace();
 			return null;
 		}
-		return pharmacies.isEmpty() ? null : pharmacies;
+		return pharmacies;
 	}
 
 }
