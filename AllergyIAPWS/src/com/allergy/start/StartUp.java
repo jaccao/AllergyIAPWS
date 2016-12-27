@@ -83,7 +83,9 @@ public class StartUp {
 							+ "  user_second_name TEXT  DEFAULT '' NOT NULL ,"
 							+ "  user_mail TEXT UNIQUE NOT NULL ,"
 							+ "  user_password TEXT  DEFAULT '' NOT NULL ,"
-							+ "  user_station_default TEXT NOT NULL,"
+							+ "  user_station_default TEXT NOT NULL ,"
+							+ "  alarm_weekdays TEXT DEFAULT '' NOT NULL , "
+							+ "  alarm_time TIME ,"
 							+ "  PRIMARY KEY(iduser));";
 					
 					String sql_pharmacy_table = "" + "CREATE TABLE IF NOT EXISTS pharmacy ("
@@ -101,6 +103,15 @@ public class StartUp {
 							+ "  ON DELETE CASCADE ON UPDATE RESTRICT,"
 							+ "  FOREIGN KEY(id_pharmacy) REFERENCES pharmacy(id_pharmacy)"
 							+ "  ON DELETE CASCADE ON UPDATE RESTRICT);";
+
+					String sql_users_allergies = "" + "CREATE TABLE IF NOT EXISTS user_allergies ("
+							+ "  id_user INTEGER NOT NULL , "
+							+ "  id_allergy INTEGER NOT NULL ,"
+							+ "  PRIMARY KEY (id_user, id_allergy), "
+							+ "  FOREIGN KEY(id_user) REFERENCES user_information(iduser)"
+							+ "  ON DELETE CASCADE ON UPDATE RESTRICT,"
+							+ "  FOREIGN KEY(id_allergy) REFERENCES allergy(idallergy)"
+							+ "  ON DELETE CASCADE ON UPDATE RESTRICT);";
 										
 					stm.executeUpdate(sql_user_table);
 					stm.executeUpdate(sql_customer);
@@ -110,6 +121,7 @@ public class StartUp {
 					stm.executeUpdate(sql_product_catalog);
 					stm.executeUpdate(sql_pharmacy_table);
 					stm.executeUpdate(sql_pharmacy_customer_table);
+					stm.executeUpdate(sql_users_allergies);
 
 					String sql_script;
 					

@@ -49,6 +49,18 @@
 				
 									</div>	
 									<div class="col-md-6">
+					                    <!-- Weekdays -->
+					                    <div class="form-group btn-xs">
+					                        <input type="text" class="form-control" id="weekdays" name="weekdays" value="${u.alarm_weekdays}" placeholder="Weekdays String" required>
+					                    </div>
+									</div>
+									<div class="col-md-6">
+					                    <!-- Time -->
+					                    <div class="form-group btn-xs">
+					                        <input type="text" class="form-control" id="time" name="time" value="${u.alarm_time}" placeholder="Time" required>
+					                    </div>
+									</div>
+									<div class="col-md-6">
 					                    <!-- Location default -->
 					                    <div class="form-group btn-xs">
 					                    	<select class="form-control" id="location" name="location">

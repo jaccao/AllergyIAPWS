@@ -18,6 +18,8 @@ public class UserDao extends Dao<User>{
 	private static String user_mail = "user_mail";
 	private static String user_password = "user_password";
 	private static String user_station_default = "user_station_default";
+	private static String alarm_weekdays = "alarm_weekdays";
+	private static String alarm_time = "alarm_time";
 
 	@Override
 	public void insert(User bean) {
@@ -29,7 +31,9 @@ public class UserDao extends Dao<User>{
 		query.append(user_second_name + ", ");
 		query.append(user_mail + ", ");
 		query.append(user_password + ", ");
-		query.append(user_station_default + " ");
+		query.append(user_station_default + ", ");
+		query.append(alarm_weekdays + ", ");
+		query.append(alarm_time + " ");
 		query.append(") ");
 		query.append("VALUES");
 		query.append(" ('");
@@ -37,7 +41,9 @@ public class UserDao extends Dao<User>{
 		query.append(bean.getUser_second_name() + "', '");
 		query.append(bean.getUser_mail() + "', '");
 		query.append(bean.getUser_password() + "', '");
-		query.append(bean.getUser_station_default() + "' ");
+		query.append(bean.getUser_station_default() + "', '");
+		query.append(bean.getAlarm_weekdays() + "', '");
+		query.append(bean.getAlarm_time() + "'");
 		query.append(") ");
 		db.executeUpdate(query.toString());
 		
@@ -53,7 +59,9 @@ public class UserDao extends Dao<User>{
 		query.append(user_second_name + " = '" + bean.getUser_second_name() + "', ");
 		query.append(user_mail + " = '" + bean.getUser_mail() + "', ");
 		query.append(user_password + " = '" + bean.getUser_password() + "', ");
-		query.append(user_station_default +"= '"+bean.getUser_station_default() + "' ");
+		query.append(user_station_default +"= '"+bean.getUser_station_default() + "', ");
+		query.append(alarm_weekdays + " = '" + bean.getAlarm_weekdays() + "', ");
+		query.append(alarm_time + " = '" + bean.getAlarm_time() + "' ");
 		query.append(" WHERE ");
 		query.append(iduser + " = " + bean.getIduser());
 
@@ -93,8 +101,10 @@ public class UserDao extends Dao<User>{
 				String mail = rs.getString(user_mail);
 				String password = rs.getString(user_password);
 				String location = rs.getString(user_station_default);
+				String weekdays = rs.getString(alarm_weekdays);
+				String time = rs.getTime(alarm_time).toString();
 
-				list.add(new User(id, name, secondName, mail, password, location));
+				list.add(new User(id, name, secondName, mail, password, location, weekdays, time));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

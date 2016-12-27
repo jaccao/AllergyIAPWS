@@ -82,6 +82,8 @@ public class UserServlet extends HttpServlet {
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
 		String location = request.getParameter("location");
+		String weekdays = request.getParameter("weekdays");
+		String time = request.getParameter("time");
 
 		if (request.getParameter("id") != null) { // Edit user
 			id = Integer.parseInt(request.getParameter("id"));
@@ -92,11 +94,13 @@ public class UserServlet extends HttpServlet {
 			u.setUser_mail(mail);
 			u.setUser_password(password);
 			u.setUser_station_default(location);
+			u.setAlarm_weekdays(weekdays);
+			u.setAlarm_time(time);
 			UserService.update(u);
 			
 		} else { // New Product
 
-			User u = new User(name, secondName, mail, password, location);
+			User u = new User(name, secondName, mail, password, location, weekdays, time);
 			UserService.insert(u);
 		}
 

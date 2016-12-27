@@ -29,11 +29,16 @@
 					                    </div>
 									</div>
 									</div>
-			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
-			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">
-			                            Save
-			                        </button>
-			                    </div>
+									<%
+										int length = (int)request.getAttribute("length");
+										if(length > 0) {
+									%>
+				                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
+				                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">
+				                            Save
+				                        </button>
+				                    </div>
+			                     <%}%>
 			                    </div>
 			                </form>
 			            </div>
