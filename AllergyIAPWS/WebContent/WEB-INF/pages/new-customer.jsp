@@ -35,7 +35,8 @@
 					                    <div class="form-group btn-xs">
 					                        <input type="password" class="form-control" id="nUserPassword" name="nUserPassword" placeholder="Password" required>
 					                    </div>
-				
+								</div>
+								<div class="row">
 									</div>	  
 									<div class="col-md-6">                  
 										<!-- Company Name -->
@@ -43,7 +44,23 @@
 					                    	<input type="text" class="form-control" id="nCompanyName" name="nCompanyName" placeholder="Company Name" required>
 					                    </div>
 									</div>
+											
+									<div class="col-md-6">
+					                    <!-- Description -->
+					                    <div class="form-group btn-xs">
+					                        <input type="text" class="form-control" id="description" name="description" placeholder="Description" required>
+					                    </div>
+									</div>
 								</div>
+								<div class="row">
+										<div class="col-md-12">                  
+										<!-- Logo URL -->
+										<div class="input-group">
+  											<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  											<input type="text" class="form-control" placeholder="Image URL" id="url_logo" name="url_logo" aria-describedby="basic-addon3">
+										</div>
+					                    </div>
+									</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">
 			                            Save

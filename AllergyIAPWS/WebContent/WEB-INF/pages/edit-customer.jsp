@@ -31,15 +31,31 @@
 					                    <div class="form-group btn-xs">
 					                        <input type="password" class="form-control" id="nUserPassword" name="nUserPassword" value="${c.user_password}" placeholder="Password" required>
 					                    </div>
-				
-									</div>	  
+									</div>
+								</div>
+								<div class="row">	  
 									<div class="col-md-6">                  
 										<!-- Company Name -->
 					                    <div class="form-group btn-xs">
 					                    	<input type="text" class="form-control" id="nCompanyName" name="nCompanyName" value="${c.company_name}" placeholder="Company Name" required>
 					                    </div>
 									</div>
+									<div class="col-md-6">                  
+										<!-- Description -->
+					                    <div class="form-group btn-xs">
+					                    	<input type="text" class="form-control" id="description" name="description" value="${c.company_description}" placeholder="Company Name" required>
+					                    </div>
+									</div>
 								</div>
+									<div class="row">
+									<div class="col-md-12">                  
+										<!-- Image URL -->
+										<div class="input-group">
+  											<span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  											<textarea type="text" class="form-control" style="resize:none" placeholder="Logo URL" id="url_logo" name="url_logo" rows="1" aria-describedby="basic-addon3">${c.url_logo}</textarea>
+										</div>
+					                    </div>
+									</div>
 			                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
 			                        <button type="submit" class="btn btn-success" data-loading-text="Save <i class='fa fa-spinner fa-spin'></i>" style="width: 40%">
 			                            Edit

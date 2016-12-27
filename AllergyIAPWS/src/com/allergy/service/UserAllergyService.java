@@ -3,6 +3,7 @@ package com.allergy.service;
 
 import java.util.List;
 
+import com.allergyiap.beans.Allergy;
 import com.allergyiap.beans.User;
 import com.allergyiap.beans.UserAllergy;
 import com.allergyiap.dao.UserAllergyDao;
@@ -26,7 +27,7 @@ public class UserAllergyService {
 		return dao.getUsersByAllergy(idallergy);
 	}
 	
-	public static List<Integer> getAllergyesByUser(long iduser) {
+	public static List<Allergy> getAllergyesByUser(long iduser) {
 		return dao.getAllergyesByUser(iduser);
 	}
 	

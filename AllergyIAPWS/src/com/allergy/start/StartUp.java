@@ -37,6 +37,8 @@ public class StartUp {
 							+ "  user_mail TEXT UNIQUE NOT NULL , "
 							+ "  user_password TEXT  DEFAULT '' NOT NULL , "
 							+ "  company_name TEXT  DEFAULT '' NOT NULL   , " 
+							+ "  url_logo TEXT  DEFAULT '' NOT NULL   , " 
+							+ "  company_description TEXT  DEFAULT '' NOT NULL , " 
 							+ "  PRIMARY KEY(idcustomer));";
 
 					String sql_allergy = "" + "CREATE TABLE IF NOT EXISTS allergy ( "

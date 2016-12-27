@@ -25,20 +25,24 @@
 						<table class="table">
 							<thead>
 								<tr>
+									<th></th>
 									<th>Id</th>
 									<th>Name</th>
 									<th>Password</th>
 									<th>Company</th>
-									<th style="width: 15%"></th>
+									<th>Description</th>
+									<th style="width: 12%"></th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${customers}" var="p">
 									<tr>
+										<td><img src="${p.key.url_logo}" alt="Company Logo" style="width:25px;height:25px;"></td>
 										<td>${p.key.idcustomer}</td>
 										<td>${p.key.user_mail}</td>
 										<td>${p.key.user_password}</td>
 										<td>${p.key.company_name}</td>
+										<td>${p.key.company_description}</td>
 										<td>
 											<div class="dropdown">
 											    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Pharmacies
