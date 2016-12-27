@@ -120,6 +120,7 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 		request.setAttribute("idcustomer",id);
 		List<Pharmacy> p = PharmacyService.getNewPharmacies(id);
 		request.setAttribute("pharmacies", p);
+		request.setAttribute("length", p.size());
 		try{
 			request.getRequestDispatcher("WEB-INF/pages/new-relation.jsp").forward(request, response);
 		}catch(Exception ex){

@@ -136,7 +136,7 @@ public class CustomerServlet extends HttpServlet {
 	private void newCustomer(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.getRequestDispatcher("WEB-INF/pages/new-relation.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/pages/new-customer.jsp").forward(request, response);
 
 	}
 

@@ -28,7 +28,9 @@
 						<table class="table">
 							<thead>
 								<tr>
+								<%if(user.isAdmin()){ %>
 									<th>Id</th>
+								<%} %>
 									<th>Name</th>
 									<th>Latitude</th>
 									<th>Longitude</th>
@@ -38,7 +40,9 @@
 							<tbody>
 								<c:forEach items="${pharmacies}" var="p">
 									<tr>
+										<%if(user.isAdmin()){ %>
 										<td>${p.id_pharmacy}</td>
+										<%} %>
 										<td>${p.name_pharmacy}</td>
 										<td>${p.latitude}</td>
 										<td>${p.longitude}</td>
