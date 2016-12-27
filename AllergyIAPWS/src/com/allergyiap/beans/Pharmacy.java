@@ -55,4 +55,42 @@ public class Pharmacy implements java.io.Serializable{
 	public String getLongitude(){
 		return this.longitude;
 	}
+	public int hashCode() {
+	    final int prime = 31;
+	    int result = 1;
+	    result = prime * result + (int)id_pharmacy;
+	    result = prime * result + ((name_pharmacy == null) ? 0 : name_pharmacy.hashCode());
+	    result = prime * result + ((latitude == null) ? 0 : latitude.hashCode());
+	    result = prime * result + ((longitude == null) ? 0 : longitude.hashCode());
+	    return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj)
+	        return true;
+	    if (obj == null)
+	        return false;
+	    if (getClass() != obj.getClass())
+	        return false;
+	    Pharmacy other = (Pharmacy) obj;
+	    if (id_pharmacy != other.getId_pharmacy()){
+	    	return false;
+	    }
+	    if (name_pharmacy == null) {
+	        if (other.name_pharmacy != null)
+	            return false;
+	    } else if (!name_pharmacy.equals(other.name_pharmacy))
+	        return false;
+	    if (latitude == null) {
+	        if (other.latitude != null)
+	            return false;
+	    } else if (!latitude.equals(other.latitude))
+	    if (longitude == null) {
+	    	if (other.longitude != null)
+	    		return false;
+	    } else if (!longitude.equals(other.longitude))
+	        return false;
+	    return true;
+	}
 }

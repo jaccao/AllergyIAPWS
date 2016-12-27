@@ -3,8 +3,12 @@ package com.allergyiap.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import com.allergy.service.PharmacyService;
+import com.allergy.service.RelationPharmaciesCustomersService;
 import com.allergyiap.beans.Pharmacy;
 
 public class PharmacyDao extends Dao<Pharmacy> {
@@ -86,6 +90,25 @@ public class PharmacyDao extends Dao<Pharmacy> {
 			return null;
 		}
 		return list;
+	}
+	
+	public List<Pharmacy> getNewPharmacies(long idcustomer){
+		List<Pharmacy> p = new ArrayList<>();
+		try {
+			Set<Pharmacy> foo = new HashSet<Pharmacy>(RelationPharmaciesCustomersService.getPharmaciesByCustomer(idcustomer)) ;
+			Set<Pharmacy> all = new HashSet<Pharmacy>(PharmacyService.getAll());
+			for(Pharmacy m : all){
+				System.out.println("ELEM: "+m.getId_pharmacy());
+				if(!foo.contains(m)){
+					System.out.print("TRUE");
+					p.add(m);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return p;
 	}
 	
 	public Pharmacy get(long id_pharmacy){
