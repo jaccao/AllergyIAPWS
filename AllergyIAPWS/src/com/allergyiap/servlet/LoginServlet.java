@@ -64,7 +64,6 @@ public class LoginServlet extends HttpServlet {
 				// password.setMaxAge(30 * 60);
 				response.addCookie(userName);
 				// response.addCookie(password);
-
 				response.sendRedirect("index.jsp");
 			} else {
 				// response.sendRedirect("WEB-INF/pages/InvalidLogin.jsp"); //

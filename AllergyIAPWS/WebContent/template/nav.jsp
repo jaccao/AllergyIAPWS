@@ -22,7 +22,7 @@
 	<%
 		if (!user.isAdmin()) {
 	%>
-		<li class=""><a href="Relations?idcustomer=1"> <span class="fa fa-medkit"></span>
+		<li class=""><a href="Relations?idcustomer=<%=user.getIdcustomer()%>"> <span class="fa fa-medkit"></span>
 			Manage pharmacies relations
 	</a></li>
 	<%
