@@ -84,6 +84,7 @@ public class UserServlet extends HttpServlet {
 		String location = request.getParameter("location");
 		String weekdays = request.getParameter("weekdays");
 		String time = request.getParameter("time");
+		if (time.isEmpty()){time = "00:00";}
 
 		if (request.getParameter("id") != null) { // Edit user
 			id = Integer.parseInt(request.getParameter("id"));
