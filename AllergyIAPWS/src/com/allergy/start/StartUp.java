@@ -50,8 +50,8 @@ public class StartUp {
 					
 					String sql_station_table = ""+ "CREATE TABLE IF NOT EXISTS station ("
 							+ "  name_station TEXT DEFAULT '' NOT NULL ,"
-							+ "  latitude TEXT DEFAULT '' NOT NULL ,"
-							+ "  longitude TEXT DEFAULT '' NOT NULL ,"
+							+ "  latitude real NOT NULL ,"
+							+ "  longitude real  NOT NULL ,"
 							+ "  PRIMARY KEY(name_station));";
 
 					String sql_allergy_level = "" + "CREATE TABLE IF NOT EXISTS allergy_level ( "
@@ -93,8 +93,8 @@ public class StartUp {
 					String sql_pharmacy_table = "" + "CREATE TABLE IF NOT EXISTS pharmacy ("
 							+ "  id_pharmacy SERIAL NOT NULL ,"
 							+ "  name_pharmacy TEXT DEFAULT '' NOT NULL ,"
-							+ "  latitude TEXT DEFAULT '' NOT NULL ,"
-							+ "  longitude TEXT DEFAULT '' NOT NULL,"
+							+ "  latitude real NOT NULL ,"
+							+ "  longitude real NOT NULL,"
 							+ "  PRIMARY KEY(id_pharmacy));";
 										
 					String sql_pharmacy_customer_table = "" + "CREATE TABLE IF NOT EXISTS relation_pharmacies_customers ("
