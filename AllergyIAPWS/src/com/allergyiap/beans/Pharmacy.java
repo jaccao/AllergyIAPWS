@@ -6,19 +6,19 @@ public class Pharmacy implements java.io.Serializable{
 
 	private long id_pharmacy;
 	private String name_pharmacy;
-	private float latitude;
-	private float longitude;
+	private double latitude;
+	private double longitude;
 	
 	public Pharmacy(){}
 	
-	public Pharmacy(long id_pharmacy, String name_pharmacy, float latitude, float longitude){
+	public Pharmacy(long id_pharmacy, String name_pharmacy, double latitude, double longitude){
 		this.id_pharmacy = id_pharmacy;
 		this.name_pharmacy = name_pharmacy;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 	
-	public Pharmacy(String name_pharmacy, float latitude, float longitude){
+	public Pharmacy(String name_pharmacy, double latitude, double longitude){
 		this.name_pharmacy = name_pharmacy;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -40,19 +40,19 @@ public class Pharmacy implements java.io.Serializable{
 		return this.name_pharmacy;
 	}
 	
-	public void setLatitude(float latitude){
+	public void setLatitude(double latitude){
 		this.latitude = latitude;
 	}
 	
-	public float getLatitude(){
+	public double getLatitude(){
 		return this.latitude;
 	}
 	
-	public void setLongitude(float longitude){
+	public void setLongitude(double longitude){
 		this.longitude = longitude;
 	}
 	
-	public float getLongitude(){
+	public double getLongitude(){
 		return this.longitude;
 	}
 	public int hashCode() {

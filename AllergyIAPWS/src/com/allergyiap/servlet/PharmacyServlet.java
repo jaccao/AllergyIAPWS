@@ -107,8 +107,8 @@ public class PharmacyServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id_pharmacy"));
 		}
 		String name_pharmacy = request.getParameter("nPharmacyName");
-		String latitude = request.getParameter("nLatitude");
-		String longitude = request.getParameter("nLongitude");
+		double latitude  = Double.parseDouble(request.getParameter("nLatitude"));
+		double longitude = Double.parseDouble(request.getParameter("nLongitude"));
 
 		Pharmacy p = new Pharmacy(id, name_pharmacy, latitude, longitude);
 

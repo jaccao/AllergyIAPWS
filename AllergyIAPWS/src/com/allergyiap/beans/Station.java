@@ -5,12 +5,12 @@ public class Station implements java.io.Serializable{
 	private static final long serialVersionUID = 2L;
 	
 	private String name_station;
-	private float latitude;
-	private float longitude;
+	private double latitude;
+	private double longitude;
 	
 	public Station(){}
 	
-	public Station(String name_station, float latitude, float longitude){
+	public Station(String name_station, double latitude, double longitude){
 		this.name_station = name_station;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -23,17 +23,17 @@ public class Station implements java.io.Serializable{
 		return this.name_station;
 	}
 	
-	public void setLatitude(float latitude){
+	public void setLatitude(double latitude){
 		this.latitude = latitude;
 	}
-	public float getLatitude(){
+	public double getLatitude(){
 		return this.latitude;
 	}
 	
-	public void setLongitude(float longitude){
+	public void setLongitude(double longitude){
 		this.longitude = longitude;
 	}
-	public float getLongitude(){
+	public double getLongitude(){
 		return this.longitude;
 	}
 }
