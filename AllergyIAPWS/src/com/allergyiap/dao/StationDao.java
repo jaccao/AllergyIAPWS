@@ -75,8 +75,8 @@ public class StationDao extends Dao<Station> {
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
 				String name = rs.getString(name_station);
-				String lat = rs.getString(latitude);
-				String lon = rs.getString(longitude);
+				float lat = rs.getFloat(latitude);
+				float lon = rs.getFloat(longitude);
 				list.add(new Station(name, lat, lon));
 			}
 		} catch (SQLException e) {
