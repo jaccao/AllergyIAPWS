@@ -43,7 +43,7 @@
 									<div class="col-md-6">                  
 										<!-- Description -->
 					                    <div class="form-group btn-xs">
-					                    	<input type="text" class="form-control" id="description" name="description" value="${c.company_description}" placeholder="Company Name" required>
+					                    	<input type="text" class="form-control" id="description" name="description" value="${c.company_description}" placeholder="Company Description" >
 					                    </div>
 									</div>
 								</div>

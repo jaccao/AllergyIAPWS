@@ -48,7 +48,7 @@
 									<div class="col-md-6">
 					                    <!-- Description -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="description" name="description" placeholder="Description" required>
+					                        <input type="text" class="form-control" id="description" name="description" placeholder="Description">
 					                    </div>
 									</div>
 								</div>
