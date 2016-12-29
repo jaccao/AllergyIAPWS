@@ -49,10 +49,11 @@ public class StartUp {
 							+ "  PRIMARY KEY(idallergy));";
 					
 					String sql_station_table = ""+ "CREATE TABLE IF NOT EXISTS station ("
+							+ "  idstation SERIAL NOT NULL ,"
 							+ "  name_station TEXT DEFAULT '' NOT NULL ,"
 							+ "  latitude real NOT NULL ,"
 							+ "  longitude real  NOT NULL ,"
-							+ "  PRIMARY KEY(name_station));";
+							+ "  PRIMARY KEY(idstation));";
 
 					String sql_allergy_level = "" + "CREATE TABLE IF NOT EXISTS allergy_level ( "
 							+ "  idallergy_level SERIAL NOT NULL , " 
@@ -85,10 +86,12 @@ public class StartUp {
 							+ "  user_second_name TEXT  DEFAULT '' NOT NULL ,"
 							+ "  user_mail TEXT UNIQUE NOT NULL ,"
 							+ "  user_password TEXT  DEFAULT '' NOT NULL ,"
-							+ "  user_station_default TEXT NOT NULL ,"
+							+ "  user_station_default INTEGER NOT NULL ,"
 							+ "  alarm_weekdays TEXT DEFAULT '' NOT NULL , "
 							+ "  alarm_time TIME ,"
-							+ "  PRIMARY KEY(iduser));";
+							+ "  PRIMARY KEY(iduser) ,"
+							+ "  FOREIGN KEY(user_station_default) REFERENCES station(idstation)"
+							+ "  ON DELETE CASCADE ON UPDATE RESTRICT);";
 					
 					String sql_pharmacy_table = "" + "CREATE TABLE IF NOT EXISTS pharmacy ("
 							+ "  id_pharmacy SERIAL NOT NULL ,"
@@ -115,9 +118,9 @@ public class StartUp {
 							+ "  FOREIGN KEY(id_allergy) REFERENCES allergy(idallergy)"
 							+ "  ON DELETE CASCADE ON UPDATE RESTRICT);";
 										
-					stm.executeUpdate(sql_user_table);
 					stm.executeUpdate(sql_customer);
 					stm.executeUpdate(sql_station_table);
+					stm.executeUpdate(sql_user_table);
 					stm.executeUpdate(sql_allergy);
 					stm.executeUpdate(sql_allergy_level);
 					stm.executeUpdate(sql_product_catalog);

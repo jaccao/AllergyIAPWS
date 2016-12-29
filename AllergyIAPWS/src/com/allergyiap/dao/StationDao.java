@@ -12,6 +12,7 @@ public class StationDao extends Dao<Station> {
 
 	private static final String TABLE_NAME = "station";
 
+	private static String idstation = "idstation";
 	private static String name_station = "name_station";
 	private static String latitude = "latitude";
 	private static String longitude = "longitude";
@@ -42,21 +43,11 @@ public class StationDao extends Dao<Station> {
 		query.append("UPDATE ");
 		query.append(TABLE_NAME);
 		query.append(" set ");
+		query.append(name_station + " = '" + bean.getName_station() + "', ");
 		query.append(latitude + " = '" + bean.getLatitude() + "', ");
 		query.append(longitude + " = '" + bean.getLongitude() + "' ");
 		query.append(" WHERE ");
-		query.append(name_station + " = " + bean.getName_station());
-
-		db.executeUpdate(query.toString());
-
-	}
-
-	public void delete(String station) {
-		StringBuilder query = new StringBuilder();
-		query.append("DELETE FROM ");
-		query.append(TABLE_NAME);
-		query.append(" WHERE ");
-		query.append(name_station + " = " + station);
+		query.append(idstation + " = " + bean.getIdstation());
 
 		db.executeUpdate(query.toString());
 
@@ -74,10 +65,11 @@ public class StationDao extends Dao<Station> {
 
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
+				long id = rs.getLong(idstation);
 				String name = rs.getString(name_station);
 				double lat = rs.getDouble(latitude);
 				double lon = rs.getDouble(longitude);
-				list.add(new Station(name, lat, lon));
+				list.add(new Station(id, name, lat, lon));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -87,14 +79,26 @@ public class StationDao extends Dao<Station> {
 	}
 
 	public Station get(String name) {
-		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE name_station = '" + name_station + "';";
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE name_station = '" + name + "';";
+		List<Station> stations = select(selectQuery);
+		return stations.isEmpty() ? null : stations.get(0);
+	}
+	
+	public Station get(int id) {
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE idstation = '" + id + "';";
 		List<Station> stations = select(selectQuery);
 		return stations.isEmpty() ? null : stations.get(0);
 	}
 
 	@Override
 	public void delete(int id) {
-		// Not implemented because the primary key is an String instead of a long as the others
+		StringBuilder query = new StringBuilder();
+		query.append("DELETE FROM ");
+		query.append(TABLE_NAME);
+		query.append(" WHERE ");
+		query.append( idstation+ " = " + id);
+
+		db.executeUpdate(query.toString());
 	}
 
 }

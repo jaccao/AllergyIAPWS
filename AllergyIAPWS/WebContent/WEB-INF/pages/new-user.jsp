@@ -59,7 +59,7 @@
 					                    <div class="form-group btn-xs">
 					                    	<select class="form-control" id="location" name="location">
 					                    	<c:forEach items="${locations}" var="loc">
-					                    		<option value="${loc.name_station}">${loc.name_station}</option>
+					                    		<option value="${loc.idstation}">${loc.name_station}</option>
 					                    	</c:forEach>
 					                    	</select>
 					                    </div>

@@ -66,11 +66,11 @@
 					                    	<select class="form-control" id="location" name="location">
 					                    	<c:forEach items="${locations}" var="loc">
 					                    		<c:choose>
-					                    		<c:when test="${loc.name_station == u.user_station_default}">
-					                    			<option value="${loc.name_station}" selected>${loc.name_station}</option>
+					                    		<c:when test="${loc.idstation == u.user_station_default}">
+					                    			<option value="${loc.idstation}" selected>${loc.name_station}</option>
 					                    		</c:when>
 					                    		<c:otherwise>
-					                    			<option value="${loc.name_station}" >${loc.name_station}</option>
+					                    			<option value="${loc.idstation}" >${loc.name_station}</option>
 					                    		</c:otherwise>
 					                    		</c:choose>
 					                    	</c:forEach>

@@ -9,7 +9,7 @@ public class User implements java.io.Serializable {
 	private String user_second_name;
 	private String user_password;
 	private String user_mail;
-	private String user_station_default;
+	private int user_station_default;
 	private String alarm_weekdays;
 	private String alarm_time;
 
@@ -17,7 +17,7 @@ public class User implements java.io.Serializable {
 	}
 
 	public User(long id, String userName, String userSecondName, String userMail, String userPassword,
-			String user_station_default, String alarm_weekdays, String alarm_time) {
+			int user_station_default, String alarm_weekdays, String alarm_time) {
 		this.iduser = id;
 		this.user_name = userName;
 		this.user_second_name = userSecondName;
@@ -29,7 +29,7 @@ public class User implements java.io.Serializable {
 	}
 	
 	public User(String userName, String userSecondName, String userMail, String userPassword,
-			String user_station_default, String alarm_weekdays, String alarm_time) {
+			int user_station_default, String alarm_weekdays, String alarm_time) {
 		this.user_name = userName;
 		this.user_second_name = userSecondName;
 		this.user_password = userPassword;
@@ -75,11 +75,11 @@ public class User implements java.io.Serializable {
 		return user_second_name;
 	}
 	
-	public String getUser_station_default(){
+	public int getUser_station_default(){
 		return this.user_station_default;
 	}
 	
-	public void setUser_station_default(String user_station_default){
+	public void setUser_station_default(int user_station_default){
 		this.user_station_default = user_station_default;
 	}
 
