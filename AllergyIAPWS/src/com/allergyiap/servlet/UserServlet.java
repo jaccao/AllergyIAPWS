@@ -120,14 +120,9 @@ public class UserServlet extends HttpServlet {
 		Map<Long,String> st = new HashMap<Long,String>();
 		for(Station s : stations){
 			st.put(s.getIdstation(), s.getName_station());
-			System.out.println("Key: " + s.getIdstation());
-			System.out.println("Inserted key: " + st.get(s.getIdstation()) );
 		}
 		for(User u : users){
-			System.out.println("Station id default by user: " + u.getUser_station_default());
-			System.out.println("Station name: " + st.get((long)u.getUser_station_default()));
 			user_inf.put(u, st.get((long)u.getUser_station_default()));
-			System.out.println("Key: "+ user_inf.get(u));
 		}
 		request.setAttribute("users", user_inf);
 		

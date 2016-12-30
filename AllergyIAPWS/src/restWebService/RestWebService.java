@@ -5,8 +5,10 @@ import com.allergy.service.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 
 public class RestWebService {
 
+	/*For check if the login is correct -> mail and password correct*/
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/login/{mail}/{password}")
@@ -58,7 +61,7 @@ public class RestWebService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/productCatalog/{id}")
+	@Path("/products/{id}")
 	public List<ProductCatalogWS> getProduct(@PathParam("id") long productid) {
 		List<ProductCatalogWS> product = new ArrayList<>();
 		ProductCatalog pc = ProductCatalogService.get(productid);
@@ -70,7 +73,7 @@ public class RestWebService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/productCatalog")
+	@Path("/products")
 	public List<ProductCatalogWS> getProduct() {
 		List<ProductCatalogWS> products = new ArrayList<>();
 		for (ProductCatalog product : ProductCatalogService.getAll()) {
@@ -102,5 +105,107 @@ public class RestWebService {
 		} catch (Exception e) {
 			return 1;
 		}
+	}
+	
+	//Method to modify the configuration of a user -> Is useful for 
+	//change the configuration or change the password of the user
+	@PUT
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
+	@Path("/updateUser")
+	public int updateUser(User user) {
+		try {
+			UserService.update(user);
+			return 0;
+		} catch (Exception e) {
+			return 1;
+		}
+	}
+	
+	@POST
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
+	@Path("/addUserAllergy/")
+	public int addUserAllergy(UserAllergy u) {
+		try {
+			UserAllergyService.insert(new UserAllergy(u.getId_user(), u.getId_allergy()));
+			return 0;
+		} catch (Exception e) {
+			return 1;
+		}
+	}
+	
+	@DELETE
+	@Consumes("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8")
+	@Path("/deleteUserAllergy/")
+	public int deleteUserAllergy(UserAllergy u) {
+		try {
+			System.out.println("idUser: "+u.getId_user() + " -- idAllergy: "+u.getId_allergy());
+			UserAllergyService.delete(u.getId_user(), u.getId_allergy());
+			return 0;
+		} catch (Exception e) {
+			return 1;
+		}
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/userAllergies/{iduser}")
+	public List<Allergy> getUserAllergies(@PathParam("iduser")long iduser) {
+		List<Allergy> allergies = new ArrayList<>();
+		allergies = UserAllergyService.getAllergyesByUser(iduser);
+		return allergies;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/stations")
+	public List<Station> getStations() {
+		List<Station> stations = new ArrayList<>();
+		stations = StationService.getAll();
+		return stations;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/stations/{id}")
+	public List<Station> getStationById(@PathParam("id")long idstation) {
+		List<Station> station = new ArrayList<>();
+		Station s = StationService.get((int)idstation);
+		if (s != null) {
+			station.add(s);
+		}
+		return station;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/pharmacies")
+	public List<Pharmacy> getPharmacies() {
+		List<Pharmacy> pharmacies = new ArrayList<>();
+		pharmacies = PharmacyService.getAll();
+		return pharmacies;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/pharmacies/{id}")
+	public List<Pharmacy> getPharmacy(@PathParam("id") long pharmacy_id) {
+		List<Pharmacy> pharmacy = new ArrayList<>();
+		Pharmacy p = PharmacyService.get(pharmacy_id);
+		if (p != null) {
+			pharmacy.add(p);
+		}
+		return pharmacy;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/products/allergy/{id}")
+	public List<ProductCatalog> getProdcutsByCustomer(@PathParam("id") long id_customer) {
+		List<ProductCatalog> products = new ArrayList<>();
+		products = ProductCatalogService.getAllByCustomer(id_customer);
+		return products;
 	}
 }

@@ -41,7 +41,6 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${users}" var="u">
-										VALOR: ${u.value}
 										<td>${u.key.iduser}</td>
 										<td>${u.key.user_name}</td>
 										<td>${u.key.user_second_name}</td>

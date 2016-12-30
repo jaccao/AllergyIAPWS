@@ -47,7 +47,7 @@ public class UserAllergyDao extends Dao<UserAllergy> {
 	public void delete(int id) {
 	}
 
-	public void delete(int iduser, int idallergy) {
+	public void delete(long iduser, long idallergy) {
 		StringBuilder query = new StringBuilder();
 		query.append("DELETE FROM ");
 		query.append(TABLE_NAME);
@@ -70,8 +70,8 @@ public class UserAllergyDao extends Dao<UserAllergy> {
 
 			ResultSet rs = db.execute(query);
 			while (rs.next()) {
-				long iduser = rs.getLong(id_user);
-				long idallergy = rs.getLong(id_allergy);
+				int iduser = rs.getInt(id_user);
+				int idallergy = rs.getInt(id_allergy);
 				list.add(new UserAllergy(iduser, idallergy));
 			}
 		} catch (SQLException e) {
@@ -82,7 +82,7 @@ public class UserAllergyDao extends Dao<UserAllergy> {
 	}
 
 	public List<User> getUsersByAllergy(long idallergy) {
-		String selectQuery = "SELECT id_customer FROM " + TABLE_NAME + " WHERE "+ id_allergy + " = "+idallergy + ";";
+		String selectQuery = "SELECT id_user FROM " + TABLE_NAME + " WHERE "+ id_allergy + " = " + idallergy + ";";
 		List<User> list = new ArrayList<>();
 		try {
 
@@ -100,13 +100,13 @@ public class UserAllergyDao extends Dao<UserAllergy> {
 	}
 
 	public List<Allergy> getAllergyesByUser(long iduser) {
-		String selectQuery = "SELECT id_customer FROM " + TABLE_NAME + " WHERE "+ iduser + " = "+id_user + ";";
+		String selectQuery = "SELECT id_allergy FROM " + TABLE_NAME + " WHERE "+ id_user + " = " + iduser + ";";
+		System.out.println("Query: "+selectQuery);
 		List<Allergy> list = new ArrayList<>();
 		try {
-
 			ResultSet rs = db.execute(selectQuery);
 			while (rs.next()) {
-				int idallergy = rs.getInt(id_allergy);
+				int idallergy = rs.getInt("id_allergy");
 				Allergy a = AllergyService.get(new Long(idallergy));
 				list.add(a);
 			}

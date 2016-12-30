@@ -12,6 +12,8 @@ public class UserAllergy implements java.io.Serializable {
 		this.id_allergy = id_allergy;
 	}
 	
+	public UserAllergy(){}
+	
 	public long getId_user() {
 		return id_user;
 	}

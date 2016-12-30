@@ -31,23 +31,19 @@ public class ProductCatalogService {
 
 	public static List<ProductCatalog> getAllByCustomer(long id) {
 		List<ProductCatalog> list = productDao.getByCustomer(id);
-
 		for (ProductCatalog productCatalog : list) {
 			productCatalog.setAllergy(allergyDao.get(productCatalog.getAllergy_idallergy()));
 			productCatalog.setCustomer(customerDao.get(productCatalog.getCustomer_idcustomer()));
 		}
-
 		return list;
 	}
 
 	public static List<ProductCatalog> getAll() {
 		List<ProductCatalog> list = productDao.getAll();
-
 		for (ProductCatalog productCatalog : list) {
 			productCatalog.setAllergy(allergyDao.get(productCatalog.getAllergy_idallergy()));
 			productCatalog.setCustomer(customerDao.get(productCatalog.getCustomer_idcustomer()));
 		}
-
 		return list;
 	}
 

@@ -19,7 +19,7 @@ public class UserAllergyService {
 		dao.update(bean);
 	}
 	
-	public static void delete(int iduser, int idallergy){
+	public static void delete(long iduser, long idallergy){
 		dao.delete(iduser, idallergy);
 	}
 	
