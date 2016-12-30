@@ -6,19 +6,19 @@ public class Pharmacy implements java.io.Serializable{
 
 	private long id_pharmacy;
 	private String name_pharmacy;
-	private String latitude;
-	private String longitude;
+	private double latitude;
+	private double longitude;
 	
 	public Pharmacy(){}
 	
-	public Pharmacy(long id_pharmacy, String name_pharmacy, String latitude, String longitude){
+	public Pharmacy(long id_pharmacy, String name_pharmacy, double latitude, double longitude){
 		this.id_pharmacy = id_pharmacy;
 		this.name_pharmacy = name_pharmacy;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 	
-	public Pharmacy(String name_pharmacy, String latitude, String longitude){
+	public Pharmacy(String name_pharmacy, double latitude, double longitude){
 		this.name_pharmacy = name_pharmacy;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -40,19 +40,19 @@ public class Pharmacy implements java.io.Serializable{
 		return this.name_pharmacy;
 	}
 	
-	public void setLatitude(String latitude){
+	public void setLatitude(double latitude){
 		this.latitude = latitude;
 	}
 	
-	public String getLatitude(){
+	public double getLatitude(){
 		return this.latitude;
 	}
 	
-	public void setLongitude(String longitude){
+	public void setLongitude(double longitude){
 		this.longitude = longitude;
 	}
 	
-	public String getLongitude(){
+	public double getLongitude(){
 		return this.longitude;
 	}
 	public int hashCode() {
@@ -60,8 +60,8 @@ public class Pharmacy implements java.io.Serializable{
 	    int result = 1;
 	    result = prime * result + (int)id_pharmacy;
 	    result = prime * result + ((name_pharmacy == null) ? 0 : name_pharmacy.hashCode());
-	    result = prime * result + ((latitude == null) ? 0 : latitude.hashCode());
-	    result = prime * result + ((longitude == null) ? 0 : longitude.hashCode());
+	    result = prime * result + (int)latitude;
+	    result = prime * result + (int)longitude;;
 	    return result;
 	}
 
@@ -82,15 +82,12 @@ public class Pharmacy implements java.io.Serializable{
 	            return false;
 	    } else if (!name_pharmacy.equals(other.name_pharmacy))
 	        return false;
-	    if (latitude == null) {
-	        if (other.latitude != null)
-	            return false;
-	    } else if (!latitude.equals(other.latitude))
-	    if (longitude == null) {
-	    	if (other.longitude != null)
-	    		return false;
-	    } else if (!longitude.equals(other.longitude))
-	        return false;
+	    if (latitude != other.getLatitude()){
+	    	return false;
+	    }
+	    if (longitude != other.getLongitude()){
+	    	return false;
+	    }
 	    return true;
 	}
 }

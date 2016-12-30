@@ -16,7 +16,7 @@ public class RelationPharmaciesCustomers implements java.io.Serializable {
 		return id_customer;
 	}
 
-	public void setIdcustomer(long id_customer) {
+	public void setId_customer(long id_customer) {
 		this.id_customer = id_customer;
 	}
 	

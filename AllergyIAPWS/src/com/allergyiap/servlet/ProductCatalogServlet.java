@@ -1,8 +1,6 @@
 package com.allergyiap.servlet;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,12 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import com.allergy.service.AllergyService;
 import com.allergy.service.CustomerService;
 import com.allergy.service.ProductCatalogService;
-import com.allergy.service.UserService;
 import com.allergyiap.beans.Customer;
 import com.allergyiap.beans.ProductCatalog;
 
@@ -34,7 +30,6 @@ public class ProductCatalogServlet extends HttpServlet {
 	 */
 	public ProductCatalogServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -71,7 +66,6 @@ public class ProductCatalogServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
 			String action = (String) request.getParameter("action");
 
@@ -88,7 +82,6 @@ public class ProductCatalogServlet extends HttpServlet {
 	}
 
 	private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		ProductCatalogService.delete(id);
@@ -98,7 +91,6 @@ public class ProductCatalogServlet extends HttpServlet {
 
 	private void saveProduct(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
 		Customer customer = (Customer) session.getAttribute("User");
 
@@ -126,8 +118,6 @@ public class ProductCatalogServlet extends HttpServlet {
 	}
 
 	private void listProducts(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
 		HttpSession session = request.getSession(false);
 		Customer customer = (Customer) session.getAttribute("User");
 		long id = customer.getIdcustomer();

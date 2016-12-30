@@ -19,10 +19,15 @@
 					
 				<div class="panel-heading text-right">
 					<a class="btn btn-success" href="Relations?action=new&idcustomer=${idcustomer}">
-						<i class="fa fa-plus"></i> New 
+						<i class="fa fa-plus"></i> New relation 
 					</a>
-				</div>
-					
+				<% if(!user.isAdmin()) {%>
+					<a class="btn btn-success" href="Pharmacies?action=new">
+						<i class="fa fa-medkit"></i> New pharmacy 
+					</a>
+				
+				<%} %>
+				</div>	
 					<div class="panel-body">
 	
 						<table class="table">

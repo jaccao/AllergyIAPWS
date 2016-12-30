@@ -16,12 +16,16 @@ public class StationService {
 		dao.update(bean);
 	}
 	
-	public static void delete(String name_station){
-		dao.delete(name_station);
+	public static void delete(int id){
+		dao.delete(id);
 	}
 	
 	public static Station get(String name) {
 		return dao.get(name);
+	}
+	
+	public static Station get(int id) {
+		return dao.get(id);
 	}
 	
 	public static List<Station> getAll() {

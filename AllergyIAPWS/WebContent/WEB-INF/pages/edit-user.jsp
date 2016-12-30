@@ -51,13 +51,13 @@
 									<div class="col-md-6">
 					                    <!-- Weekdays -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="weekdays" name="weekdays" value="${u.alarm_weekdays}" placeholder="Weekdays String" required>
+					                        <input type="text" class="form-control" id="weekdays" name="weekdays" value="${u.alarm_weekdays}" placeholder="Weekdays String">
 					                    </div>
 									</div>
 									<div class="col-md-6">
 					                    <!-- Time -->
 					                    <div class="form-group btn-xs">
-					                        <input type="text" class="form-control" id="time" name="time" value="${u.alarm_time}" placeholder="Time" required>
+					                        <input type="text" class="form-control" id="time" name="time" value="${u.alarm_time}" placeholder="Time">
 					                    </div>
 									</div>
 									<div class="col-md-6">
@@ -66,11 +66,11 @@
 					                    	<select class="form-control" id="location" name="location">
 					                    	<c:forEach items="${locations}" var="loc">
 					                    		<c:choose>
-					                    		<c:when test="${loc.name_station == u.user_station_default}">
-					                    			<option value="${loc.name_station}" selected>${loc.name_station}</option>
+					                    		<c:when test="${loc.idstation == u.user_station_default}">
+					                    			<option value="${loc.idstation}" selected>${loc.name_station}</option>
 					                    		</c:when>
 					                    		<c:otherwise>
-					                    			<option value="${loc.name_station}" >${loc.name_station}</option>
+					                    			<option value="${loc.idstation}" >${loc.name_station}</option>
 					                    		</c:otherwise>
 					                    		</c:choose>
 					                    	</c:forEach>

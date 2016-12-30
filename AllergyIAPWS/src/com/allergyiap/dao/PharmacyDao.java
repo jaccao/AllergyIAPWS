@@ -81,8 +81,8 @@ public class PharmacyDao extends Dao<Pharmacy> {
 			while (rs.next()) {
 				long idp = rs.getLong(id_pharmacy);
 				String name = rs.getString(name_pharmacy);
-				String lat = rs.getString(latitude);
-				String lon = rs.getString(longitude);
+				double lat = rs.getDouble(latitude);
+				double lon = rs.getDouble(longitude);
 				list.add(new Pharmacy(idp, name, lat, lon));
 			}
 		} catch (SQLException e) {

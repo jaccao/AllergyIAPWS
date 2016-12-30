@@ -41,21 +41,20 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${users}" var="u">
-									<tr>
-										<td>${u.iduser}</td>
-										<td>${u.user_name}</td>
-										<td>${u.user_second_name}</td>
-										<td>${u.user_mail}</td>
-										<td>${u.user_password}</td>
-										<td>${u.user_station_default}</td>
-										<td>${u.alarm_weekdays}</td>
-										<td>${u.alarm_time}</td>
+										<td>${u.key.iduser}</td>
+										<td>${u.key.user_name}</td>
+										<td>${u.key.user_second_name}</td>
+										<td>${u.key.user_mail}</td>
+										<td>${u.key.user_password}</td>
+										<td>${u.value}</td>
+										<td>${u.key.alarm_weekdays}</td>
+										<td>${u.key.alarm_time}</td>
 										<td>
-											<a class="btn btn-warning" href="Users?action=edit&id=${u.iduser}"> 
+											<a class="btn btn-warning" href="Users?action=edit&id=${u.key.iduser}"> 
 												<i class="fa fa-pencil"></i>
 											</a>
 										
-											<a class="btn btn-danger" href="Users?action=delete&id=${u.iduser}">
+											<a class="btn btn-danger" href="Users?action=delete&id=${u.key.iduser}">
 												<i class="fa fa-trash-o"></i>
 											</a>
 										

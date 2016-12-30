@@ -12,10 +12,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.allergy.service.CustomerService;
 import com.allergy.service.PharmacyService;
 import com.allergy.service.RelationPharmaciesCustomersService;
+import com.allergyiap.beans.Customer;
 import com.allergyiap.beans.Pharmacy;
 import com.allergyiap.beans.RelationPharmaciesCustomers;
 
@@ -105,8 +107,8 @@ public class PharmacyServlet extends HttpServlet {
 			id = Integer.parseInt(request.getParameter("id_pharmacy"));
 		}
 		String name_pharmacy = request.getParameter("nPharmacyName");
-		String latitude = request.getParameter("nLatitude");
-		String longitude = request.getParameter("nLongitude");
+		double latitude  = Double.parseDouble(request.getParameter("nLatitude"));
+		double longitude = Double.parseDouble(request.getParameter("nLongitude"));
 
 		Pharmacy p = new Pharmacy(id, name_pharmacy, latitude, longitude);
 
@@ -115,8 +117,14 @@ public class PharmacyServlet extends HttpServlet {
 		} else {
 			PharmacyService.insert(p);
 		}
-
-		response.sendRedirect("Pharmacies");
+		HttpSession session = request.getSession(false);
+		Customer customer = (Customer) session.getAttribute("User");
+		if(customer.isAdmin()){
+			response.sendRedirect("Pharmacies");
+		}else{
+			response.sendRedirect("Relations?idcustomer="+customer.getIdcustomer());
+		}
+		
 	}
 
 	private void editPharmacy(HttpServletRequest request, HttpServletResponse response)

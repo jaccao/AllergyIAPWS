@@ -1,7 +1,9 @@
 package com.allergyiap.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import com.allergy.service.AllergyService;
 import com.allergy.service.ProductCatalogService;
 import com.allergy.service.StationService;
 import com.allergy.service.UserService;
+import com.allergyiap.beans.Station;
 import com.allergyiap.beans.User;
 
 /**
@@ -81,9 +84,10 @@ public class UserServlet extends HttpServlet {
 		String secondName = request.getParameter("secondName");
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
-		String location = request.getParameter("location");
+		int location = Integer.parseInt(request.getParameter("location"));
 		String weekdays = request.getParameter("weekdays");
 		String time = request.getParameter("time");
+		if (time.isEmpty()){time = "00:00";}
 
 		if (request.getParameter("id") != null) { // Edit user
 			id = Integer.parseInt(request.getParameter("id"));
@@ -108,10 +112,20 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void listUsers(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 
 		List<User> users = UserService.getAll();
-		request.setAttribute("users", users);
+		Map<User,String> user_inf = new HashMap<User,String>();
+		
+		List<Station> stations = StationService.getAll();
+		Map<Long,String> st = new HashMap<Long,String>();
+		for(Station s : stations){
+			st.put(s.getIdstation(), s.getName_station());
+		}
+		for(User u : users){
+			user_inf.put(u, st.get((long)u.getUser_station_default()));
+		}
+		request.setAttribute("users", user_inf);
+		
 		try {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/pages/show-users.jsp");
 			rd.forward(request, response);
@@ -145,7 +159,6 @@ public class UserServlet extends HttpServlet {
 	}
 	
 	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
 		UserService.delete(id);
 		response.sendRedirect("Users");

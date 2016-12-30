@@ -5,10 +5,14 @@ public class CustomerWS implements java.io.Serializable{
 
 	private long idcustomer;
 	private String company_name;
+	private String url_logo;
+	private String company_description;
 	
 	public CustomerWS(Customer customer){
 		this.idcustomer = customer.getIdcustomer();
 		this.company_name = customer.getCompany_name();
+		this.url_logo = customer.getUrl_logo();
+		this.company_description = customer.getCompany_description();
 	}
 
 	public CustomerWS() {
@@ -31,5 +35,19 @@ public class CustomerWS implements java.io.Serializable{
 		this.company_name = companyName;
 	}
 	
+	public String getUrl_logo() {
+		return url_logo;
+	}
 
+	public void setUrl_logo(String url_logo) {
+		this.url_logo = url_logo;
+	}
+	
+	public String getCompany_description() {
+		return company_description;
+	}
+
+	public void setCompany_description(String company_description) {
+		this.company_description = company_description;
+	}
 }

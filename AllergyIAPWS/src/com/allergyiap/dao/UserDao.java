@@ -40,8 +40,8 @@ public class UserDao extends Dao<User>{
 		query.append(bean.getUser_name() + "', '");
 		query.append(bean.getUser_second_name() + "', '");
 		query.append(bean.getUser_mail() + "', '");
-		query.append(bean.getUser_password() + "', '");
-		query.append(bean.getUser_station_default() + "', '");
+		query.append(bean.getUser_password() + "', ");
+		query.append(bean.getUser_station_default() + ", '");
 		query.append(bean.getAlarm_weekdays() + "', '");
 		query.append(bean.getAlarm_time() + "'");
 		query.append(") ");
@@ -59,7 +59,7 @@ public class UserDao extends Dao<User>{
 		query.append(user_second_name + " = '" + bean.getUser_second_name() + "', ");
 		query.append(user_mail + " = '" + bean.getUser_mail() + "', ");
 		query.append(user_password + " = '" + bean.getUser_password() + "', ");
-		query.append(user_station_default +"= '"+bean.getUser_station_default() + "', ");
+		query.append(user_station_default +"= "+bean.getUser_station_default() + ", ");
 		query.append(alarm_weekdays + " = '" + bean.getAlarm_weekdays() + "', ");
 		query.append(alarm_time + " = '" + bean.getAlarm_time() + "' ");
 		query.append(" WHERE ");
@@ -100,7 +100,7 @@ public class UserDao extends Dao<User>{
 				String secondName = rs.getString(user_second_name);
 				String mail = rs.getString(user_mail);
 				String password = rs.getString(user_password);
-				String location = rs.getString(user_station_default);
+				int location = rs.getInt(user_station_default);
 				String weekdays = rs.getString(alarm_weekdays);
 				String time = rs.getTime(alarm_time).toString();
 

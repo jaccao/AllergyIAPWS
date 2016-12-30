@@ -81,9 +81,13 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-		String referer = request.getHeader("Referer");
-		System.out.println("DELETE URL: "+referer);
-		response.sendRedirect(referer);
+		HttpSession session = request.getSession(false);
+		Customer customer = (Customer) session.getAttribute("User");
+		if(customer.isAdmin()){
+			response.sendRedirect("Relations?idcustomer="+id_customer);
+		}else{
+			response.sendRedirect("Relations?idcustomer="+customer.getIdcustomer());
+		}
 	}
 
 	private void saveRelation(HttpServletRequest request, HttpServletResponse response)
@@ -95,9 +99,13 @@ public class RelationPharmaciesCustomersServlet extends HttpServlet {
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
-		String referer = request.getHeader("Referer");
-		System.out.println("SAVE URL: "+referer);
-		response.sendRedirect(referer);
+		HttpSession session = request.getSession(false);
+		Customer customer = (Customer) session.getAttribute("User");
+		if(customer.isAdmin()){
+			response.sendRedirect("Relations?idcustomer="+idcustomer);
+		}else{
+			response.sendRedirect("Relations?idcustomer="+customer.getIdcustomer());
+		}
 		
 	}
 

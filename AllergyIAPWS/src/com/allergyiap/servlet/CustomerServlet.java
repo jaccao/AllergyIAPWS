@@ -107,8 +107,10 @@ public class CustomerServlet extends HttpServlet {
 		String userMail = request.getParameter("nUserName");
 		String userPass = request.getParameter("nUserPassword");
 		String companyName = request.getParameter("nCompanyName");
+		String url_logo = request.getParameter("url_logo");
+		String description = request.getParameter("description");
 
-		Customer c = new Customer(id, userMail, userPass, companyName);
+		Customer c = new Customer(id, userMail, userPass, companyName, url_logo, description);
 
 		if (id != 0) {
 			CustomerService.update(c);
