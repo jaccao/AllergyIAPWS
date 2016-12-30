@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.allergyiap.beans.AllergyLevel;
+import com.allergyiap.beans.User;
 
 public class AllergyLevelDao extends Dao<AllergyLevel> {
 
@@ -123,6 +124,12 @@ public class AllergyLevelDao extends Dao<AllergyLevel> {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public AllergyLevel get(long id) {
+		String selectQuery = "SELECT * FROM " + TABLE_NAME + " WHERE " + idallergy_level + " = " + id + ";";
+		List<AllergyLevel> allergieslevel = select(selectQuery);
+		return allergieslevel.isEmpty() ? null : allergieslevel.get(0);
 	}
 
 }

@@ -216,4 +216,13 @@ public class RestWebService {
 		products = ProductCatalogService.getAllByCustomer(id_customer);
 		return products;
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/levels")
+	public List<AllergyLevel> getAllergiesLevel() {
+		List<AllergyLevel> levels = new ArrayList<>();
+		levels = AllergyLevelService.getAll();
+		return levels;
+	}
 }
