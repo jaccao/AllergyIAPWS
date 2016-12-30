@@ -141,7 +141,6 @@ public class RestWebService {
 	@Path("/deleteUserAllergy/")
 	public int deleteUserAllergy(UserAllergy u) {
 		try {
-			System.out.println("idUser: "+u.getId_user() + " -- idAllergy: "+u.getId_allergy());
 			UserAllergyService.delete(u.getId_user(), u.getId_allergy());
 			return 0;
 		} catch (Exception e) {
@@ -202,7 +201,7 @@ public class RestWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/products/allergy/{id}")
+	@Path("/products/customer/{id}")
 	public List<ProductCatalog> getProdcutsByCustomer(@PathParam("id") long id_customer) {
 		List<ProductCatalog> products = new ArrayList<>();
 		products = ProductCatalogService.getAllByCustomer(id_customer);
