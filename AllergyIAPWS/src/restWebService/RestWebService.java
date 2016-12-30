@@ -201,6 +201,15 @@ public class RestWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/customerPharmacies/{id}")
+	public List<Pharmacy> getPharmaciesByCustomer(@PathParam("id") long customerid) {
+		List<Pharmacy> pharmacies = new ArrayList<>();
+		pharmacies = RelationPharmaciesCustomersService.getPharmaciesByCustomer(customerid);
+		return pharmacies;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/products/customer/{id}")
 	public List<ProductCatalog> getProdcutsByCustomer(@PathParam("id") long id_customer) {
 		List<ProductCatalog> products = new ArrayList<>();
