@@ -201,10 +201,28 @@ public class RestWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/customerPharmacies/{id}")
+	public List<Pharmacy> getPharmaciesByCustomer(@PathParam("id") long customerid) {
+		List<Pharmacy> pharmacies = new ArrayList<>();
+		pharmacies = RelationPharmaciesCustomersService.getPharmaciesByCustomer(customerid);
+		return pharmacies;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/products/customer/{id}")
 	public List<ProductCatalog> getProdcutsByCustomer(@PathParam("id") long id_customer) {
 		List<ProductCatalog> products = new ArrayList<>();
 		products = ProductCatalogService.getAllByCustomer(id_customer);
 		return products;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/levels")
+	public List<AllergyLevel> getAllergiesLevel() {
+		List<AllergyLevel> levels = new ArrayList<>();
+		levels = AllergyLevelService.getAll();
+		return levels;
 	}
 }
