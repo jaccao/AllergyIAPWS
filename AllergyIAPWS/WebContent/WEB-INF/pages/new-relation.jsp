@@ -30,7 +30,7 @@
 									</div>
 									</div>
 									<%
-										int length = (int)request.getAttribute("length");
+										int length = (Integer)request.getAttribute("length");
 										if(length > 0) {
 									%>
 				                    <div class="form-group btn-xs text-center" style="margin-top: 3%;">
