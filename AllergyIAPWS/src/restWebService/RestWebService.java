@@ -159,7 +159,7 @@ public class RestWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/stations")
+	@Path("/station")
 	public List<Station> getStations() {
 		List<Station> stations = new ArrayList<>();
 		stations = StationService.getAll();
@@ -233,5 +233,29 @@ public class RestWebService {
 		List<AllergyLevel> levels = new ArrayList<>();
 		levels = AllergyLevelService.getAll();
 		return levels;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/relation_pharmacies_customers")
+	public List<RelationPharmaciesCustomers> getRelationPharmaciesCustomers() {
+		List<RelationPharmaciesCustomers> all = RelationPharmaciesCustomersService.getAll();
+		return all;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/user_allergies")
+	public List<UserAllergy> getUserAllergy() {
+		List<UserAllergy> all = UserAllergyService.getAll();
+		return all;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/user_information")
+	public List<User> getUserInformation() {
+		List<User> all = UserService.getAll();
+		return all;
 	}
 }
