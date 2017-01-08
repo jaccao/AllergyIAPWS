@@ -50,7 +50,7 @@ public class RestWebService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/customers")
+	@Path("/customer")
 	public List<CustomerWS> getAllCustomer() {
 		List<CustomerWS> customers = new ArrayList<>();
 		for (Customer customer : CustomerService.getAll()) {
@@ -73,7 +73,7 @@ public class RestWebService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/products")
+	@Path("/product_catalog")
 	public List<ProductCatalogWS> getProduct() {
 		List<ProductCatalogWS> products = new ArrayList<>();
 		for (ProductCatalog product : ProductCatalogService.getAll()) {
@@ -168,6 +168,15 @@ public class RestWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/allergy")
+	public List<Allergy> getAllergy() {
+		List<Allergy> allergies = new ArrayList<>();
+		allergies = AllergyService.getAll();
+		return allergies;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/stations/{id}")
 	public List<Station> getStationById(@PathParam("id")long idstation) {
 		List<Station> station = new ArrayList<>();
@@ -180,7 +189,7 @@ public class RestWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/pharmacies")
+	@Path("/pharmacy")
 	public List<Pharmacy> getPharmacies() {
 		List<Pharmacy> pharmacies = new ArrayList<>();
 		pharmacies = PharmacyService.getAll();
@@ -219,7 +228,7 @@ public class RestWebService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/levels")
+	@Path("/allergy_level")
 	public List<AllergyLevel> getAllergiesLevel() {
 		List<AllergyLevel> levels = new ArrayList<>();
 		levels = AllergyLevelService.getAll();
